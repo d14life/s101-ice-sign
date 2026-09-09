@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>101 solutions — ice sign</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 18px; bottom: 16px; color: #7f8b96; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; pointer-events: none; }
+  #load { position: fixed; inset: 0; display: grid; place-items: center; background: #000;
+    color: #8fa3b4; font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+    transition: opacity .5s; }
+</style>
+</head>
+<body>
+<div id="load">loading</div>
+<div id="hud">drag to orbit · scroll to zoom</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader }    from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.AgXToneMapping;   // the curve the sign was graded on
+renderer.toneMappingExposure = 1.0;
+document.body.appendChild(renderer.domElement);
+
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(0, 0.15, 6.2);
+
+// The material is physical, so it needs an environment to be lit by at all -
+// there are no lights in this scene. RoomEnvironment is a soft studio box.
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+/* LIGHTS. A metalness-1 surface shows only what it reflects, and the room
+   environment alone left the sign essentially black - the hero rig it came
+   from has a key and fills, so it gets them here too. */
+const key = new THREE.DirectionalLight(0xffffff, 3.2);
+key.position.set(-2.2, 3.4, 2.6);
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xdce9f5, 1.4);
+fill.position.set(3.0, -0.6, 1.8);
+scene.add(fill);
+const rim = new THREE.DirectionalLight(0xbfd6ea, 1.8);
+rim.position.set(0.4, 1.2, -3.2);
+scene.add(rim);
+scene.add(new THREE.AmbientLight(0xa8c4dc, 0.55));
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.minDistance = 2.5;
+controls.maxDistance = 14;
+
+/* FILM ICE.
+   Ice does not read as ice from maps alone - it reads as ice because light
+   passes THROUGH it and is absorbed on the way, coming out blue-cyan, at ice's
+   refractive index of 1.31. These are the constants the sign was built with. */
+const tex = new THREE.TextureLoader();
+const map = (file, srgb) => {
+  const t = tex.load(file);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(1.6, 1.6);
+  if (srgb) t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+};
+
+const ice = new THREE.MeshPhysicalMaterial({
+  map:          map("textures/ice_color.png", true),
+  roughnessMap: map("textures/ice_roughness.png"),
+  normalMap:    map("textures/ice_normal.png"),
+  roughness: 0.30,
+  metalness: 1.0,
+  transmission: 0.50,
+  thickness: 0.42,
+  attenuationColor: new THREE.Color(0.62, 0.82, 0.92),
+  attenuationDistance: 0.35,
+  ior: 1.31,
+  clearcoat: 0.0,
+  clearcoatRoughness: 0.35,
+  envMapIntensity: 1.9,
+});
+ice.normalScale.set(0.55, 0.55);
+
+const sign = new THREE.Group();
+scene.add(sign);
+
+new GLTFLoader().load("model/s101-sign.glb", (gltf) => {
+  const root = gltf.scene;
+  root.traverse((o) => { if (o.isMesh) o.material = ice; });
+
+  // frame it: centre on its own bounds and fit the camera to the width
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3());
+  const mid  = box.getCenter(new THREE.Vector3());
+  root.position.sub(mid);
+  sign.add(root);
+
+  const fit = size.x / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+  camera.position.set(0, 0, fit * 1.35);
+  controls.target.set(0, 0, 0);
+  controls.update();
+
+  const load = document.getElementById("load");
+  load.style.opacity = "0";
+  setTimeout(() => load.remove(), 600);
+}, undefined, (err) => {
+  document.getElementById("load").textContent = "failed to load model";
+  console.error(err);
+});
+
+addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+renderer.setAnimationLoop(() => {
+  sign.rotation.y = Math.sin(performance.now() / 6000) * 0.28;
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>
