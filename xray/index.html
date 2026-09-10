@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>101 Solutions X-Ray</title>
+<style>
+  :root {
+    --void:      #050607;
+    --void-lift: #0c0f11;
+    --steel:     #8c979d;
+    --steel-dim: #4a5257;
+    --neon:      #78f0ff;
+    --neon-deep: #16626f;
+    --heat:      #ff7a3c;
+
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--void);
+    color: var(--steel);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.75rem, 4vh, 3rem);
+    padding: clamp(2rem, 7vmin, 5.5rem) clamp(1rem, 6vw, 4rem);
+  }
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: .688rem;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--neon-deep);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.4vw, 2.35rem);
+    font-weight: 600;
+    letter-spacing: -.035em;
+    color: #e8eef1;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    margin: 0;
+    max-width: 46ch;
+    font-size: clamp(.875rem, 1.5vw, .97rem);
+    line-height: 1.55;
+    color: var(--steel-dim);
+    text-wrap: balance;
+  }
+
+  /* ---------- the sign ---------- */
+  .stage {
+    position: relative;
+    width: min(96vw, 1180px);
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+    cursor: none;
+    touch-action: none;
+    border-radius: 2px;
+    box-shadow:
+      0 0 0 1px rgba(140, 151, 157, .10),
+      0 2rem 5rem -1.5rem rgba(0, 0, 0, .9);
+  }
+
+  .stage video,
+  .stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  .stage video { object-fit: cover; }
+
+  .inner { z-index: 0; opacity: 0; }   /* sampled by the lens, never shown directly */
+  .shell { z-index: 1; }
+  .lens  { z-index: 2; }
+
+  /* ---------- instrument strip ---------- */
+  .panel {
+    width: min(96vw, 1180px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(22, 98, 111, .32);
+    font-family: var(--mono);
+    font-size: .688rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .readout {
+    margin: 0;
+    display: flex;
+    gap: clamp(1rem, 3.5vw, 2.25rem);
+  }
+  .readout > div { display: flex; align-items: baseline; gap: .55rem; }
+  .readout dt { color: var(--steel-dim); }
+  .readout dd {
+    margin: 0;
+    color: var(--neon);
+    font-variant-numeric: tabular-nums;
+    min-width: 3.6ch;
+  }
+  .readout dd.is-idle { color: var(--steel-dim); }
+
+  button {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: var(--steel);
+    background: transparent;
+    border: 1px solid rgba(140, 151, 157, .26);
+    border-radius: 2px;
+    padding: .5rem .9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  button:hover { color: var(--neon); border-color: rgba(120, 240, 255, .45); }
+  button:focus-visible { outline: 2px solid var(--neon); outline-offset: 2px; }
+  button[aria-pressed="true"] { color: var(--heat); border-color: rgba(255, 122, 60, .45); }
+
+  .colophon {
+    font-family: var(--mono);
+    font-size: .625rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #2b3134;
+  }
+
+  @media (max-width: 560px) {
+    .panel { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .readout { justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+
+
+<main>
+  <header class="masthead">
+    <p class="eyebrow">Move the lens</p>
+    <h1>101 solutions</h1>
+    <p class="standfirst">The shell is machined aluminium. Underneath, it is still running.</p>
+  </header>
+
+  <div class="stage" id="stage">
+    <video class="inner" id="inner" src="inner.mp4" muted loop playsinline preload="auto"></video>
+    <video class="shell" id="shell" src="shell.mp4" muted loop playsinline preload="auto"></video>
+    <canvas class="lens" id="lens"></canvas>
+  </div>
+
+  <div class="panel">
+    <dl class="readout">
+      <div><dt>X</dt><dd id="rx">—</dd></div>
+      <div><dt>Y</dt><dd id="ry">—</dd></div>
+      <div><dt>Aperture</dt><dd id="ra">—</dd></div>
+    </dl>
+    <button id="sound" type="button" aria-pressed="false">Sound off</button>
+  </div>
+
+  <p class="colophon">Two renders, one frame — shell over works</p>
+</main>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const shell = document.getElementById('shell');
+  const inner = document.getElementById('inner');
+  const lens  = document.getElementById('lens');
+  const ctx   = lens.getContext('2d');
+  const rx = document.getElementById('rx');
+  const ry = document.getElementById('ry');
+  const ra = document.getElementById('ra');
+  const soundBtn = document.getElementById('sound');
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* mask renders small — blur is cheap at low res and the upscale softens further */
+  const mask = document.createElement('canvas');
+  const mctx = mask.getContext('2d');
+  const MASK_SCALE = 0.40;   // higher than you'd expect: the aperture is small
+                             // and the high harmonics vanish at quarter res
+
+  /* ---------- registration ----------
+     The inner clip was re-encoded pre-registered to the shell (upscaled 1.075
+     and cropped back to frame), so no runtime correction is needed — measured
+     residual is scale 1.000, dy 0.000. Left here as identity so the hook stays
+     obvious if a future render arrives misframed again.                    */
+  const FIT = { scale: 1.0, dx: 0, dy: 0 };
+
+  /* ---------- playback ---------- */
+  let started = false;
+  const ensurePlaying = () => {
+    if (!shell.paused && !inner.paused) { started = true; return; }
+    if (!started) { shell.currentTime = 0; inner.currentTime = 0; }
+    Promise.all([shell.play(), inner.play()])
+      .then(() => { started = true; })
+      .catch(() => {});
+  };
+  if (shell.readyState >= 2 && inner.readyState >= 2) ensurePlaying();
+  let ready = 0;
+  const onReady = () => { if (++ready === 2) ensurePlaying(); };
+  shell.addEventListener('loadeddata', onReady, { once: true });
+  inner.addEventListener('loadeddata', onReady, { once: true });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) ensurePlaying(); });
+  window.addEventListener('focus', ensurePlaying);
+  ['pointerdown','pointermove','keydown','touchstart']
+    .forEach(ev => window.addEventListener(ev, ensurePlaying, { passive: true }));
+
+  /* sound lives on the shell track only — both at once would double the mix */
+  soundBtn.addEventListener('click', () => {
+    shell.muted = !shell.muted;
+    const on = !shell.muted;
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.textContent = on ? 'Sound on' : 'Sound off';
+    if (on) shell.play().catch(() => {});
+  });
+
+  /* ---------- sizing ---------- */
+  let W = 0, H = 0;
+  const resize = () => {
+    const r = stage.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.round(r.width * dpr);
+    H = Math.round(r.height * dpr);
+    lens.width = W; lens.height = H;
+    mask.width  = Math.max(2, Math.round(W * MASK_SCALE));
+    mask.height = Math.max(2, Math.round(H * MASK_SCALE));
+  };
+  resize();
+  new ResizeObserver(resize).observe(stage);
+
+  /* ---------- the aperture ----------
+     Radius is modulated by five harmonics of the polar angle, each drifting at
+     its own rate and direction, the whole wobble then swelling and subsiding
+     on a slow envelope. Amplitudes sum to 0.62, so the radius can fall to 0.38
+     of base but never through zero — the outline deforms hard without ever
+     folding through itself. */
+  const LOBES = [
+    { freq:  2, amp: 0.26, speed:  1.35, phase: 0.0 },
+    { freq:  3, amp: 0.18, speed: -2.05, phase: 1.7 },
+    { freq:  5, amp: 0.13, speed:  2.90, phase: 3.1 },
+    { freq:  7, amp: 0.08, speed: -3.85, phase: 5.4 },
+    { freq: 11, amp: 0.05, speed:  4.90, phase: 2.2 },
+  ];
+  const STEPS = 220;
+  const SPIN = 0.48;
+
+  const shapeAt = (a, t) => {
+    // The envelope swells and collapses the whole deformation roughly every
+    // seven seconds, so the aperture lurches between nearly round and torn
+    // apart rather than churning at one constant intensity.
+    const env = 0.58 + 0.42 * Math.sin(t * 0.88);
+    let k = 1;
+    for (const l of LOBES) k += env * l.amp * Math.sin(l.freq * (a + t * SPIN) + l.speed * t + l.phase);
+    return k;
+  };
+
+  const blobPath = (c, cx, cy, R, t) => {
+    c.beginPath();
+    for (let i = 0; i <= STEPS; i++) {
+      const a = (i / STEPS) * Math.PI * 2;
+      const r = R * shapeAt(a, t);
+      const x = cx + Math.cos(a) * r;
+      const y = cy + Math.sin(a) * r;
+      i ? c.lineTo(x, y) : c.moveTo(x, y);
+    }
+    c.closePath();
+  };
+
+  /* ---------- cursor ---------- */
+  const RADIUS = 0.105;
+  const EASE   = 0.16;
+  const R_EASE = 0.10;
+  const IDLE_MS = 3800;
+
+  let tx = 0.5, ty = 0.5, cx = 0.5, cy = 0.5;
+  let tr = 0,   cr = 0;
+  let active = false, lastInput = -1e9, everMoved = false;
+
+  const setActive = (on) => { active = on; tr = on ? RADIUS : 0; };
+
+  const move = (e) => {
+    const r = stage.getBoundingClientRect();
+    if (!r.width) return;
+    tx = (e.clientX - r.left) / r.width;
+    ty = (e.clientY - r.top)  / r.height;
+    lastInput = performance.now();
+    everMoved = true;
+    if (!active) setActive(true);
+  };
+  window.addEventListener('pointermove', move, { passive: true });
+  window.addEventListener('pointerdown', move, { passive: true });
+  document.addEventListener('pointerleave', () => setActive(false));
+  document.addEventListener('pointerenter', () => setActive(true));
+  window.addEventListener('blur', () => setActive(false));
+
+  /* ---------- loop ---------- */
+  const t0 = performance.now();
+
+  const frame = (now) => {
+    requestAnimationFrame(frame);
+    if (!W || !H) return;
+    const t = (now - t0) / 1000;
+
+    /* with no pointer — untouched, idle, or a touch screen — the lens scans on
+       its own so the page is never a still image */
+    const idle = (now - lastInput) > (everMoved ? IDLE_MS : 700);
+    if (idle) {
+      const s = reduced ? t * 0.12 : t * 0.32;
+      tx = 0.5 + 0.30 * Math.sin(s);
+      ty = 0.5 + 0.20 * Math.sin(s * 1.61 + 0.9);
+      if (!active) setActive(true);
+    }
+
+    cx += (tx - cx) * EASE;
+    cy += (ty - cy) * EASE;
+    cr += (tr - cr) * R_EASE;
+
+    // one timeline for both layers; drift measured circularly so a loop wrap
+    // doesn't read as a full-length gap
+    if (!shell.paused && !inner.paused) {
+      const dur = shell.duration;
+      let d = inner.currentTime - shell.currentTime;
+      if (dur) { if (d > dur/2) d -= dur; if (d < -dur/2) d += dur; }
+      if (Math.abs(d) > 0.06) inner.currentTime = shell.currentTime;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    const live = cr >= 0.002;
+    rx.textContent = live ? (cx * 100).toFixed(1) : '—';
+    ry.textContent = live ? (cy * 100).toFixed(1) : '—';
+    ra.textContent = live ? (cr * 100).toFixed(1) : '—';
+    [rx, ry, ra].forEach(el => el.classList.toggle('is-idle', !live));
+    if (!live) return;
+
+    const R  = cr * W;
+    const px = cx * W, py = cy * H;
+    const ms = MASK_SCALE;
+
+    // 1. soft-edged aperture into the low-res mask
+    mctx.clearRect(0, 0, mask.width, mask.height);
+    mctx.filter = `blur(${Math.max(1, R * ms * 0.055)}px)`;
+    mctx.fillStyle = '#fff';
+    blobPath(mctx, px * ms, py * ms, R * ms, t);
+    mctx.fill();
+    mctx.filter = 'none';
+
+    // 2. inner layer registered onto the shell, then kept only where masked
+    if (inner.readyState >= 2) {
+      const dw = W * FIT.scale, dh = H * FIT.scale;
+      ctx.drawImage(inner,
+        (W - dw) / 2 + FIT.dx * W,
+        (H - dh) / 2 + FIT.dy * H,
+        dw, dh);
+      ctx.globalCompositeOperation = 'destination-in';
+      ctx.drawImage(mask, 0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // 3. cyan rim along the same outline
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.strokeStyle = 'rgba(120, 240, 255, 0.24)';
+    ctx.lineWidth = Math.max(1, R * 0.011);
+    ctx.filter = `blur(${Math.max(1, R * 0.018)}px)`;
+    blobPath(ctx, px, py, R, t);
+    ctx.stroke();
+    ctx.restore();
+  };
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>

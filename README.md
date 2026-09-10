@@ -33,6 +33,7 @@ needs a network connection but no build step and no `npm install`.
 | `screens.html` | 01–30: one business process in thirty visual styles |
 | `otrasli.html` | 31–50: twenty different programs — ten industry systems, ten selling sites |
 | `demo.html` | 51–54: tool → integration → system → ecosystem |
+| `xray/index.html` | the 101 x-ray lens: two Higgsfield renders, one frame — move the cursor and the machined shell goes transparent over the working mechanism |
 | `spaceship/index.html` | the Solutions 101 shuttle in low Earth orbit — live 3D, drag to orbit (one self-contained 12 MB page; sky credit inside) |
 | `spaceship/shuttle_solutions101.glb` | the rebranded shuttle with animated 3D engine plumes (morph targets); `_noflag` variant without the US flags |
 | `spaceship/hero.png` | 2560×1440 still of the flight scene |
