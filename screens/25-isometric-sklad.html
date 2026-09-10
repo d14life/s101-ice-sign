@@ -1,0 +1,93 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>25 · План склада — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#1b2233}
+.stage{background:radial-gradient(ellipse at 50% 30%,#2c3a58,#141a28 70%);color:#dfe7f5;
+  font-family:"Segoe UI",Arial,sans-serif;padding:0;overflow:hidden}
+h1{position:absolute;left:44px;top:38px;margin:0;font-size:34px;font-weight:600;letter-spacing:-1px}
+h1 span{display:block;font-size:13px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:#8fa4c8;margin-top:7px}
+svg{position:absolute;left:0;top:0;width:1120px;height:780px}
+.floor{fill:#1e2740;stroke:#3d4d72;stroke-width:1.5}
+.top{fill:#4a5f8f}
+.left{fill:#2f3d5e}
+.right{fill:#3a4c74}
+.top.full{fill:#7fd6a8}.left.full{fill:#3f8f68}.right.full{fill:#54ad81}
+.top.pick{fill:#ffd45e}.left.pick{fill:#a8842a}.right.pick{fill:#cfa63c}
+.top.hot{fill:#ff8a72}.left.hot{fill:#a04836}.right.hot{fill:#c85f47}
+.lane{fill:#151c2e}
+.lbl{fill:#8fa4c8;font:11px "Segoe UI",Arial,sans-serif;letter-spacing:1px}
+.route{fill:none;stroke:#ffd45e;stroke-width:3;stroke-dasharray:8 6;filter:drop-shadow(0 0 6px #ffd45e80)}
+.pin{fill:#141a28;stroke:#ffd45e;stroke-width:2.5}
+.pinn{fill:#ffd45e;font:bold 12px "Segoe UI",Arial,sans-serif;text-anchor:middle}
+.legend{position:absolute;right:44px;top:38px;width:246px;background:#141a28cc;border:1px solid #3d4d72;
+  border-radius:12px;padding:18px 20px;backdrop-filter:blur(8px)}
+.legend h2{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8fa4c8;font-weight:600}
+.lg{display:flex;align-items:center;gap:11px;font-size:13px;padding:6px 0}
+.lg i{width:15px;height:15px;border-radius:3px;flex-shrink:0}
+.stats{position:absolute;left:44px;bottom:38px;display:flex;gap:14px}
+.stat{background:#141a28cc;border:1px solid #3d4d72;border-radius:12px;padding:14px 20px;backdrop-filter:blur(8px)}
+.stat b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8fa4c8;margin-bottom:7px}
+.stat i{font-style:normal;font-size:26px;font-weight:600}
+.stat.y i{color:#ffd45e}.stat.g i{color:#7fd6a8}.stat.r i{color:#ff8a72}
+.note{position:absolute;right:44px;bottom:38px;width:246px;font-size:12px;line-height:1.55;color:#8fa4c8}
+.note b{color:#ffd45e}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <h1>План склада<span>Зоны A · B · C — занятость ячеек</span></h1>
+  <svg viewBox="0 0 1120 780">
+    <g transform="translate(310,250)">
+      <!-- пол -->
+      <polygon class="floor" points="0,0 460,-230 920,0 460,230"/>
+      <polygon class="lane" points="150,75 460,-80 470,-75 160,80"/>
+      <polygon class="lane" points="300,150 610,-5 620,0 310,155"/>
+
+      <!-- ряд A -->
+      <g>
+        <polygon class="top full" points="60,-30 110,-55 160,-30 110,-5"/><polygon class="left full" points="60,-30 110,-5 110,35 60,10"/><polygon class="right full" points="160,-30 110,-5 110,35 160,10"/>
+        <polygon class="top full" points="140,-70 190,-95 240,-70 190,-45"/><polygon class="left full" points="140,-70 190,-45 190,-5 140,-30"/><polygon class="right full" points="240,-70 190,-45 190,-5 240,-30"/>
+        <polygon class="top" points="220,-110 270,-135 320,-110 270,-85"/><polygon class="left" points="220,-110 270,-85 270,-45 220,-70"/><polygon class="right" points="320,-110 270,-85 270,-45 320,-70"/>
+        <polygon class="top pick" points="300,-150 350,-175 400,-150 350,-125"/><polygon class="left pick" points="300,-150 350,-125 350,-85 300,-110"/><polygon class="right pick" points="400,-150 350,-125 350,-85 400,-110"/>
+        <text class="lbl" x="40" y="60">A-01</text><text class="lbl" x="290" y="-90">A-05-3-04</text>
+      </g>
+      <!-- ряд B -->
+      <g>
+        <polygon class="top full" points="230,25 280,0 330,25 280,50"/><polygon class="left full" points="230,25 280,50 280,90 230,65"/><polygon class="right full" points="330,25 280,50 280,90 330,65"/>
+        <polygon class="top" points="310,-15 360,-40 410,-15 360,10"/><polygon class="left" points="310,-15 360,10 360,50 310,25"/><polygon class="right" points="410,-15 360,10 360,50 410,25"/>
+        <polygon class="top full" points="390,-55 440,-80 490,-55 440,-30"/><polygon class="left full" points="390,-55 440,-30 440,10 390,-15"/><polygon class="right full" points="490,-55 440,-30 440,10 490,-15"/>
+        <polygon class="top hot" points="470,-95 520,-120 570,-95 520,-70"/><polygon class="left hot" points="470,-95 520,-70 520,-30 470,-55"/><polygon class="right hot" points="570,-95 520,-70 520,-30 570,-55"/>
+        <text class="lbl" x="212" y="112">B-01</text>
+      </g>
+      <!-- ряд C -->
+      <g>
+        <polygon class="top" points="500,60 550,35 600,60 550,85"/><polygon class="left" points="500,60 550,85 550,125 500,100"/><polygon class="right" points="600,60 550,85 550,125 600,100"/>
+        <polygon class="top" points="580,20 630,-5 680,20 630,45"/><polygon class="left" points="580,20 630,45 630,85 580,60"/><polygon class="right" points="680,20 630,45 630,85 680,60"/>
+        <polygon class="top full" points="660,-20 710,-45 760,-20 710,5"/><polygon class="left full" points="660,-20 710,5 710,45 660,20"/><polygon class="right full" points="760,-20 710,5 710,45 760,20"/>
+        <polygon class="top" points="740,-60 790,-85 840,-60 790,-35"/><polygon class="left" points="740,-60 790,-35 790,5 740,-20"/><polygon class="right" points="840,-60 790,-35 790,5 840,-20"/>
+        <text class="lbl" x="482" y="146">C-01</text>
+      </g>
+      <path class="route" d="M110,-5 L190,-45 L350,-125 L280,50 L440,-30"/>
+      <circle class="pin" cx="110" cy="-14" r="13"/><text class="pinn" x="110" y="-9">1</text>
+      <circle class="pin" cx="350" cy="-134" r="13"/><text class="pinn" x="350" y="-129">2</text>
+      <circle class="pin" cx="280" cy="41" r="13"/><text class="pinn" x="280" y="46">3</text>
+      <circle class="pin" cx="440" cy="-39" r="13"/><text class="pinn" x="440" y="-34">4</text>
+    </g>
+  </svg>
+  <div class="legend">
+    <h2>Обозначения</h2>
+    <div class="lg"><i style="background:#7fd6a8"></i>Ячейка занята</div>
+    <div class="lg"><i style="background:#4a5f8f"></i>Свободна</div>
+    <div class="lg"><i style="background:#ffd45e"></i>Текущий шаг отбора</div>
+    <div class="lg"><i style="background:#ff8a72"></i>Партия со сроком &lt; 7 дней</div>
+  </div>
+  <div class="stats">
+    <div class="stat g"><b>Занятость</b><i>44 %</i></div>
+    <div class="stat y"><b>Маршрут ЗО-7057</b><i>4 остановки</i></div>
+    <div class="stat r"><b>Срок &lt; 7 дней</b><i>9 партий</i></div>
+    <div class="stat"><b>Проход</b><i>34 м</i></div>
+  </div>
+  <div class="note">Маршрут строится по <b>FEFO</b>, а не по кратчайшему пути: сначала партия с ближайшим сроком, потом всё остальное.</div>
+</div>
+<script src="_stage.js"></script></body></html>

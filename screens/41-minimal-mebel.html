@@ -1,0 +1,161 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>41 · Каталог мебели — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e9e7e2;--paper:#fff;--ink:#141312;--dim:#8b8781;--line:#e6e3dd;--sand:#c8b9a6}
+.stage{background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+nav{display:flex;align-items:center;gap:34px;padding:22px 52px;border-bottom:1px solid var(--line)}
+.logo{font-size:15px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;margin-right:14px}
+nav a{font-size:12.5px;color:var(--dim);text-decoration:none}
+nav a.on{color:var(--ink)}
+.tools{margin-left:auto;display:flex;gap:22px;align-items:center;font-size:12.5px;color:var(--dim)}
+.cart{border:1px solid var(--line);border-radius:20px;padding:6px 14px;color:var(--ink)}
+.cart b{font-weight:600}
+.hero{padding:22px 52px 18px;display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:36px;font-weight:300;letter-spacing:-1.4px;line-height:1.05}
+h1 b{font-weight:600}
+.hero p{margin:9px 0 0;font-size:13px;color:var(--dim);max-width:430px;line-height:1.55}
+.chips{display:flex;gap:8px}
+.chips span{font-size:12px;padding:7px 15px;border:1px solid var(--line);border-radius:20px;color:var(--dim)}
+.chips span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.body{display:grid;grid-template-columns:186px 1fr;gap:38px;padding:0 52px;min-height:0;overflow:hidden}
+aside h2{margin:0 0 12px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.f{font-size:12.5px;color:var(--dim);padding:6px 0;display:flex;justify-content:space-between}
+.f.on{color:var(--ink);font-weight:600}
+.f u{text-decoration:none;font-size:11px;color:#b8b4ae}
+.fg{margin-bottom:20px}
+.slider{height:1px;background:var(--line);margin:14px 0 7px;position:relative}
+.slider i{position:absolute;left:14%;right:38%;top:0;height:1px;background:var(--ink)}
+.slider b,.slider em{position:absolute;top:-3.5px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.slider b{left:14%}.slider em{right:38%}
+.rng{display:flex;justify-content:space-between;font-size:11px;color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 20px;align-content:start}
+.card .pic{aspect-ratio:3/2;background:#f6f4f0;border-radius:2px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden}
+.card .pic svg{width:76%;height:76%}
+.tag{position:absolute;left:10px;top:10px;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  background:var(--ink);color:#fff;padding:3px 8px;border-radius:2px}
+.tag.soft{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.card h3{margin:10px 0 0;font-size:13.5px;font-weight:500;letter-spacing:-.2px}
+.card .m{font-size:11.5px;color:var(--dim);margin-top:3px}
+.card .pr{margin-top:8px;display:flex;align-items:baseline;gap:8px}
+.card .pr b{font-size:15px;font-weight:600;letter-spacing:-.4px}
+.card .pr s{color:#c0bcb6;font-size:11.5px}
+.sw{display:flex;gap:5px;margin-top:9px}
+.sw i{width:12px;height:12px;border-radius:50%;display:block;box-shadow:0 0 0 1px #0000000f}
+.sw i.on{box-shadow:0 0 0 1px var(--ink)}
+footer{display:flex;gap:30px;align-items:baseline;padding:16px 52px 20px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--dim);margin-top:18px}
+footer b{color:var(--ink);font-weight:600}
+.card .pic img{width:100%;height:100%;object-fit:cover;display:block}
+</style></head><body data-screen="41">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="logo">Комод</span>
+    <a href="#" class="on">Каталог</a><a href="#">Коллекции</a><a href="#">Проекты</a><a href="#">Доставка</a><a href="#">Контакты</a>
+    <span class="tools"><span>Поиск</span><span>Избранное</span><span class="cart">Корзина · <b>3</b></span></span>
+  </nav>
+  <div class="hero">
+    <div>
+      <h1>Мягкая мебель<br><b>под размер комнаты</b></h1>
+      <p>416 позиций на складе, срок — от четырёх дней. Ткань, наполнитель и габариты пересчитывают цену сразу, без запроса менеджеру.</p>
+    </div>
+    <div class="chips"><span class="on" data-cat="all">Все</span><span data-cat="divany">Диваны</span><span data-cat="kresla">Кресла</span><span data-cat="krovati">Кровати</span><span data-cat="stoly">Столы</span><span data-cat="hranenie">Хранение</span></div>
+  </div>
+  <div class="body">
+    <aside>
+      <div class="fg">
+        <h2>Цена, ₽</h2>
+        <div class="slider"><i></i><b></b><em></em></div>
+        <div class="rng"><span>38 000</span><span>210 000</span></div>
+      </div>
+      <div class="fg">
+        <h2>Тип</h2>
+        <div class="f on"><span>Прямой</span><u>148</u></div>
+        <div class="f"><span>Угловой</span><u>96</u></div>
+        <div class="f"><span>Модульный</span><u>54</u></div>
+        <div class="f"><span>Кушетка</span><u>21</u></div>
+      </div>
+      <div class="fg">
+        <h2>Наличие</h2>
+        <div class="f on"><span>На складе</span><u>187</u></div>
+        <div class="f"><span>Под заказ</span><u>225</u></div>
+      </div>
+    </aside>
+    <div class="grid">
+      <div class="card" data-cat="divany">
+        <div class="pic"><span class="tag">В наличии</span>
+          <img src="img/41-divan.jpg" alt="Диван «Морен» в интерьере гостиной" loading="lazy"></div>
+        <h3>Диван «Морен», 3 места</h3>
+        <div class="m">220 × 96 см · рогожка</div>
+        <div class="pr"><b>94 700 ₽</b><s>112 000 ₽</s></div>
+        <div class="sw"><i class="on" style="background:#c8b9a6"></i><i style="background:#6e7a6c"></i><i style="background:#3b3733"></i><i style="background:#a8b2cc"></i></div>
+      </div>
+      <div class="card" data-cat="kresla">
+        <div class="pic"><span class="tag soft">4 дня</span>
+          <img src="img/41-kreslo.jpg" alt="Кресло «Тюль» в светлой комнате" loading="lazy"></div>
+        <h3>Кресло «Тюль»</h3>
+        <div class="m">78 × 82 см · велюр</div>
+        <div class="pr"><b>38 400 ₽</b></div>
+        <div class="sw"><i style="background:#c8b9a6"></i><i class="on" style="background:#7b5f6b"></i><i style="background:#4a5a63"></i></div>
+      </div>
+      <div class="card" data-cat="krovati">
+        <div class="pic"><span class="tag">В наличии</span>
+          <img src="img/41-krovat.jpg" alt="Кровать «Ольхон», застеленная светлым бельём" loading="lazy"></div>
+        <h3>Кровать «Ольхон»</h3>
+        <div class="m">160 × 200 см · с ящиком</div>
+        <div class="pr"><b>76 200 ₽</b></div>
+        <div class="sw"><i class="on" style="background:#a89377"></i><i style="background:#dcd6cc"></i><i style="background:#3b3733"></i></div>
+      </div>
+      <div class="card" data-cat="hranenie">
+        <div class="pic"><span class="tag soft">Под заказ</span>
+          <img src="img/41-modul.jpg" alt="Модуль «Сота» в интерьере" loading="lazy"></div>
+        <h3>Модуль «Сота», 2 секции</h3>
+        <div class="m">180 × 45 см · шпон дуба</div>
+        <div class="pr"><b>52 900 ₽</b></div>
+        <div class="sw"><i style="background:#c8b9a6"></i><i style="background:#8a8f88"></i><i class="on" style="background:#2f3a3c"></i></div>
+      </div>
+      <div class="card" data-cat="divany">
+        <div class="pic"><span class="tag">В наличии</span>
+          <img src="img/41-uglovoy.jpg" alt="Угловой диван «Кама» в гостиной" loading="lazy"></div>
+        <h3>Угловой «Кама»</h3>
+        <div class="m">262 × 174 см · левый угол</div>
+        <div class="pr"><b>128 400 ₽</b><s>149 000 ₽</s></div>
+        <div class="sw"><i style="background:#c8b9a6"></i><i class="on" style="background:#4a5a63"></i><i style="background:#8a7f6b"></i></div>
+      </div>
+      <div class="card" data-cat="kresla">
+        <div class="pic"><span class="tag soft">6 дней</span>
+          <img src="img/41-puf.jpg" alt="Пуф «Галька» на светлом фоне" loading="lazy"></div>
+        <h3>Пуф «Галька»</h3>
+        <div class="m">60 × 44 см · с нишей</div>
+        <div class="pr"><b>14 900 ₽</b></div>
+        <div class="sw"><i class="on" style="background:#a89377"></i><i style="background:#6e7a6c"></i><i style="background:#7b5f6b"></i></div>
+      </div>
+      <div class="card" data-cat="hranenie">
+        <div class="pic"><span class="tag">В наличии</span>
+          <img src="img/41-stellazh.jpg" alt="Стеллаж «Ярус» с книгами" loading="lazy"></div>
+        <h3>Стеллаж «Ярус»</h3>
+        <div class="m">180 × 90 см · шесть секций</div>
+        <div class="pr"><b>41 300 ₽</b></div>
+        <div class="sw"><i style="background:#dcd6cc"></i><i class="on" style="background:#a89377"></i><i style="background:#3b3733"></i></div>
+      </div>
+      <div class="card" data-cat="stoly">
+        <div class="pic"><span class="tag soft">Под заказ</span>
+          <img src="img/41-stol.jpg" alt="Стол «Круг» в гостиной" loading="lazy"></div>
+        <h3>Стол «Круг»</h3>
+        <div class="m">Ø 110 см · массив ясеня</div>
+        <div class="pr"><b>63 700 ₽</b></div>
+        <div class="sw"><i class="on" style="background:#c8b9a6"></i><i style="background:#8a7f6b"></i><i style="background:#2f3a3c"></i></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Остаток, срок и цена берутся из учётной системы, а не проставляются вручную</span>
+    <b>Стиль: минимализм · сайт-каталог</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

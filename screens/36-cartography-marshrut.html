@@ -1,0 +1,130 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>36 · Маршруты курьеров — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#dfe6dc;--land:#eef2e9;--ink:#1f2a26;--dim:#6c7a72;--route:#c2410c;--route2:#0e7490;--line:#cfd8cc;--water:#d6e6ea}
+.stage{background:#f4f7f1;color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-columns:1fr 340px;overflow:hidden;position:relative}
+.map{position:relative;overflow:hidden;background:var(--land)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.legend{position:absolute;left:20px;bottom:18px;background:#fffffff2;border:1px solid var(--line);border-radius:8px;
+  padding:11px 13px;font-size:11px;line-height:1.9;box-shadow:0 4px 14px #1f2a2614}
+.legend b{display:block;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.legend i{width:16px;height:3px;display:inline-block;vertical-align:middle;margin-right:8px;border-radius:2px}
+.scale{position:absolute;right:20px;bottom:18px;font-size:10px;color:var(--dim);text-align:center}
+.scale u{text-decoration:none;display:block;height:6px;border:1px solid var(--dim);border-top:0;width:86px;margin-bottom:3px}
+.title{position:absolute;left:20px;top:18px;background:#fffffff2;border:1px solid var(--line);border-radius:8px;
+  padding:11px 15px;box-shadow:0 4px 14px #1f2a2614}
+.title h1{margin:0;font-size:21px;font-weight:600;letter-spacing:-.5px}
+.title span{font-size:11.5px;color:var(--dim);display:block;margin-top:3px}
+.pin{font-size:10px;font-weight:700;fill:#fff}
+.plabel{font-size:10.5px;fill:var(--ink);font-weight:600}
+.ptime{font-size:9.5px;fill:var(--dim)}
+aside{background:#fff;border-left:1px solid var(--line);display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+.ahead{padding:20px 22px 15px;border-bottom:1px solid var(--line)}
+.ahead b{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.ahead h2{margin:6px 0 0;font-size:19px;font-weight:600;letter-spacing:-.4px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.kpi div{padding:13px 0 14px 22px;border-right:1px solid var(--line)}
+.kpi div:last-child{border:0}
+.kpi i{font-style:normal;display:block;font-size:24px;font-weight:600;letter-spacing:-1px;line-height:1}
+.kpi i.warn{color:var(--route)}
+.kpi u{text-decoration:none;font-size:10px;color:var(--dim);display:block;margin-top:4px}
+.list{overflow:hidden;padding:4px 0}
+.stop{display:grid;grid-template-columns:26px 1fr auto;gap:11px;align-items:start;padding:9px 22px;border-bottom:1px solid #eef2ee}
+.num{width:22px;height:22px;border-radius:50%;background:var(--route);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:1px}
+.stop.b .num{background:var(--route2)}
+.stop.done .num{background:#8a9a91}
+.stop b{display:block;font-size:12.5px;font-weight:600}
+.stop i{font-style:normal;display:block;font-size:10.5px;color:var(--dim);margin-top:2px}
+.tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;white-space:nowrap;margin-top:2px}
+.tag.ok{background:#e4f2e9;color:#2f7d54}
+.tag.go{background:#fdeee5;color:#a3410c}
+.tag.risk{background:#fde8e6;color:#b3312a}
+.tag.wait{background:#eef3f7;color:#3c6485}
+.afoot{padding:13px 22px 16px;border-top:1px solid var(--line);font-size:11px;color:var(--dim);line-height:1.55}
+.afoot b{color:var(--route);font-weight:600}
+</style></head><body data-screen="36">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="map">
+    <svg viewBox="0 0 780 780" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
+          <path d="M52 0H0v52" fill="none" stroke="#dbe3d7" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="780" height="780" fill="#eef2e9"/>
+      <rect width="780" height="780" fill="url(#grid)"/>
+      <path d="M0 596 C 120 566 210 640 320 626 S 540 560 660 592 S 780 616 780 616 L780 780 L0 780Z" fill="#d6e6ea"/>
+      <g fill="none" stroke="#dfe7da" stroke-width="1.4">
+        <path d="M-10 150 C 160 128 300 196 470 170 S 700 118 800 140"/>
+        <path d="M-10 180 C 160 158 300 226 470 200 S 700 148 800 170"/>
+        <path d="M-10 214 C 160 192 300 260 470 234 S 700 182 800 204"/>
+        <path d="M40 -10 C 66 140 26 300 78 440 S 130 660 108 800"/>
+        <path d="M700 -10 C 726 140 686 300 738 440"/>
+      </g>
+      <g stroke="#e3e8dd" stroke-width="9" fill="none" stroke-linecap="round">
+        <path d="M60 300 H720"/><path d="M60 470 H720"/><path d="M250 40 V740"/><path d="M520 40 V740"/>
+      </g>
+      <g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M60 300 H720"/><path d="M60 470 H720"/><path d="M250 40 V740"/><path d="M520 40 V740"/>
+      </g>
+      <path d="M118 168 L250 168 L250 300 L392 300 L392 190 L520 190 L520 372 L636 372"
+            fill="none" stroke="#c2410c" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M118 168 L250 168 L250 300 L392 300" fill="none" stroke="#c2410c" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round" opacity=".22"/>
+      <path d="M172 560 L250 560 L250 470 L430 470 L430 612 L604 612"
+            fill="none" stroke="#0e7490" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"
+            stroke-dasharray="11 8"/>
+      <g>
+        <circle cx="118" cy="168" r="13" fill="#c2410c"/><text class="pin" x="118" y="172" text-anchor="middle">1</text>
+        <circle cx="250" cy="300" r="13" fill="#c2410c"/><text class="pin" x="250" y="304" text-anchor="middle">2</text>
+        <circle cx="392" cy="190" r="13" fill="#c2410c"/><text class="pin" x="392" y="194" text-anchor="middle">3</text>
+        <circle cx="520" cy="372" r="13" fill="#c2410c"/><text class="pin" x="520" y="376" text-anchor="middle">4</text>
+        <circle cx="636" cy="372" r="13" fill="#c2410c"/><text class="pin" x="636" y="376" text-anchor="middle">5</text>
+        <circle cx="172" cy="560" r="13" fill="#0e7490"/><text class="pin" x="172" y="564" text-anchor="middle">1</text>
+        <circle cx="430" cy="470" r="13" fill="#0e7490"/><text class="pin" x="430" y="474" text-anchor="middle">2</text>
+        <circle cx="604" cy="612" r="13" fill="#0e7490"/><text class="pin" x="604" y="616" text-anchor="middle">3</text>
+      </g>
+      <g>
+        <text class="plabel" x="138" y="146">Склад · Промзона</text>
+        <text class="plabel" x="270" y="284">Кофейня «Зерно»</text><text class="ptime" x="270" y="298">10:00–12:00</text>
+        <text class="plabel" x="412" y="174">Аптека № 12</text><text class="ptime" x="412" y="188">11:00–13:00</text>
+        <text class="plabel" x="540" y="356">ТЦ «Меридиан»</text><text class="ptime" x="540" y="370">13:00–15:00</text>
+        <text class="plabel" x="192" y="544">Пекарня «Корка»</text>
+        <text class="plabel" x="450" y="454">Офис «Ветвь»</text><text class="ptime" x="450" y="468">12:00–14:00</text>
+      </g>
+      <rect x="96" y="146" width="44" height="44" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-dasharray="4 4" rx="6"/>
+    </svg>
+    <div class="title"><h1>Маршруты курьеров</h1><span>Служба доставки «Полдень» · вторник, 8 сентября · 09:41</span></div>
+    <div class="legend"><b>Условные обозначения</b>
+      <div><i style="background:#c2410c"></i>Маршрут А — Соколов И.П. · 5 точек</div>
+      <div><i style="background:#0e7490"></i>Маршрут Б — Демидова А.К. · 3 точки</div>
+      <div><i style="background:#d6e6ea;height:9px;border-radius:2px"></i>Река · мост только по ул. Северной</div>
+    </div>
+    <div class="scale"><u></u>2 км</div>
+  </div>
+  <aside>
+    <div class="ahead"><b>Смена</b><h2>8 из 14 точек закрыто</h2></div>
+    <div class="kpi">
+      <div><i>92 %</i><u>в окно доставки</u></div>
+      <div><i>27 мин</i><u>среднее на точку</u></div>
+      <div><i class="warn">1</i><u>рискует опоздать</u></div>
+    </div>
+    <div class="list">
+      <div class="stop done"><span class="num">1</span><span><b>Склад · Промзона</b><i>Погрузка 09:05 · 34 короба</i></span><span class="tag ok">выехал</span></div>
+      <div class="stop done"><span class="num">2</span><span><b>Кофейня «Зерно»</b><i>Сдано 10:12 · подпись получена</i></span><span class="tag ok">10:12</span></div>
+      <div class="stop"><span class="num">3</span><span><b>Аптека № 12</b><i>Окно 11:00–13:00 · курьер в 4 км</i></span><span class="tag go">в пути</span></div>
+      <div class="stop"><span class="num">4</span><span><b>ТЦ «Меридиан»</b><i>Окно 13:00–15:00 · пропуск заказан</i></span><span class="tag wait">по плану</span></div>
+      <div class="stop"><span class="num">5</span><span><b>Пункт выдачи · Северный</b><i>Окно 15:00–17:00 · 11 посылок</i></span><span class="tag wait">по плану</span></div>
+      <div class="stop b done"><span class="num">1</span><span><b>Пекарня «Корка»</b><i>Сдано 09:48 · термокороб вернулся</i></span><span class="tag ok">09:48</span></div>
+      <div class="stop b"><span class="num">2</span><span><b>Офис «Ветвь»</b><i>Окно 12:00–14:00 · мост перекрыт</i></span><span class="tag risk">+22 мин</span></div>
+      <div class="stop b"><span class="num">3</span><span><b>Ресторан «Тесто и дым»</b><i>Окно 14:00–16:00 · охлаждённое</i></span><span class="tag wait">по плану</span></div>
+    </div>
+    <div class="afoot"><b>Маршрут Б перестроен автоматически.</b> Мост на Северной закрыт до 13:00 — объезд добавил 22 минуты, окно у «Ветви» ещё держится, клиент уведомлён.</div>
+  </aside>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

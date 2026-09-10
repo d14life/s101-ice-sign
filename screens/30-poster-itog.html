@@ -1,0 +1,65 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30 · Тридцать экранов — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0b1020}
+.stage{background:#0b1020;color:#fff;font-family:"Inter","Segoe UI",Arial,sans-serif;padding:0;overflow:hidden}
+.glow{position:absolute;width:900px;height:900px;left:-180px;top:-320px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#2b4bff66,#2b4bff00 62%);filter:blur(20px)}
+.glow2{position:absolute;width:700px;height:700px;right:-200px;bottom:-300px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#c8f31e33,#c8f31e00 62%);filter:blur(20px)}
+.grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);
+  background-size:56px 56px}
+.inner{position:absolute;inset:0;padding:56px 60px;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#8f9dd6}
+.hex{width:22px;height:22px;background:#c8f31e;clip-path:polygon(50% 3%,91% 26.5%,91% 73.5%,50% 97%,9% 73.5%,9% 26.5%)}
+.big{margin:auto 0;display:flex;align-items:flex-start;gap:6px}
+.num{font-size:340px;font-weight:800;letter-spacing:-22px;line-height:.76;
+  background:linear-gradient(160deg,#ffffff,#8f9dd6 62%,#2b4bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.words{padding-top:34px}
+.words h1{margin:0;font-size:88px;font-weight:600;letter-spacing:-4px;line-height:.94}
+.words h1 em{font-style:normal;color:#c8f31e}
+.words p{margin:22px 0 0;font-size:19px;line-height:1.5;color:#b9c1de;max-width:520px}
+.styles{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;max-width:560px}
+.styles span{font-size:12px;letter-spacing:.06em;padding:6px 13px;border-radius:30px;
+  border:1px solid #ffffff26;color:#cdd4ee}
+.styles span.on{background:#c8f31e;border-color:#c8f31e;color:#0b1020;font-weight:600}
+.bot{display:flex;align-items:flex-end;gap:40px;border-top:1px solid #ffffff1f;padding-top:24px}
+.bot div b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8f9dd6;margin-bottom:7px}
+.bot div i{font-style:normal;font-size:16px}
+.bot .cta{margin-left:auto;background:#c8f31e;color:#0b1020;font-weight:700;font-size:16px;
+  padding:15px 30px;border-radius:8px}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c8f31e99,transparent);
+  animation:sc 5.5s linear infinite;pointer-events:none}
+@keyframes sc{0%{top:0}100%{top:780px}}
+</style></head><body data-screen="30">
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <i class="glow"></i><i class="glow2"></i><i class="grid"></i><i class="scan"></i>
+  <div class="inner">
+    <div class="top"><i class="hex"></i><span>Solutions 101 — автоматизация бизнес-процессов</span>
+      <span style="margin-left:auto">Аренда · Склад · Взаиморасчёты · Витрина</span></div>
+    <div class="big">
+      <span class="num">30</span>
+      <div class="words">
+        <h1>экранов.<br><em>Один процесс.</em></h1>
+        <p>Одна и та же работа склада, аренды и расчётов, показанная тридцатью визуальными языками — чтобы было видно, что суть не в оформлении.</p>
+        <div class="styles">
+          <span>Скевоморфизм</span><span class="on">Брутализм</span><span>Неоморфизм</span><span>Швейцарский</span>
+          <span>Терминал</span><span class="on">Чертёж</span><span>Газета</span><span>Y2K</span><span>Стекло</span>
+          <span class="on">Мемфис</span><span>Баухаус</span><span>Киберпанк</span><span>Ар-деко</span><span>Вэйпорвейв</span>
+          <span class="on">Пиксель</span><span>Зин</span><span>Изометрия</span><span>HUD</span><span>Гроссбух</span>
+        </div>
+      </div>
+    </div>
+    <div class="bot">
+      <div><b>Систем</b><i>4 рабочих приложения</i></div>
+      <div><b>Экранов</b><i>30 в разных стилях</i></div>
+      <div><b>Данные</b><i>демонстрационные</i></div>
+      <span class="cta">Открыть все 30 →</span>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

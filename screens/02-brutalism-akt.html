@@ -1,0 +1,52 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>02 · Акт сверки — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e8e4d8}
+.stage{background:#e8e4d8;font-family:"Courier New",monospace;color:#000;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto}
+.top{border-bottom:6px solid #000;padding:20px 28px;display:flex;align-items:baseline;gap:24px}
+.top h1{margin:0;font-size:52px;font-weight:700;letter-spacing:-2px;text-transform:uppercase}
+.top span{font-size:14px;text-transform:uppercase;letter-spacing:2px;background:#000;color:#e8e4d8;padding:4px 10px}
+.top em{margin-left:auto;font-style:normal;font-size:14px;text-transform:uppercase}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:6px solid #000}
+.meta div{padding:14px 20px;border-right:3px solid #000}
+.meta div:last-child{border-right:0;background:#f5e400}
+.meta b{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.meta i{font-style:normal;font-size:23px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:#000;color:#e8e4d8;text-align:left;padding:10px 20px;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+td{padding:11px 20px;border-bottom:2px solid #000}
+tr:nth-child(even) td{background:#dcd7c8}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.neg{background:#f5e400!important;display:inline-block;padding:1px 6px}
+.tag{border:3px solid #000;padding:1px 7px;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.foot{border-top:6px solid #000;padding:18px 28px;display:flex;align-items:center;gap:20px;background:#000;color:#e8e4d8}
+.foot b{font-size:15px;letter-spacing:2px;text-transform:uppercase}
+.foot .sum{margin-left:auto;font-size:32px;font-weight:700;background:#f5e400;color:#000;padding:6px 16px}
+.btn{border:3px solid #e8e4d8;padding:9px 18px;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="top"><h1>Акт сверки</h1><span>Свёртка 1210/3310</span><em>на 03.09.2026</em></div>
+  <div class="meta">
+    <div><b>Контрагент</b><i>Vertex Trading</i></div>
+    <div><b>БИН</b><i>160940822684</i></div>
+    <div><b>Договор</b><i>№ 1 от 12.01.24</i></div>
+    <div><b>Статус</b><i>Должны нам</i></div>
+  </div>
+  <table>
+    <tr><th>Дата</th><th>Документ</th><th>Дебет 1210</th><th>Кредит 3310</th><th>Сальдо</th><th>Срок</th></tr>
+    <tr><td>04.06.2026</td><td>Реализация № 1187</td><td class="num">12 400 000,00</td><td class="num">—</td><td class="num">12 400 000,00</td><td><span class="tag">91+ дн.</span></td></tr>
+    <tr><td>19.06.2026</td><td>Оплата п/п № 442</td><td class="num">—</td><td class="num">4 000 000,00</td><td class="num">8 400 000,00</td><td><span class="tag">закрыто</span></td></tr>
+    <tr><td>02.07.2026</td><td>Реализация № 1240</td><td class="num">9 900 000,00</td><td class="num">—</td><td class="num">18 300 000,00</td><td><span class="tag">61–90 дн.</span></td></tr>
+    <tr><td>27.07.2026</td><td>Возврат № 77</td><td class="num">—</td><td class="num">1 382 861,04</td><td class="num">16 917 138,96</td><td><span class="tag">закрыто</span></td></tr>
+    <tr><td>16.08.2026</td><td>Реализация № 1301</td><td class="num">13 900 000,00</td><td class="num">—</td><td class="num">30 817 138,96</td><td><span class="tag">до 30 дн.</span></td></tr>
+  </table>
+  <div class="foot">
+    <b>Свёрнутое сальдо</b><span class="btn">Печать акта</span><span class="btn">Выгрузка</span>
+    <span class="sum">30 817 138,96 ₸</span>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

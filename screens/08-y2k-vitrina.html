@@ -1,0 +1,66 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08 · Витрина автозапчастей — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0a1a3d}
+.stage{background:linear-gradient(#1d3f8f,#0a1a3d 60%,#04091c);color:#e8f2ff;
+  font-family:"Tahoma","Verdana",sans-serif;padding:20px;display:grid;grid-template-rows:auto auto 1fr auto;gap:16px}
+.chrome{border-radius:12px;padding:2px;background:linear-gradient(#ffffff,#a9c4e8 18%,#3f6bb5 52%,#8fb0e0 78%,#ffffff)}
+.chrome>div{border-radius:10px;background:linear-gradient(#2b5bb0,#12306e);padding:14px 20px}
+.top{display:flex;align-items:center;gap:18px}
+.logo{font-size:34px;font-weight:700;letter-spacing:-1px;
+  background:linear-gradient(#ffffff,#bfe0ff 40%,#3f8fe0 55%,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #04234f)}
+.top nav{display:flex;gap:8px;margin-left:auto}
+.btn{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700;color:#04234f;
+  background:linear-gradient(#ffffff,#cfe6ff 45%,#7fb2ea 52%,#eaf5ff);box-shadow:0 2px 0 #04234f,inset 0 1px 0 #fff}
+.btn.go{color:#123;background:linear-gradient(#eaffb0,#b8ee38 45%,#7ec612 52%,#e6ffb0)}
+.search{display:flex;gap:12px;align-items:center}
+.search input{flex:1;border:0;border-radius:18px;padding:12px 18px;font:inherit;font-size:15px;color:#123a6e;
+  background:linear-gradient(#c9d9ee,#ffffff 22%);box-shadow:inset 0 2px 4px #0004}
+.tabs{display:flex;gap:6px}
+.tab{padding:9px 20px;font-size:13px;font-weight:700;border-radius:10px 10px 0 0;color:#cfe4ff;
+  background:linear-gradient(#3a6ec0,#1b3f86);box-shadow:inset 0 1px 0 #ffffff59}
+.tab.sel{color:#123;background:linear-gradient(#ffffff,#bfe0ff 60%,#8fc0f0)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-content:start}
+.card{border-radius:12px;padding:2px;background:linear-gradient(#ffffff,#7fa8de 50%,#ffffff)}
+.card>div{border-radius:10px;padding:16px 14px;text-align:center;
+  background:linear-gradient(#f4f9ff,#cfe0f5 48%,#a8c6e8 52%,#e8f2ff);color:#0c2a5c}
+.orb{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#ffffff,#8fc0f0 42%,#1f4f9e 78%,#0a2a5c);
+  box-shadow:0 3px 6px #0006,inset 0 -4px 8px #04234f80}
+.card b{display:block;font-size:14px;line-height:1.3;margin-bottom:6px}
+.card i{font-style:normal;font-size:12px;color:#3c5f96}
+.card u{text-decoration:none;display:block;margin-top:9px;font-size:16px;font-weight:700;color:#b8001d}
+.foot{display:flex;align-items:center;gap:20px;font-size:12px;color:#a9c4e8}
+.blink{color:#ffe45e;font-weight:700;animation:bl 1.1s steps(1) infinite}
+@keyframes bl{50%{opacity:.25}}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="chrome"><div class="top">
+    <span class="logo">ДЕТАЛЬ.RU</span>
+    <span style="font-size:12px;color:#bcd6f7">АВТОЗАПЧАСТИ · ДЕМО-ГОРОД · С 2016 ГОДА</span>
+    <nav><span class="btn">Каталог</span><span class="btn">Доставка</span><span class="btn go">Корзина · 3</span></nav>
+  </div></div>
+  <div class="chrome"><div>
+    <div class="tabs"><span class="tab sel">ПО АВТОМОБИЛЮ</span><span class="tab">ПО VIN</span><span class="tab">ПО АРТИКУЛУ</span></div>
+    <div class="search" style="margin-top:12px">
+      <input value="Марка · Модель · 2014 · 1.6 MPI" readonly>
+      <span class="btn go">ПОДОБРАТЬ ЗАПЧАСТИ</span>
+    </div>
+  </div></div>
+  <div class="grid">
+    <div class="card"><div><div class="orb"></div><b>Двигатель<br>и системы</b><i>9 187 позиций</i><u>в наличии</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Расходные<br>материалы</b><i>6 641 позиция</i><u>в наличии</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Подвеска</b><i>4 976 позиций</i><u>в наличии</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Кузов<br>автомобиля</b><i>4 357 позиций</i><u>2–4 дня</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Электро-<br>оборудование</b><i>4 316 позиций</i><u>в наличии</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Тормозная<br>система</b><i>3 361 позиция</i><u>в наличии</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Рулевое<br>управление</b><i>2 118 позиций</i><u>2–4 дня</u></div></div>
+    <div class="card"><div><div class="orb"></div><b>Оптика<br>и зеркала</b><i>1 904 позиции</i><u>в наличии</u></div></div>
+  </div>
+  <div class="foot"><span>40 000+ ПОЗИЦИЙ В КАТАЛОГЕ</span><span class="blink">★ САМОВЫВОЗ СЕГОДНЯ ★</span><span>СРОК ПОД ЗАКАЗ 2–4 ДНЯ</span><span style="margin-left:auto">8 800 000-00-00</span></div>
+</div>
+<script src="_stage.js"></script></body></html>

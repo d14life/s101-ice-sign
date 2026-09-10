@@ -1,0 +1,170 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>52 · Интеграция: 1С и маркетплейс — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#080c14;--bg:#0d131e;--panel:#141c2a;--ink:#e6ecf5;--dim:#75839a;--cyan:#35c9dd;--green:#41c184;
+  --amber:#d9a441;--red:#e05c53;--line:#1f2a3c}
+.stage{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+.top{padding:20px 40px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.7px}
+h1 span{color:var(--cyan)}
+.sub{font-size:12px;color:var(--dim);margin-top:7px}
+.live{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--dim)}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #41c18426}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
+.kpi div{padding:13px 0 15px 40px;border-right:1px solid var(--line)}
+.kpi div:last-child{border-right:0}
+.kpi b{display:block;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.kpi i{font-style:normal;display:block;font-size:25px;font-weight:600;letter-spacing:-.9px;margin-top:5px;line-height:1}
+.kpi i.c{color:var(--cyan)}
+.kpi i.g{color:var(--green)}
+.kpi i.r{color:var(--red)}
+.kpi u{text-decoration:none;font-size:10.5px;color:var(--dim);display:block;margin-top:4px}
+.mid{display:grid;grid-template-rows:auto 1fr;padding:18px 40px 0;min-height:0;overflow:hidden}
+.flow{display:grid;grid-template-columns:196px 1fr 196px;gap:20px;align-items:stretch}
+.sys{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 15px;display:flex;
+  flex-direction:column;justify-content:center}
+.sys .ic{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;margin-bottom:10px}
+.sys h2{margin:0;font-size:15px;font-weight:600;letter-spacing:-.3px}
+.sys .m{font-size:11px;color:var(--dim);margin-top:5px;line-height:1.5}
+.sys .st{margin-top:11px;font-size:10.5px;color:var(--green);display:flex;align-items:center;gap:6px}
+.sys .st i{width:6px;height:6px;border-radius:50%;background:var(--green);display:block}
+.lanes{display:flex;flex-direction:column;justify-content:space-between;gap:6px}
+.lane{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:7px 13px;
+  display:grid;grid-template-columns:22px 1fr 92px 74px 76px;gap:11px;align-items:center;font-size:12px}
+.dir{font-size:15px;text-align:center;line-height:1}
+.dir.r{color:var(--cyan)}
+.dir.l{color:var(--amber)}
+.lane .n{font-weight:600;font-size:12.5px}
+.lane .n u{text-decoration:none;display:block;font-size:10.5px;color:var(--dim);font-weight:400;margin-top:2px}
+.lane .v{text-align:right;font-variant-numeric:tabular-nums}
+.lane .v b{font-size:14px;font-weight:600}
+.lane .v span{display:block;font-size:10px;color:var(--dim)}
+.lane .t{font-size:10.5px;color:var(--dim);text-align:right}
+.badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;text-align:center;white-space:nowrap}
+.badge.ok{background:#12301f;color:var(--green)}
+.badge.wait{background:#332612;color:var(--amber)}
+.badge.err{background:#331816;color:var(--red)}
+.low{display:grid;grid-template-columns:1fr 322px;gap:20px;padding-top:16px;min-height:0;overflow:hidden}
+.lab{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.log{background:#0a1018;border:1px solid var(--line);border-radius:7px;padding:10px 13px;
+  font-family:Consolas,"Courier New",monospace;font-size:11px;line-height:1.85;overflow:hidden}
+.log div span{color:var(--dim)}
+.log .g{color:var(--green)}
+.log .c{color:var(--cyan)}
+.log .a{color:var(--amber)}
+.log .e{color:var(--red)}
+.q{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:12px 14px}
+.qr{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px}
+.qr:last-of-type{border-bottom:0}
+.qr b{font-variant-numeric:tabular-nums;font-weight:600}
+.qr b.r{color:var(--red)}
+.qr b.a{color:var(--amber)}
+.note{margin-top:11px;border-left:2px solid var(--cyan);padding-left:11px;font-size:11px;color:var(--dim);line-height:1.55}
+.foot{padding:13px 40px 17px;border-top:1px solid var(--line);display:flex;gap:26px;align-items:baseline;
+  font-size:11px;color:var(--dim)}
+.foot b{color:var(--cyan);font-weight:600}
+</style></head><body data-screen="52">
+<a class="back" href="../otrasli.html">← Двадцать четыре экрана</a>
+<div class="stage">
+  <div class="top">
+    <div>
+      <h1>Обмен <span>1С ↔ маркетплейс</span></h1>
+      <div class="sub">Две системы, которые не умеют разговаривать. Интеграция стоит между ними и переносит данные в обе стороны.</div>
+    </div>
+    <div class="live"><span class="pulse"></span>обмен идёт · последний цикл 40 секунд назад</div>
+  </div>
+  <div class="kpi">
+    <div><b>Заказов принято</b><i class="c">1 284</i><u>за сутки</u></div>
+    <div><b>Остатков отдано</b><i>18 400</i><u>позиций, каждые 15 мин</u></div>
+    <div><b>Средняя задержка</b><i class="g">42 с</i><u>от заказа до 1С</u></div>
+    <div><b>В очереди</b><i class="a" style="color:var(--amber)">7</i><u>ждут повтора</u></div>
+    <div><b>Ошибок за сутки</b><i class="r">3</i><u>все разобраны</u></div>
+  </div>
+  <div class="mid">
+    <div class="flow">
+      <div class="sys">
+        <span class="ic" style="background:#1b2c22;color:var(--green)">1С</span>
+        <h2>1С:Управление торговлей</h2>
+        <div class="m">Своя база, свой сервер. Источник остатков, цен и документов.</div>
+        <div class="st"><i></i>на связи</div>
+      </div>
+      <div class="lanes">
+        <div class="lane">
+          <span class="dir l">←</span>
+          <span class="n">Заказы покупателей<u>создаются в 1С как «Заказ клиента»</u></span>
+          <span class="v"><b>1 284</b><span>за сутки</span></span>
+          <span class="t">40 с назад</span>
+          <span class="badge ok">идёт</span>
+        </div>
+        <div class="lane">
+          <span class="dir r">→</span>
+          <span class="n">Остатки по складам<u>только свободный остаток, за вычетом резерва</u></span>
+          <span class="v"><b>18 400</b><span>позиций</span></span>
+          <span class="t">6 мин назад</span>
+          <span class="badge ok">идёт</span>
+        </div>
+        <div class="lane">
+          <span class="dir r">→</span>
+          <span class="n">Цены и акции<u>по типу цен «Розничная маркетплейс»</u></span>
+          <span class="v"><b>18 400</b><span>позиций</span></span>
+          <span class="t">2 ч назад</span>
+          <span class="badge ok">по графику</span>
+        </div>
+        <div class="lane">
+          <span class="dir l">←</span>
+          <span class="n">Статусы отгрузки<u>сборка, передан в доставку, вручён</u></span>
+          <span class="v"><b>3 106</b><span>событий</span></span>
+          <span class="t">1 мин назад</span>
+          <span class="badge ok">идёт</span>
+        </div>
+        <div class="lane">
+          <span class="dir l">←</span>
+          <span class="n">Возвраты и отмены<u>создают документ возврата в 1С</u></span>
+          <span class="v"><b>41</b><span>за сутки</span></span>
+          <span class="t">18 мин назад</span>
+          <span class="badge wait">7 в очереди</span>
+        </div>
+      </div>
+      <div class="sys">
+        <span class="ic" style="background:#2a1f33;color:#c79ae8">МП</span>
+        <h2>Маркетплейс</h2>
+        <div class="m">Чужой API с лимитом 300 запросов в минуту и своими статусами.</div>
+        <div class="st"><i></i>на связи</div>
+      </div>
+    </div>
+    <div class="low">
+      <div>
+        <div class="lab">Журнал обмена</div>
+        <div class="log">
+          <div><span>09:41:12</span> <span class="c">orders</span> принято 14 заказов → создано 14 «Заказ клиента» <span class="g">ok</span></div>
+          <div><span>09:41:04</span> <span class="c">stock</span> отдано 18 400 остатков, изменилось 612 <span class="g">ok</span></div>
+          <div><span>09:40:58</span> <span class="a">returns</span> заказ 77-41902: товар не найден по артикулу, <span class="a">повтор через 5 мин</span></div>
+          <div><span>09:40:31</span> <span class="c">status</span> 128 статусов отгрузки записано <span class="g">ok</span></div>
+          <div><span>09:38:02</span> <span class="e">stock</span> HTTP 429 — лимит запросов, пауза 30 с <span class="a">повтор</span></div>
+          <div><span>09:38:32</span> <span class="c">stock</span> повтор успешен <span class="g">ok</span></div>
+          <div><span>09:26:11</span> <span class="c">prices</span> отдано 18 400 цен, изменилось 214 <span class="g">ok</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="lab">Очередь и разбор</div>
+        <div class="q">
+          <div class="qr"><span>Ждут повтора</span><b class="a">7</b></div>
+          <div class="qr"><span>Повторов за сутки</span><b>63</b></div>
+          <div class="qr"><span>Упало окончательно</span><b class="r">3</b></div>
+          <div class="qr"><span>Разобрано вручную</span><b>3</b></div>
+          <div class="note">Интеграция не теряет заказ, если чужой API ответил ошибкой: он остаётся в очереди и повторяется. Окончательно упавшее видно списком, а не в почте у программиста.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Интеграция ничего не хранит и ничего не показывает людям — она переносит данные и отвечает за то, что они дошли</span>
+    <b>Категория: интеграция</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

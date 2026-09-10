@@ -1,0 +1,64 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>14 · Счёт на оплату — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0f1d1a}
+.stage{background:#0f1d1a;color:#e9dfc4;font-family:"Georgia","Times New Roman",serif;padding:0;
+  background-image:repeating-linear-gradient(90deg,#c9a44c0f 0 1px,transparent 1px 46px)}
+.sheet{position:absolute;inset:26px;border:2px solid #c9a44c;padding:0;display:grid;grid-template-rows:auto auto 1fr auto}
+.sheet:before{content:"";position:absolute;inset:8px;border:1px solid #c9a44c66;pointer-events:none}
+.crest{text-align:center;padding:26px 30px 14px}
+.crest .fan{display:flex;justify-content:center;align-items:flex-end;gap:5px;margin-bottom:14px}
+.crest .fan i{width:5px;background:#c9a44c}
+h1{margin:0;font-size:44px;letter-spacing:9px;text-transform:uppercase;font-weight:400;color:#e9dfc4}
+.crest p{margin:9px 0 0;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:#c9a44c}
+.band{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #c9a44c;border-bottom:1px solid #c9a44c}
+.band div{padding:13px 22px;border-right:1px solid #c9a44c4d}
+.band div:last-child{border-right:0}
+.band b{display:block;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#c9a44c;margin-bottom:7px}
+.band i{font-style:normal;font-size:17px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#c9a44c;text-align:left;
+  padding:14px 22px 10px;border-bottom:1px solid #c9a44c;font-weight:400}
+td{padding:13px 22px;border-bottom:1px solid #c9a44c33}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.total{display:flex;align-items:center;gap:26px;padding:20px 22px;border-top:1px solid #c9a44c}
+.total .lbl{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#c9a44c}
+.total .amt{margin-left:auto;font-size:38px;letter-spacing:1px;color:#c9a44c}
+.total .words{font-size:12px;font-style:italic;color:#b6ac93;max-width:400px;line-height:1.5}
+.rule{height:1px;background:linear-gradient(90deg,transparent,#c9a44c,transparent);margin:0 22px}
+.sign{display:flex;justify-content:space-between;padding:16px 22px 22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8e8672}
+.sign span{border-top:1px solid #c9a44c66;padding-top:8px;width:220px;text-align:center}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage"><div class="sheet">
+  <div class="crest">
+    <div class="fan"><i style="height:10px"></i><i style="height:18px"></i><i style="height:26px"></i><i style="height:34px"></i><i style="height:26px"></i><i style="height:18px"></i><i style="height:10px"></i></div>
+    <h1>Счёт № 1301</h1>
+    <p>Solutions 101 · Аренда спецтехники · 16 августа 2026</p>
+  </div>
+  <div class="band">
+    <div><b>Плательщик</b><i>ООО «Гранит»</i></div>
+    <div><b>ИНН</b><i>160940822684</i></div>
+    <div><b>Договор</b><i>№ 1 от 12.01.2024</i></div>
+    <div><b>Оплатить до</b><i>30.09.2026</i></div>
+  </div>
+  <table>
+    <tr><th>№</th><th>Наименование работы</th><th>Ед.</th><th style="text-align:right">Кол-во</th><th style="text-align:right">Цена</th><th style="text-align:right">Сумма</th></tr>
+    <tr><td>1</td><td>Аренда фронтального погрузчика 3 т, смена 8 ч</td><td>смена</td><td class="n">8</td><td class="n">16 000,00</td><td class="n">128 000,00</td></tr>
+    <tr><td>2</td><td>Доставка техники на объект и обратно</td><td>рейс</td><td class="n">2</td><td class="n">7 000,00</td><td class="n">14 000,00</td></tr>
+    <tr><td>3</td><td>Топливо по норме расхода</td><td>л</td><td class="n">320</td><td class="n">60,00</td><td class="n">19 200,00</td></tr>
+    <tr><td>4</td><td>Скидка постоянного клиента</td><td>—</td><td class="n">1</td><td class="n">−12 400,00</td><td class="n">−12 400,00</td></tr>
+  </table>
+  <div>
+    <div class="rule"></div>
+    <div class="total">
+      <span class="lbl">Итого к оплате</span>
+      <span class="words">Сто сорок восемь тысяч восемьсот рублей 00 копеек. Печатается из тех же цифр, по которым считается наработка и загрузка.</span>
+      <span class="amt">148 800,00 ₽</span>
+    </div>
+    <div class="sign"><span>Руководитель</span><span>Главный бухгалтер</span><span>Печать организации</span></div>
+  </div>
+</div></div>
+<script src="_stage.js"></script></body></html>

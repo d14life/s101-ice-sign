@@ -1,0 +1,144 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>48 · Каталог курсов — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e6e9f5;--bg:#f5f6fc;--card:#fff;--ink:#161a2e;--dim:#6f7592;--violet:#5b4bde;--mint:#12b886;--peach:#ff8a5b;--sky:#3fa9f5;--line:#e6e8f4}
+.stage{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+nav{display:flex;align-items:center;gap:26px;padding:13px 40px}
+.logo{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-.5px;margin-right:8px}
+.logo i{width:28px;height:28px;border-radius:10px;background:var(--violet);display:flex;align-items:center;
+  justify-content:center;color:#fff;font-size:14px;font-weight:800;font-style:normal}
+nav a{font-size:13px;color:var(--dim);text-decoration:none;font-weight:500}
+nav a.on{color:var(--ink);font-weight:600}
+nav .r{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:13px;color:var(--dim)}
+.av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ffd08a,#ff8a5b);display:block}
+.hero{padding:0 40px 12px;display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-1.2px;line-height:1.06}
+h1 span{color:var(--violet)}
+.hero p{margin:8px 0 0;font-size:12.5px;color:var(--dim);line-height:1.5;max-width:470px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:420px}
+.chips span{font-size:11.5px;font-weight:600;padding:6px 13px;border-radius:22px;background:#fff;color:var(--dim);
+  border:1px solid var(--line)}
+.chips span.on{background:var(--violet);color:#fff;border-color:var(--violet)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 40px;min-height:0;overflow:hidden;align-content:start}
+.c{background:var(--card);border-radius:18px;padding:12px 15px 13px;border:1px solid var(--line);
+  display:flex;flex-direction:column}
+.cap{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ic{width:32px;height:32px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.ic svg{width:18px;height:18px}
+.lvl{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.c h2{margin:0;font-size:14.5px;font-weight:700;letter-spacing:-.35px;line-height:1.22}
+.c .d{font-size:11px;color:var(--dim);margin-top:5px;line-height:1.45}
+.facts{display:flex;gap:12px;margin-top:9px;font-size:10.5px;color:var(--dim)}
+.facts b{display:block;color:var(--ink);font-size:12.5px;font-weight:700;letter-spacing:-.3px}
+.bar{height:5px;border-radius:4px;background:#eef0f8;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px}
+.seats{font-size:10.5px;color:var(--dim);margin-top:5px}
+.seats b{font-weight:700;color:var(--ink)}
+.buy{margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between}
+.buy .p b{font-size:17px;font-weight:800;letter-spacing:-.6px}
+.buy .p s{display:block;font-size:10.5px;color:#a2a8c0}
+.go{border-radius:11px;padding:8px 14px;font-size:11.5px;font-weight:700;color:#fff}
+.stars{font-size:11.5px;color:var(--dim);margin-top:8px}
+.stars b{color:var(--ink);font-weight:700}
+.star{color:#f5a623}
+footer{display:flex;gap:26px;align-items:baseline;padding:12px 40px 16px;font-size:11px;color:var(--dim);margin-top:10px}
+footer b{color:var(--violet);font-weight:700}
+</style></head><body data-screen="48">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="logo"><i>А</i>Абзац</span>
+    <a href="#" class="on">Курсы</a><a href="#">Преподаватели</a><a href="#">Расписание</a><a href="#">Компаниям</a><a href="#">Отзывы</a>
+    <span class="r"><span>Мои занятия</span><span>Оплата</span><i class="av"></i></span>
+  </nav>
+  <div class="hero">
+    <div>
+      <h1>Курсы, которые<br>идут <span>по расписанию</span></h1>
+      <p>Свободные места, ближайший старт и остаток по оплате видны прямо в карточке — их берут из журнала групп, а не проставляют руками раз в неделю.</p>
+    </div>
+    <div class="chips"><span class="on" data-cat="all">Все направления</span><span data-cat="yazyki">Языки</span><span data-cat="shkolnikam">Школьникам</span><span data-cat="it">ИТ</span><span data-cat="onlayn">Онлайн</span><span data-cat="vyhodnye">Выходного дня</span></div>
+  </div>
+  <div class="grid">
+    <div class="c" data-cat="yazyki">
+      <div class="cap">
+        <span class="ic" style="background:#eae7ff"><svg viewBox="0 0 24 24" fill="none" stroke="#5b4bde" stroke-width="2" stroke-linecap="round"><path d="M3 6h7a3 3 0 0 1 3 3v10a2.5 2.5 0 0 0-2.5-2.5H3Z"/><path d="M21 6h-7a3 3 0 0 0-3 3v10a2.5 2.5 0 0 1 2.5-2.5H21Z"/></svg></span>
+        <span class="lvl" style="background:#eef7f2;color:#12805e">Уровень B1</span>
+      </div>
+      <h2>Английский для взрослых</h2>
+      <div class="d">Разговорная практика дважды в неделю, один преподаватель на весь курс.</div>
+      <div class="facts"><span><b>8 мес.</b>длительность</span><span><b>Пн, Чт</b>19:00</span><span><b>12</b>в группе</span></div>
+      <div class="bar"><i style="width:83%;background:var(--violet)"></i></div>
+      <div class="seats">Занято <b>10 из 12</b> · старт 15 сентября</div>
+      <div class="buy"><span class="p"><b>12 000 ₽</b><s>в месяц</s></span><span class="go" style="background:var(--violet)">Записаться</span></div>
+    </div>
+    <div class="c" data-cat="shkolnikam vyhodnye">
+      <div class="cap">
+        <span class="ic" style="background:#e6f6ef"><svg viewBox="0 0 24 24" fill="none" stroke="#12b886" stroke-width="2" stroke-linecap="round"><path d="M4 19V5M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-7"/></svg></span>
+        <span class="lvl" style="background:#fff1e9;color:#c2521f">9 класс</span>
+      </div>
+      <h2>Математика · подготовка к ОГЭ</h2>
+      <div class="d">Разбор реальных вариантов и пробный экзамен каждый месяц.</div>
+      <div class="facts"><span><b>9 мес.</b>длительность</span><span><b>Вт, Сб</b>16:00</span><span><b>10</b>в группе</span></div>
+      <div class="bar"><i style="width:80%;background:var(--mint)"></i></div>
+      <div class="seats">Занято <b>8 из 10</b> · старт 12 сентября</div>
+      <div class="buy"><span class="p"><b>14 000 ₽</b><s>в месяц</s></span><span class="go" style="background:var(--mint)">Записаться</span></div>
+    </div>
+    <div class="c" data-cat="it shkolnikam">
+      <div class="cap">
+        <span class="ic" style="background:#e9f4ff"><svg viewBox="0 0 24 24" fill="none" stroke="#3fa9f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M13 5l-2 14"/></svg></span>
+        <span class="lvl" style="background:#e9f4ff;color:#1c72b8">Дети 10–12</span>
+      </div>
+      <h2>Программирование с нуля</h2>
+      <div class="d">От блочного кода к первым скриптам, в конце — работающий проект.</div>
+      <div class="facts"><span><b>6 мес.</b>длительность</span><span><b>Ср, Пт</b>17:30</span><span><b>14</b>в группе</span></div>
+      <div class="bar"><i style="width:100%;background:var(--sky)"></i></div>
+      <div class="seats">Занято <b>14 из 14</b> · есть лист ожидания</div>
+      <div class="buy"><span class="p"><b>13 000 ₽</b><s>в месяц</s></span><span class="go" style="background:#a9b0c8">В лист ожидания</span></div>
+    </div>
+    <div class="c" data-cat="yazyki">
+      <div class="cap">
+        <span class="ic" style="background:#fff0ea"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a5b" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3C9 6.5 9 17.5 12 21"/></svg></span>
+        <span class="lvl" style="background:#fff0ea;color:#c2521f">С нуля</span>
+      </div>
+      <h2>Китайский язык</h2>
+      <div class="d">Произношение и иероглифика сразу, носитель языка раз в две недели.</div>
+      <div class="facts"><span><b>10 мес.</b>длительность</span><span><b>Пн, Ср</b>18:00</span><span><b>8</b>в группе</span></div>
+      <div class="bar"><i style="width:63%;background:var(--peach)"></i></div>
+      <div class="seats">Занято <b>5 из 8</b> · старт 22 сентября</div>
+      <div class="buy"><span class="p"><b>12 000 ₽</b><s>в месяц</s></span><span class="go" style="background:var(--peach)">Записаться</span></div>
+    </div>
+    <div class="c" data-cat="shkolnikam">
+      <div class="cap">
+        <span class="ic" style="background:#eae7ff"><svg viewBox="0 0 24 24" fill="none" stroke="#5b4bde" stroke-width="2" stroke-linecap="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M7 11v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/></svg></span>
+        <span class="lvl" style="background:#eef7f2;color:#12805e">5–7 лет</span>
+      </div>
+      <h2>Подготовка к школе</h2>
+      <div class="d">Чтение, счёт и усидчивость. Утренние занятия, отчёт в тот же день.</div>
+      <div class="facts"><span><b>7 мес.</b>длительность</span><span><b>Вт, Чт</b>10:00</span><span><b>12</b>в группе</span></div>
+      <div class="bar"><i style="width:92%;background:var(--violet)"></i></div>
+      <div class="seats">Занято <b>11 из 12</b> · старт 15 сентября</div>
+      <div class="buy"><span class="p"><b>11 000 ₽</b><s>в месяц</s></span><span class="go" style="background:var(--violet)">Записаться</span></div>
+    </div>
+    <div class="c" data-cat="it onlayn vyhodnye">
+      <div class="cap">
+        <span class="ic" style="background:#e6f6ef"><svg viewBox="0 0 24 24" fill="none" stroke="#12b886" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+        <span class="lvl" style="background:#e9f4ff;color:#1c72b8">Онлайн</span>
+      </div>
+      <h2>Excel и таблицы для работы</h2>
+      <div class="d">Формулы, сводные таблицы и простая автоматизация. Вечерние группы.</div>
+      <div class="facts"><span><b>2 мес.</b>длительность</span><span><b>Сб</b>11:00</span><span><b>16</b>в группе</span></div>
+      <div class="bar"><i style="width:44%;background:var(--mint)"></i></div>
+      <div class="seats">Занято <b>7 из 16</b> · старт 20 сентября</div>
+      <div class="buy"><span class="p"><b>18 000 ₽</b><s>весь курс</s></span><span class="go" style="background:var(--mint)">Записаться</span></div>
+    </div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Карточка курса берёт места, старт и цену из журнала групп</span>
+    <b>Стиль: дружелюбный скруглённый · образовательная платформа</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

@@ -1,0 +1,68 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10 · Заявка на технику — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#efe6ff}
+.stage{background:linear-gradient(150deg,#f3e9ff,#e4f0ff 55%,#ffeef6);color:#3a2b5c;
+  font-family:"Segoe UI",Arial,sans-serif;padding:40px 46px;display:grid;grid-template-rows:auto 1fr auto;gap:26px}
+.clay{border-radius:34px;background:#fff;
+  box-shadow:16px 16px 34px #b9a6de59,-10px -10px 26px #ffffffe6,inset -6px -6px 14px #c7b6e840,inset 6px 6px 14px #ffffff}
+h1{margin:0;font-size:40px;font-weight:700;letter-spacing:-1.2px}
+.head{display:flex;align-items:center;gap:20px;padding:22px 30px}
+.head p{margin:4px 0 0;font-size:14px;color:#7d6ea8}
+.badge{margin-left:auto;padding:14px 26px;border-radius:26px;font-size:16px;font-weight:700;color:#fff;
+  background:linear-gradient(#8b6cf0,#6d46e0);box-shadow:8px 8px 20px #8b6cf059,inset 0 -4px 8px #4d2bb055,inset 0 3px 6px #ffffff59}
+.body{display:grid;grid-template-columns:1.25fr 1fr;gap:26px}
+.card{padding:28px 30px}
+h2{margin:0 0 20px;font-size:19px;font-weight:700}
+.field{margin-bottom:16px}
+.field b{display:block;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#8b7cb5;margin-bottom:8px}
+.pill{border-radius:20px;padding:14px 20px;font-size:16px;background:#f2edfd;
+  box-shadow:inset 5px 5px 12px #c9b8e659,inset -5px -5px 12px #ffffff}
+.choices{display:flex;gap:10px;flex-wrap:wrap}
+.ch{border-radius:20px;padding:11px 20px;font-size:14px;font-weight:600;background:#f2edfd;color:#6b5c99;
+  box-shadow:5px 5px 12px #c0aee059,-4px -4px 10px #ffffff}
+.ch.on{color:#fff;background:linear-gradient(#63d6a4,#31b57f);box-shadow:6px 6px 14px #31b57f59,inset 0 -3px 6px #1f8f61aa,inset 0 3px 6px #ffffff66}
+.sum{display:flex;flex-direction:column;gap:14px}
+.line{display:flex;align-items:baseline;font-size:15px;color:#6b5c99}
+.line em{font-style:normal;margin-left:auto;font-weight:700;color:#3a2b5c;font-variant-numeric:tabular-nums}
+.total{margin-top:6px;border-radius:26px;padding:22px 24px;text-align:center;color:#fff;
+  background:linear-gradient(#8b6cf0,#5b34d4);box-shadow:12px 12px 26px #7a55ec59,inset 0 -6px 12px #3f1fa855,inset 0 4px 8px #ffffff4d}
+.total b{display:block;font-size:38px;letter-spacing:-1.5px}
+.total span{font-size:13px;opacity:.85}
+.foot{display:flex;gap:16px;align-items:center;font-size:13px;color:#7d6ea8}
+.go{margin-left:auto;padding:16px 34px;border-radius:26px;font-size:17px;font-weight:700;color:#fff;
+  background:linear-gradient(#ff8ab5,#f0508e);box-shadow:10px 10px 22px #f0508e4d,inset 0 -5px 10px #c62c6a66,inset 0 4px 8px #ffffff66}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="clay head">
+    <div><h1>Заявка на технику</h1><p>Клиент оформляет сам · ЗАЯВ-1184</p></div>
+    <span class="badge">Свободно 6 из 12</span>
+  </div>
+  <div class="body">
+    <div class="clay card">
+      <h2>Что и на когда</h2>
+      <div class="field"><b>Единица техники</b><div class="pill">Фронтальный погрузчик 3 т</div></div>
+      <div class="field"><b>Период аренды</b><div class="pill">14.09.2026 — 21.09.2026 · 8 дней</div></div>
+      <div class="field"><b>Смена</b><div class="choices"><span class="ch">4 часа</span><span class="ch on">8 часов</span><span class="ch">12 часов</span><span class="ch">Вахта</span></div></div>
+      <div class="field" style="margin-bottom:0"><b>Дополнительно</b><div class="choices"><span class="ch on">Доставка</span><span class="ch">Оператор</span><span class="ch on">Топливо</span><span class="ch">Ночная смена</span></div></div>
+    </div>
+    <div class="clay card">
+      <h2>Расчёт</h2>
+      <div class="sum">
+        <div class="line">Смена 8 ч × 8 дней<em>128 000 ₽</em></div>
+        <div class="line">Доставка туда-обратно<em>14 000 ₽</em></div>
+        <div class="line">Топливо по норме<em>19 200 ₽</em></div>
+        <div class="line">Скидка постоянного клиента<em>−12 400 ₽</em></div>
+      </div>
+      <div class="total"><b>148 800 ₽</b><span>Договор, акт и счёт печатаются из этих же цифр</span></div>
+    </div>
+  </div>
+  <div class="clay foot" style="padding:18px 26px">
+    <span>Наработка спишется по счётчику м/ч, ТО назначится автоматически</span>
+    <span class="go">Отправить заявку</span>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

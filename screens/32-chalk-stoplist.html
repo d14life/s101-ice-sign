@@ -1,0 +1,116 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>32 · Стоп-лист и фудкост — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#141a17;--chalk:#efe9da;--dim:#9aa79c;--yellow:#f0cf6b;--pink:#eb9aa2;--green:#9ed6ac;--red:#e2705f}
+.stage{background:#1d2521;color:var(--chalk);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:34px 40px;
+  display:grid;grid-template-rows:auto 1fr auto;gap:20px;position:relative}
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 18% 24%,#ffffff0e,transparent 42%),
+             radial-gradient(circle at 76% 68%,#ffffff0a,transparent 38%),
+             radial-gradient(circle at 46% 92%,#ffffff08,transparent 34%)}
+.stage::after{content:"";position:absolute;inset:12px;border:2px solid #6f7c72;border-radius:3px;
+  opacity:.4;pointer-events:none}
+.top{display:flex;align-items:flex-end;justify-content:space-between;position:relative;z-index:2}
+h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:44px;font-weight:400;font-style:italic;
+  letter-spacing:-.5px;line-height:1;text-shadow:0 0 14px #efe9da26}
+h1 u{text-decoration:none;display:inline-block;border-bottom:3px solid var(--yellow);padding-bottom:3px;
+  transform:rotate(-.6deg);color:var(--yellow)}
+.top .sub{font-size:12.5px;color:var(--dim);margin-top:9px;letter-spacing:.03em}
+.date{text-align:right;font-family:Georgia,serif;font-style:italic;font-size:15px;color:var(--dim);line-height:1.5}
+.date b{display:block;font-size:26px;color:var(--chalk);font-style:normal;font-family:"Segoe UI",Arial,sans-serif;
+  font-weight:300;letter-spacing:-.5px}
+.cols{display:grid;grid-template-columns:1fr 296px;gap:32px;position:relative;z-index:2;min-height:0}
+h2{margin:0 0 12px;font-family:Georgia,serif;font-style:italic;font-size:19px;font-weight:400;color:var(--chalk)}
+h2 span{font-family:"Segoe UI",Arial,sans-serif;font-style:normal;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);margin-left:9px}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:right;font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
+  padding:0 0 8px;border-bottom:1px solid #4d5a51}
+th:first-child{text-align:left}
+td{padding:8.5px 0;border-bottom:1px dashed #3b463f;text-align:right}
+td:first-child{text-align:left}
+.dish{font-size:13.5px}
+.dish i{font-style:normal;display:block;font-size:10.5px;color:var(--dim);margin-top:2px}
+.fc{font-weight:600}
+.fc.bad{color:var(--red)}
+.fc.warn{color:var(--yellow)}
+.fc.ok{color:var(--green)}
+.left{font-weight:600}
+.left.low{color:var(--red)}
+.stop{border:2px solid var(--red);border-radius:4px;padding:14px 16px;transform:rotate(-.5deg)}
+.stop h3{margin:0 0 11px;font-family:Georgia,serif;font-style:italic;font-size:21px;font-weight:400;color:var(--red)}
+.stop ul{margin:0;padding:0;list-style:none}
+.stop li{padding:7px 0;border-bottom:1px dashed #5a4340;font-size:13px}
+.stop li:last-child{border:0}
+.stop li b{display:block;font-weight:600}
+.stop li i{font-style:normal;font-size:10.5px;color:var(--dim)}
+.pan{margin-top:16px;border:1px solid #4d5a51;border-radius:4px;padding:13px 15px}
+.pan h3{margin:0 0 10px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.pan .row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0}
+.pan .row b{font-variant-numeric:tabular-nums;font-weight:600}
+.pan .row.tot{border-top:1px solid #4d5a51;margin-top:6px;padding-top:9px;font-size:15px}
+.pan .row.tot b{color:var(--yellow);font-size:19px}
+.foot{display:flex;gap:30px;align-items:baseline;font-size:11.5px;color:var(--dim);position:relative;z-index:2}
+.foot b{color:var(--yellow)}
+</style></head><body data-screen="32">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="top">
+    <div>
+      <h1>Стоп-лист <u>и фудкост</u></h1>
+      <div class="sub">Ресторан «Тесто и дым» · кухня считает себестоимость по каждой закладке, а не по памяти шефа</div>
+    </div>
+    <div class="date">смена<b>08.09 · вечер</b>закрыто 64 чека</div>
+  </div>
+  <div class="cols">
+    <div>
+      <h2>Меню<span>фудкост по фактической закладке</span></h2>
+      <table>
+        <tr><th>Позиция</th><th>Себест.</th><th>Цена</th><th>Фудкост</th><th>Продано</th><th>Осталось</th></tr>
+        <tr><td class="dish">Том-ям с креветкой<i>Горячее · закладка 420 г</i></td><td>486 ₽</td><td>1 190 ₽</td><td class="fc ok">41 %</td><td>14</td><td class="left">9 порц.</td></tr>
+        <tr><td class="dish">Стейк рибай 300 г<i>Гриль · вес после зачистки</i></td><td>1 640 ₽</td><td>3 200 ₽</td><td class="fc bad">51 %</td><td>7</td><td class="left low">2 порц.</td></tr>
+        <tr><td class="dish">Паста качо-э-пепе<i>Паста · сыр в закладке 60 г</i></td><td>212 ₽</td><td>780 ₽</td><td class="fc ok">27 %</td><td>21</td><td class="left">18 порц.</td></tr>
+        <tr><td class="dish">Салат с тунцом<i>Холодный цех</i></td><td>398 ₽</td><td>890 ₽</td><td class="fc warn">45 %</td><td>11</td><td class="left low">3 порц.</td></tr>
+        <tr><td class="dish">Борщ с говядиной<i>Суп · выход 350 г</i></td><td>174 ₽</td><td>520 ₽</td><td class="fc ok">33 %</td><td>19</td><td class="left">24 порц.</td></tr>
+        <tr><td class="dish">Дорадо на углях<i>Гриль · рыба целиком</i></td><td>720 ₽</td><td>1 550 ₽</td><td class="fc warn">46 %</td><td>6</td><td class="left low">1 порц.</td></tr>
+        <tr><td class="dish">Тирамису<i>Кондитерский цех</i></td><td>118 ₽</td><td>490 ₽</td><td class="fc ok">24 %</td><td>16</td><td class="left">12 порц.</td></tr>
+        <tr><td class="dish">Хачапури по-аджарски<i>Печь · тесто своё</i></td><td>146 ₽</td><td>620 ₽</td><td class="fc ok">24 %</td><td>23</td><td class="left">15 порц.</td></tr>
+        <tr><td class="dish">Цезарь с курицей<i>Холодный цех</i></td><td>214 ₽</td><td>690 ₽</td><td class="fc ok">31 %</td><td>17</td><td class="left">11 порц.</td></tr>
+        <tr><td class="dish">Утиная ножка конфи<i>Горячее · в стоп-листе с 19:40</i></td><td>536 ₽</td><td>1 340 ₽</td><td class="fc warn">40 %</td><td>9</td><td class="left low">0 порц.</td></tr>
+        <tr><td class="dish">Сырники со сметаной<i>Кондитерский цех</i></td><td>96 ₽</td><td>420 ₽</td><td class="fc ok">23 %</td><td>12</td><td class="left">9 порц.</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="stop">
+        <h3>В стопе</h3>
+        <ul>
+          <li><b>Утиная ножка конфи</b><i>Кончилась заготовка · вернётся завтра к 14:00</i></li>
+          <li><b>Устрицы Фин де Клер</b><i>Поставка не пришла · заявка перевыставлена</i></li>
+          <li><b>Крем-брюле</b><i>Сливки 33 % — остаток 0,4 л, ниже нормы</i></li>
+        </ul>
+      </div>
+      <div class="pan">
+        <h3>Смена в деньгах</h3>
+        <div class="row"><span>Выручка кухни</span><b>184 300 ₽</b></div>
+        <div class="row"><span>Себестоимость</span><b>67 190 ₽</b></div>
+        <div class="row"><span>Средний фудкост</span><b>36,5 %</b></div>
+        <div class="row"><span>Списано в брак</span><b>2 840 ₽</b></div>
+        <div class="row tot"><span>Валовая прибыль</span><b>117 110 ₽</b></div>
+      </div>
+      <div class="pan">
+        <h3>Что решает шеф</h3>
+        <div class="row"><span>Пересмотреть цену рибая</span><b>+340 ₽</b></div>
+        <div class="row"><span>Уменьшить закладку дорадо</span><b>−60 г</b></div>
+        <div class="row"><span>Вернуть конфи в меню</span><b>завтра</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Стоп-лист уходит в зал и на сайт в ту же секунду</span>
+    <b>Рибай и дорадо съедают маржу — цена не пересматривалась с мая</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

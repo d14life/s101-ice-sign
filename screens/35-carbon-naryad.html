@@ -1,0 +1,115 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>35 · Заказ-наряд — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#c9c2ac;--paper:#f6efd8;--ink:#2f2a22;--dim:#8a8271;--carbon:#3d3a52;--stamp:#a8342c;--line:#c9c0a4}
+.stage{background:var(--paper);color:#33302a;font-family:"Courier New",Courier,monospace;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;position:relative;overflow:hidden;
+  box-shadow:inset 0 0 90px #b7ac8a55}
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,#00000005 3px 4px)}
+.perf{position:absolute;left:20px;top:0;bottom:0;width:14px;pointer-events:none;
+  background:repeating-linear-gradient(180deg,transparent 0 10px,#c9c0a4 10px 11px)}
+.perf::after{content:"";position:absolute;left:5px;top:9px;bottom:9px;width:4px;
+  background:repeating-linear-gradient(180deg,#d8d0b4 0 4px,transparent 4px 18px);border-radius:2px}
+.head{padding:26px 44px 14px 58px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+h1{margin:0;font-size:25px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;line-height:1.15}
+.who{font-size:11px;line-height:1.6;margin-top:9px;color:#5c564a}
+.no{text-align:right;font-size:11px;line-height:1.7;color:#5c564a}
+.no b{display:block;font-size:27px;color:var(--stamp);letter-spacing:1px;margin-bottom:2px}
+.meta{padding:12px 44px 12px 58px;border-bottom:1px dashed var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  font-size:11px;position:relative;z-index:2}
+.meta b{display:block;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#8a8271;margin-bottom:4px}
+.meta i{font-style:normal;font-size:13px;border-bottom:1px solid var(--line);display:block;padding-bottom:3px;letter-spacing:.5px}
+.body{padding:14px 44px 0 58px;display:grid;grid-template-columns:1fr 268px;gap:26px;min-height:0;position:relative;z-index:2}
+.lab{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a8271;margin-bottom:7px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:right;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a8271;font-weight:400;
+  padding-bottom:5px;border-bottom:1px solid var(--ink)}
+th:first-child{text-align:left}
+td{padding:5.5px 0;border-bottom:1px dotted var(--line);text-align:right;letter-spacing:.3px}
+td:first-child{text-align:left}
+td.p{color:var(--carbon)}
+.grp{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a8271;padding-top:10px!important;
+  border-bottom:1px solid var(--ink)!important}
+.tot{border:2px solid var(--ink);padding:12px 14px;margin-top:14px}
+.tr{display:flex;justify-content:space-between;font-size:12px;padding:3.5px 0;letter-spacing:.4px}
+.tr.big{border-top:1px solid var(--ink);margin-top:7px;padding-top:9px;font-size:16px;font-weight:700}
+.tr.big span:last-child{color:var(--stamp)}
+.stamp{border:2.5px solid var(--stamp);color:var(--stamp);padding:8px 14px;transform:rotate(-6deg);text-align:center;
+  margin:16px 0 0;opacity:.82;border-radius:3px}
+.stamp b{display:block;font-size:16px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase}
+.stamp i{font-style:normal;font-size:9.5px;letter-spacing:.14em}
+.sign{margin-top:16px;font-size:10.5px;line-height:2.1;color:#5c564a}
+.sign u{text-decoration:none;display:inline-block;width:118px;border-bottom:1px solid var(--ink);margin-left:6px}
+.note{margin-top:12px;font-size:10.5px;line-height:1.6;color:#6b6455;border-left:2px solid var(--line);padding-left:10px}
+.foot{padding:12px 44px 18px 58px;border-top:2px solid var(--ink);display:flex;gap:26px;align-items:baseline;
+  font-size:10px;letter-spacing:.08em;color:#6b6455;position:relative;z-index:2}
+.foot b{color:var(--stamp);font-weight:700}
+</style></head><body data-screen="35">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="perf"></div>
+  <div class="head">
+    <div>
+      <h1>Заказ-наряд<br>на ремонт</h1>
+      <div class="who">Автосервис «Шатун» · пост № 3 · мастер-приёмщик Гурьев А.П.<br>Экземпляр 2 из 3 — копия клиента</div>
+    </div>
+    <div class="no"><b>№ 4417</b>открыт 08.09.2026 в 09:14<br>плановая выдача 09.09 в 17:00<br>согласовано по телефону</div>
+  </div>
+  <div class="meta">
+    <div><b>Автомобиль</b><i>Skoda Octavia A7</i></div>
+    <div><b>Гос. номер</b><i>А 000 АА / 00</i></div>
+    <div><b>VIN</b><i>XW8AN2NE0KH000000</i></div>
+    <div><b>Пробег</b><i>184 260 км</i></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="lab">Работы и запчасти</div>
+      <table>
+        <tr><th>Наименование</th><th>Кол-во</th><th>Норма</th><th>Ставка</th><th>Сумма</th></tr>
+        <tr><td colspan="5" class="grp">Работы — нормо-часы по справочнику</td></tr>
+        <tr><td>Замена ремня ГРМ с роликами</td><td>1</td><td>4,2 н/ч</td><td>1 400</td><td>5 880</td></tr>
+        <tr><td>Замена помпы</td><td>1</td><td>1,1 н/ч</td><td>1 400</td><td>1 540</td></tr>
+        <tr><td>Замена антифриза с промывкой</td><td>1</td><td>0,8 н/ч</td><td>1 400</td><td>1 120</td></tr>
+        <tr><td>Диагностика подвески</td><td>1</td><td>0,5 н/ч</td><td>1 400</td><td>700</td></tr>
+        <tr><td colspan="5" class="grp">Запчасти — со склада и под заказ</td></tr>
+        <tr><td class="p">Комплект ГРМ (ремень + 2 ролика)</td><td>1</td><td>склад</td><td>8 940</td><td>8 940</td></tr>
+        <tr><td class="p">Помпа системы охлаждения</td><td>1</td><td>склад</td><td>4 210</td><td>4 210</td></tr>
+        <tr><td class="p">Антифриз G13, 5 л</td><td>1</td><td>склад</td><td>2 350</td><td>2 350</td></tr>
+        <tr><td class="p">Болт натяжителя</td><td>2</td><td>заказ 2 дн.</td><td>310</td><td>620</td></tr>
+        <tr><td class="p">Прокладка помпы</td><td>1</td><td>склад</td><td>480</td><td>480</td></tr>
+        <tr><td class="p">Герметик термостойкий</td><td>1</td><td>склад</td><td>390</td><td>390</td></tr>
+        <tr><td colspan="5" class="grp">Дополнительно — по результату диагностики</td></tr>
+        <tr><td>Замена масла ДВС и фильтра</td><td>1</td><td>0,6 н/ч</td><td>1 400</td><td>840</td></tr>
+        <tr><td class="p">Масло моторное 5W-30, 5 л</td><td>1</td><td>склад</td><td>4 180</td><td>4 180</td></tr>
+        <tr><td class="p">Фильтр масляный</td><td>1</td><td>склад</td><td>640</td><td>640</td></tr>
+        <tr><td>Компьютерная диагностика ДВС</td><td>1</td><td>0,4 н/ч</td><td>1 400</td><td>560</td></tr>
+      </table>
+      <div class="note">Стойки стабилизатора застучали на диагностике — в наряд не внесены, клиенту показаны на подъёмнике. Решение отложено до следующего визита.</div>
+    </div>
+    <div>
+      <div class="lab">Итого по наряду</div>
+      <div class="tot">
+        <div class="tr"><span>Работы, 7,6 н/ч</span><span>10 640 ₽</span></div>
+        <div class="tr"><span>Запчасти</span><span>21 810 ₽</span></div>
+        <div class="tr"><span>Расходные материалы</span><span>780 ₽</span></div>
+        <div class="tr"><span>Скидка по карте, 5 %</span><span>−1 662 ₽</span></div>
+        <div class="tr big"><span>К оплате</span><span>31 568 ₽</span></div>
+      </div>
+      <div class="stamp"><b>Согласовано</b><i>клиентом 08.09 в 09:41</i></div>
+      <div class="sign">
+        Работы сдал<u></u><br>
+        Работы принял<u></u><br>
+        Гарантия 6 мес. / 20 000 км
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>SOLUTIONS&nbsp;101</span>
+    <span>Наряд, счёт и акт печатаются из одних и тех же строк</span>
+    <b>Нормо-часы берутся из справочника, а не с потолка</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

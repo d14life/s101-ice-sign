@@ -1,0 +1,67 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>26 · Учётная политика свёртки — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#faf7f2}
+.stage{background:#faf7f2;color:#231f1c;font-family:"Georgia","Times New Roman",serif;padding:60px 70px;
+  display:grid;grid-template-columns:1fr 380px;gap:56px}
+.left{display:flex;flex-direction:column}
+.kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#a3603f;margin-bottom:18px}
+h1{margin:0 0 20px;font-size:58px;font-weight:400;line-height:1.02;letter-spacing:-1.6px}
+h1 em{font-style:italic;color:#a3603f}
+.lede{font-size:19px;line-height:1.55;color:#4a423c;margin:0 0 30px;max-width:560px}
+.body{columns:2;column-gap:34px;font-size:14px;line-height:1.72;text-align:justify}
+.body p{margin:0 0 13px}
+.body p:first-child:first-letter{float:left;font-size:58px;line-height:.82;padding:6px 9px 0 0;color:#a3603f}
+h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin:18px 0 8px;color:#a3603f;
+  break-after:avoid;font-weight:400}
+.rule{border:0;border-top:1px solid #d8cfc2;margin:26px 0}
+.pull{border-left:3px solid #a3603f;padding-left:18px;font-size:20px;line-height:1.4;font-style:italic;
+  color:#231f1c;margin:0 0 26px}
+.side{border-left:1px solid #d8cfc2;padding-left:34px;display:flex;flex-direction:column;gap:0}
+.side h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 16px;color:#a3603f;font-weight:400}
+.def{padding:14px 0;border-bottom:1px solid #ece5da}
+.def b{display:block;font-size:15px;margin-bottom:5px}
+.def span{font-size:13px;line-height:1.55;color:#5c534b}
+.acc{margin-top:auto;background:#231f1c;color:#faf7f2;padding:22px 24px}
+.acc b{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#d2a986;margin-bottom:12px}
+.acc div{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px solid #ffffff1f}
+.acc div:last-child{border-bottom:0}
+.folio{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a89c8e;margin-top:auto;padding-top:26px}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="left">
+    <div class="kicker">Solutions 101 · Взаиморасчёты · Раздел 4</div>
+    <h1>Как считается<br><em>свёрнутое сальдо</em></h1>
+    <p class="lede">Одна цифра по контрагенту вместо двух счетов. Правило настраивается под учётную политику, а не зашито в отчёт.</p>
+    <p class="pull">Долг минус аванс — но только внутри одного договора и одной валюты.</p>
+    <div class="body">
+      <p>Свёртка выполняется на дату отчёта по остаткам, выгруженным из 1С. Система берёт дебиторскую задолженность по счёту 1210 и кредиторскую по 3310, сопоставляет их в пределах договора и валюты и оставляет одну итоговую позицию.</p>
+      <h2>Что не сворачивается</h2>
+      <p>Остатки по разным договорам не схлопываются между собой, даже если контрагент один. Аванс, выданный по договору поставки, не гасит долг по договору аренды: это разные обязательства, и в акте сверки они должны стоять раздельно.</p>
+      <p>Валюты также не смешиваются. Долг в тенге и аванс в рублях остаются двумя строками; в общую позицию группы они попадают уже после пересчёта по курсу на дату отчёта.</p>
+      <h2>Порог существенности</h2>
+      <p>Остатки меньше порога, заданного в настройках, показываются как нулевые и не попадают в список «требуют внимания». По умолчанию порог равен одной тысяче в валюте учёта.</p>
+      <h2>Кто видит результат</h2>
+      <p>Одни и те же правила применяются и к карточке контрагента, и к акту сверки, и к платёжному календарю. Расхождение между отчётом и печатной формой в этой схеме невозможно: источник у них общий.</p>
+    </div>
+    <div class="folio">Solutions 101 — автоматизация бизнес-процессов · Демонстрационные данные</div>
+  </div>
+  <div class="side">
+    <h3>Термины</h3>
+    <div class="def"><b>Свёрнутое сальдо</b><span>Долг минус аванс в пределах одного договора и одной валюты. Одна цифра вместо двух счетов.</span></div>
+    <div class="def"><b>Чистая позиция</b><span>Сумма свёрнутых сальдо по всем контрагентам группы, пересчитанная в валюту учёта.</span></div>
+    <div class="def"><b>Требует внимания</b><span>Контрагент, у которого есть остаток старше 60 дней либо расхождение с актом сверки.</span></div>
+    <div class="def"><b>Дата отчёта</b><span>День, на который берутся остатки. Меняется в шапке — пересчитывается всё, включая печатные формы.</span></div>
+    <div class="acc">
+      <b>Счета учёта</b>
+      <div><span>Дебиторская задолженность</span><span>1210</span></div>
+      <div><span>Кредиторская задолженность</span><span>3310</span></div>
+      <div><span>Долгосрочная кредиторская</span><span>3510</span></div>
+      <div><span>Прочая дебиторская</span><span>1710</span></div>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

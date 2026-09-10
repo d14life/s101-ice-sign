@@ -1,0 +1,72 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>29 · Автообзвон базы — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#140c02}
+.stage{background:#170e03;color:#ffb642;font-family:"Consolas","Courier New",monospace;font-size:15px;
+  padding:26px 30px;line-height:1.6;text-shadow:0 0 7px #ff8c0080;letter-spacing:.4px}
+.stage:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:repeating-linear-gradient(#0000 0 2px,#00000059 2px 4px)}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:radial-gradient(ellipse at 50% 50%,transparent 46%,#000000cc 100%)}
+.hd{display:flex;gap:16px;border:1px solid #a86a12;padding:6px 14px;margin-bottom:14px;background:#ffb6420f}
+.hd b{font-weight:400;letter-spacing:3px}
+.hd .r{margin-left:auto;color:#170e03;background:#ffb642;padding:0 10px;text-shadow:none}
+pre{margin:0;font:inherit;white-space:pre}
+.dim{color:#a06f22;text-shadow:none}
+.ok{color:#8bf05a;text-shadow:0 0 8px #6ad03080}
+.no{color:#ff6a4a;text-shadow:0 0 8px #ff6a4a80}
+.hi{color:#fff0c0;text-shadow:0 0 10px #ffd07a}
+.box{border:1px solid #a86a12;padding:10px 14px;margin-bottom:14px}
+.box h2{margin:0 0 8px;font-size:14px;font-weight:400;letter-spacing:3px;color:#fff0c0}
+.two{display:grid;grid-template-columns:1.35fr 1fr;gap:14px}
+.bar{display:inline-block;background:#a86a12;height:11px;vertical-align:0}
+.cur{display:inline-block;width:9px;height:16px;background:#ffb642;vertical-align:-3px;animation:b 1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="hd"><b>SOLUTIONS 101</b><span class="dim">АВТООБЗВОН БАЗЫ · КАМПАНИЯ «ДЕБИТОРКА 60+»</span><span class="r">ИДЁТ ОБЗВОН</span></div>
+  <div class="box">
+    <h2>ПРОГРЕСС КАМПАНИИ</h2>
+<pre>  ВСЕГО В БАЗЕ    412   <span class="bar" style="width:420px"></span>
+  ОБЗВОНЕНО       284   <span class="bar" style="width:290px;background:#ffb642"></span>  69 %
+  ДОЗВОН          193   <span class="bar" style="width:197px;background:#8bf05a"></span>  68 % ОТ ОБЗВОНЕННЫХ
+  ОБЕЩАЛИ ОПЛАТУ   61   <span class="bar" style="width:62px;background:#fff0c0"></span>
+  ОТКАЗ            14   <span class="bar" style="width:15px;background:#ff6a4a"></span></pre>
+  </div>
+  <div class="two">
+    <div class="box">
+      <h2>ЛЕНТА ВЫЗОВОВ</h2>
+<pre>  <span class="dim">17:52:44</span>  Vertex Trading         <span class="ok">РАЗГОВОР 03:42</span>  обещали 15.09
+  <span class="dim">17:51:56</span>  ИП «Ускенбаев»         <span class="ok">РАЗГОВОР 01:07</span>  обещали 08.09
+  <span class="dim">17:51:12</span>  Nova Group             <span class="dim">ГУДКИ 00:19</span>     повтор через 2 ч
+  <span class="dim">17:50:48</span>  Vertex Logistics       <span class="ok">РАЗГОВОР 06:28</span>  спор по акту
+  <span class="dim">17:49:31</span>  ТОО «Самал-Логистика»  <span class="no">СБРОС</span>            повтор завтра
+  <span class="dim">17:48:02</span>  ТОО «Болашак Инж.»     <span class="ok">РАЗГОВОР 02:11</span>  запросили сверку
+  <span class="dim">17:46:55</span>  Demo Trade KZ          <span class="no">НЕВЕРНЫЙ НОМЕР</span>   в проверку
+  <span class="dim">17:45:20</span>  ИП Сагинтаев           <span class="ok">РАЗГОВОР 00:58</span>  обещали 12.09</pre>
+    </div>
+    <div class="box">
+      <h2>ПРОВЕРКА ДО ЗВОНКА</h2>
+<pre>  БИН 160940822684  <span class="ok">ЧИСТО</span>
+  БИН 200140488921  <span class="ok">ЧИСТО</span>
+  БИН 100440874076  <span class="ok">ЧИСТО</span>
+  ИИН 210240808655  <span class="no">ДОЛГ 91+</span>
+  БИН 090540785044  <span class="ok">ЧИСТО</span>
+  БИН 150240367640  <span class="hi">ПРОВЕРКА…</span>
+
+  <span class="dim">РЕКВИЗИТЫ СВЕРЯЮТСЯ ДО ТОГО,
+  КАК МЕНЕДЖЕР ПОДНИМЕТ ТРУБКУ.</span></pre>
+    </div>
+  </div>
+  <div class="box" style="margin-bottom:0">
+    <h2>СЛЕДУЮЩИЙ НОМЕР В ОЧЕРЕДИ</h2>
+<pre>  ТОО «Тумар-Строй Павлодар» · 8 800 000-00-00 · долг 61–90 дн.
+  СЦЕНАРИЙ: <span class="hi">напомнить о сроке, предложить акт сверки</span>
+  &gt; НАБОР<span class="cur"></span></pre>
+  </div>
+<pre class="dim" style="margin-top:12px">  F2 ПАУЗА   F5 ПЕРЕЗВОН   F7 СЦЕНАРИЙ   F9 ВЫГРУЗИТЬ РЕЗУЛЬТАТ   ЗАПИСЬ ВЕДЁТСЯ ПО ВСЕМ ЛИНИЯМ</pre>
+</div>
+<script src="_stage.js"></script></body></html>

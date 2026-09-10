@@ -1,0 +1,101 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Тридцать экранов Solutions 101: один и тот же бизнес-процесс в тридцати визуальных стилях.">
+<title>30 экранов — Solutions 101</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#0b1020;--indigo:#2b4bff;--lime:#c8f31e;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#fbfbfd;color:var(--ink);font-family:"Inter","Segoe UI",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+header{padding:56px 48px 34px;border-bottom:1px solid #e2e5f0}
+.crumb{display:flex;align-items:center;gap:12px;font-size:13px;color:#5f6889;margin-bottom:22px}
+.hex{width:20px;height:20px;background:var(--ink);clip-path:polygon(50% 3%,91% 26.5%,91% 73.5%,50% 97%,9% 73.5%,9% 26.5%)}
+.crumb a{border-bottom:1px solid #c3c9de;padding-bottom:1px}
+h1{margin:0;font-size:60px;font-weight:600;letter-spacing:-2.6px;line-height:.98}
+h1 span{color:#8f9dd6}
+header p{margin:20px 0 0;font-size:17px;line-height:1.5;color:#4a5375;max-width:640px}
+.meta{display:flex;gap:34px;margin-top:26px;font-size:13px;color:#5f6889}
+.meta b{display:block;color:var(--ink);font-size:22px;font-weight:600;letter-spacing:-.6px;margin-bottom:3px}
+main{padding:38px 48px 70px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:26px}
+.card{display:block;border-radius:14px;overflow:hidden;background:#fff;border:1px solid #e2e5f0;
+  transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 44px #0b102026;border-color:#b9c2e6}
+.shot{display:block;position:relative;width:100%;aspect-ratio:1120/780;overflow:hidden;background:#0b0b0e}
+.shot iframe{position:absolute;left:0;top:0;width:1120px;height:780px;border:0;transform-origin:0 0;pointer-events:none}
+.cap{padding:15px 18px 17px;display:flex;align-items:flex-start;gap:12px}
+.n{font-size:12px;font-weight:700;color:#fff;background:var(--ink);border-radius:5px;padding:4px 8px;flex-shrink:0}
+.cap b{display:block;font-size:16px;font-weight:600;letter-spacing:-.3px}
+.cap i{font-style:normal;display:block;font-size:12.5px;color:#5f6889;margin-top:4px}
+footer{padding:30px 48px 60px;border-top:1px solid #e2e5f0;font-size:13px;color:#5f6889;line-height:1.6}
+@media(max-width:700px){header{padding:34px 20px 26px}h1{font-size:38px;letter-spacing:-1.4px}
+  main{padding:24px 20px 50px;grid-template-columns:1fr;gap:18px}footer{padding:24px 20px 40px}}
+</style></head><body>
+<header>
+  <div class="crumb"><i class="hex"></i><span>Solutions 101 — автоматизация бизнес-процессов</span><a href="index.html">← к анимации</a></div>
+  <h1>Тридцать экранов.<br><span>Один процесс.</span></h1>
+  <p>Аренда спецтехники, складской терминал, взаиморасчёты и витрина запчастей — одна и та же работа, показанная тридцатью визуальными языками. Каждый экран открывается отдельной страницей.</p>
+  <div class="meta">
+    <span><b>30</b>экранов</span>
+    <span><b>30</b>визуальных стилей</span>
+    <span><b>4</b>рабочие системы</span>
+    <span><b>1120×780</b>артборд каждого экрана</span>
+  </div>
+</header>
+<main id="grid"></main>
+<footer>Данные на всех экранах демонстрационные: компании, суммы, БИН и ИИН, имена сотрудников и контрагентов выдуманы.<br>
+Исходные снимки систем взяты с <a href="https://d14life.github.io/s101-works/" style="border-bottom:1px solid #c3c9de">d14life.github.io/s101-works</a>.</footer>
+<script>
+const SCREENS = [
+  ['01','skeuomorph-dispatcher','Пульт диспетчера','Скевоморфизм · металл, стекло, лампы'],
+  ['02','brutalism-akt','Акт сверки','Брутализм · голая сетка и жёлтый'],
+  ['03','neumorph-calendar','Платёжный календарь','Неоморфизм · мягкая экструзия'],
+  ['04','swiss-zagruzka','Загрузка парка','Швейцарский стиль · строгая сетка'],
+  ['05','terminal-priemka','Приёмка на склад','Терминал · зелёный фосфор'],
+  ['06','blueprint-fefo','Маршрут отбора FEFO','Чертёж · синька и штриховка'],
+  ['07','newspaper-smena','Сводка за смену','Газета · колонки и буквица'],
+  ['08','y2k-vitrina','Витрина автозапчастей','Y2K · хром, аква, скосы'],
+  ['09','glass-vyruchka','Дашборд выручки','Стекло · матовые панели'],
+  ['10','clay-zayavka','Заявка на технику','Клейморфизм · пластилин'],
+  ['11','memphis-katalog','Каталог запчастей','Мемфис · фигуры и зигзаги'],
+  ['12','bauhaus-struktura','Структура группы','Баухаус · круг, квадрат, треугольник'],
+  ['13','cyberpunk-telefoniya','Мониторинг телефонии','Киберпанк · неон и развёртка'],
+  ['14','artdeco-schet','Счёт на оплату','Ар-деко · золото и симметрия'],
+  ['15','vaporwave-aukcion','Аукцион ставок','Вэйпорвейв · закат и сетка'],
+  ['16','material-kontragent','Карточка контрагента','Material · тени и FAB'],
+  ['17','flat-zakazy','Заказы в работе','Flat · плоские блоки'],
+  ['18','darktech-prices','Сборщик прайсов','Тёмный dev · журнал разбора'],
+  ['19','pixel-pereschet','Слепой пересчёт','Пиксель-арт · 8 бит'],
+  ['20','zine-rashozhdeniya','Расхождения','Зин · ксерокс и скотч'],
+  ['21','mono-sroki','Сроки долга','Минимализм · воздух и одна линия'],
+  ['22','mesh-okupaemost','Окупаемость единицы','Градиентная сетка'],
+  ['23','receipt-nakladnaya','Печать накладной','Чековая лента'],
+  ['24','dotmatrix-putevoy','Путевой лист','Матричный принтер · перфорация'],
+  ['25','isometric-sklad','План склада','Изометрия · ячейки и маршрут'],
+  ['26','editorial-politika','Учётная политика','Издательский · антиква'],
+  ['27','hud-narabotka','Наработка и ТО','HUD · авиационный индикатор'],
+  ['28','ledger-osv','Оборотно-сальдовая','Гроссбух · разлинованная бумага'],
+  ['29','amber-obzvon','Автообзвон базы','Янтарный терминал'],
+  ['30','poster-itog','Тридцать экранов','Типографский плакат']
+];
+const grid = document.getElementById('grid');
+for (const [n, slug, title, style] of SCREENS) {
+  const href = `screens/${n}-${slug}.html`;
+  const a = document.createElement('a');
+  a.className = 'card';
+  a.href = href;
+  a.innerHTML = `<span class="shot"><iframe src="${href}" title="${title}" loading="lazy" scrolling="no" tabindex="-1"></iframe></span>
+    <span class="cap"><span class="n">${n}</span><span><b>${title}</b><i>${style}</i></span></span>`;
+  grid.append(a);
+}
+// Каждая превьюшка — живой экран 1120×780, ужатый под ширину карточки.
+const fit = () => {
+  for (const shot of document.querySelectorAll('.shot')) {
+    shot.firstElementChild.style.transform = `scale(${shot.clientWidth / 1120})`;
+  }
+};
+addEventListener('resize', fit, { passive: true });
+addEventListener('load', fit);
+fit();
+</script>
+</body></html>

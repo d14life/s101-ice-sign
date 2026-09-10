@@ -1,0 +1,133 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>42 · B2B-каталог оборудования — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#d8d6cc;--paper:#fbfaf4;--ink:#000;--yellow:#ffe600;--red:#e5231b;--grey:#6b6b64}
+.stage{background:var(--paper);color:var(--ink);font-family:"Consolas","Courier New",monospace;padding:0;
+  display:grid;grid-template-rows:auto auto auto 1fr auto;overflow:hidden}
+nav{display:flex;align-items:stretch;border-bottom:4px solid var(--ink)}
+nav .b{padding:11px 18px;border-right:2px solid var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+  display:flex;align-items:center}
+nav .b.logo{background:var(--ink);color:var(--yellow);font-weight:700;letter-spacing:.22em}
+nav .b.on{background:var(--yellow);font-weight:700}
+nav .b.r{margin-left:auto;border-right:0;border-left:2px solid var(--ink)}
+.head{padding:20px 26px 18px;border-bottom:4px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:46px;font-weight:700;line-height:.94;text-transform:uppercase;letter-spacing:-2px}
+h1 mark{background:var(--yellow);padding:0 6px}
+.head p{margin:11px 0 0;font-size:12px;max-width:520px;line-height:1.5;color:var(--grey)}
+.cnt{text-align:right;font-size:12px;line-height:1.7;text-transform:uppercase}
+.cnt b{display:block;font-size:38px;line-height:1;letter-spacing:-2px}
+.filters{display:flex;border-bottom:4px solid var(--ink)}
+.filters div{padding:9px 16px;border-right:2px solid var(--ink);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+.filters div.on{background:var(--ink);color:#fff}
+.filters div.x{background:var(--yellow);font-weight:700}
+.filters div:last-child{border-right:0;margin-left:auto;border-left:2px solid var(--ink)}
+.wrap{overflow:hidden;padding:0}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--ink);color:#fff;text-align:right;padding:7px 12px;font-size:10.5px;text-transform:uppercase;
+  letter-spacing:.09em;font-weight:400}
+th:first-child,th:nth-child(2){text-align:left}
+td{padding:8px 12px;border-bottom:2px solid var(--ink);text-align:right;vertical-align:top}
+td:first-child,td:nth-child(2){text-align:left}
+tr:nth-child(even) td{background:#f1efe6}
+.art{font-weight:700;letter-spacing:.04em}
+.nm b{font-weight:700;display:block;font-size:12.5px}
+.nm i{font-style:normal;color:var(--grey);font-size:10.5px;display:block;margin-top:2px}
+.st{display:inline-block;padding:2px 7px;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;
+  border:2px solid var(--ink)}
+.st.y{background:var(--yellow)}
+.st.n{background:#fff;color:var(--red);border-color:var(--red)}
+.st.k{background:var(--ink);color:#fff}
+.pr b{font-size:14.5px;font-weight:700;white-space:nowrap}
+.pr i{font-style:normal;display:block;font-size:10px;color:var(--grey);margin-top:2px;white-space:nowrap}
+.buy{border:2px solid var(--ink);background:var(--yellow);padding:5px 11px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;display:inline-block}
+.buy.off{background:#fff;color:var(--grey);border-color:var(--grey)}
+footer{border-top:4px solid var(--ink);padding:11px 26px 14px;display:flex;gap:24px;align-items:baseline;
+  font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--grey)}
+footer b{background:var(--yellow);color:var(--ink);padding:2px 7px;font-weight:700}
+</style></head><body data-screen="42">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="b logo">ТЕХБАЗА</span>
+    <span class="b on">Каталог</span><span class="b">Прайс XLS</span><span class="b">Отгрузка</span>
+    <span class="b">Договор</span><span class="b r">Вход для дилера</span>
+  </nav>
+  <div class="head">
+    <div>
+      <h1>Насосное<br><mark>оборудование</mark></h1>
+      <p>Оптовый каталог. Цена зависит от кратности упаковки и категории дилера — она пересчитывается прямо в таблице, а не присылается письмом через день.</p>
+    </div>
+    <div class="cnt">позиций в разделе<b>1 284</b>склад обновлён 09:40</div>
+  </div>
+  <div class="filters">
+    <div class="on" data-cat="all">Все</div><div data-cat="drenazh">Дренажные</div><div data-cat="fekal">Фекальные</div><div data-cat="komplekt">Комплекты</div><div data-cat="aksessuar">Комплектующие</div><div data-cat="nalichie">Только в наличии</div><div data-cat="all">Сброс</div>
+  </div>
+  <div class="wrap">
+    <table>
+      <tr><th>Артикул</th><th>Наименование</th><th>Подача</th><th>Напор</th><th>Склад</th><th>Кратность</th><th>Цена, ₽</th><th></th></tr>
+      <tr data-cat="drenazh nalichie">
+        <td class="art">НД-4021</td>
+        <td class="nm"><b>Дренажный НД 750 Вт</b><i>Корпус нержавейка · поплавок</i></td>
+        <td>13 м³/ч</td><td>8 м</td><td><span class="st y">148 шт</span></td><td>6 шт</td>
+        <td class="pr"><b>7 420</b><i>дилер −12 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+      <tr data-cat="drenazh nalichie">
+        <td class="art">НД-4090</td>
+        <td class="nm"><b>Дренажный НД 1100 Вт</b><i>Для грязной воды · зерно до 35 мм</i></td>
+        <td>18 м³/ч</td><td>11 м</td><td><span class="st y">62 шт</span></td><td>4 шт</td>
+        <td class="pr"><b>11 900</b><i>дилер −12 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+      <tr data-cat="drenazh">
+        <td class="art">НД-4115</td>
+        <td class="nm"><b>Дренажный НД 1500 Вт</b><i>Чугун · реле уровня</i></td>
+        <td>24 м³/ч</td><td>14 м</td><td><span class="st k">под заказ</span></td><td>2 шт</td>
+        <td class="pr"><b>18 350</b><i>срок 12 дней</i></td><td><span class="buy off">Запросить</span></td>
+      </tr>
+      <tr data-cat="fekal nalichie">
+        <td class="art">НФ-4210</td>
+        <td class="nm"><b>Фекальный НФ 1300 Вт</b><i>С режущим механизмом</i></td>
+        <td>21 м³/ч</td><td>13 м</td><td><span class="st y">37 шт</span></td><td>2 шт</td>
+        <td class="pr"><b>21 700</b><i>дилер −9 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+      <tr data-cat="drenazh">
+        <td class="art">НД-4318</td>
+        <td class="nm"><b>Дренажный НД 400 Вт</b><i>Бытовой · пластик</i></td>
+        <td>7 м³/ч</td><td>6 м</td><td><span class="st n">0 шт</span></td><td>12 шт</td>
+        <td class="pr"><b>4 180</b><i>ждём 22.09</i></td><td><span class="buy off">Уведомить</span></td>
+      </tr>
+      <tr data-cat="komplekt nalichie">
+        <td class="art">НД-4402</td>
+        <td class="nm"><b>Комплект НД + шланг 20 м</b><i>Готовый узел · хомуты в комплекте</i></td>
+        <td>13 м³/ч</td><td>8 м</td><td><span class="st y">24 компл.</span></td><td>1 компл.</td>
+        <td class="pr"><b>9 640</b><i>дилер −12 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+      <tr data-cat="drenazh nalichie">
+        <td class="art">НД-4507</td>
+        <td class="nm"><b>Дренажный НД 900 Вт</b><i>Нержавейка · верхний забор воды</i></td>
+        <td>15 м³/ч</td><td>9 м</td><td><span class="st y">91 шт</span></td><td>6 шт</td>
+        <td class="pr"><b>9 180</b><i>дилер −12 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+      <tr data-cat="drenazh">
+        <td class="art">НД-4611</td>
+        <td class="nm"><b>Дренажный НД 2200 Вт</b><i>Трёхфазный · для стройплощадки</i></td>
+        <td>36 м³/ч</td><td>18 м</td><td><span class="st k">под заказ</span></td><td>1 шт</td>
+        <td class="pr"><b>34 900</b><i>срок 18 дней</i></td><td><span class="buy off">Запросить</span></td>
+      </tr>
+      <tr data-cat="aksessuar nalichie">
+        <td class="art">НД-4720</td>
+        <td class="nm"><b>Поплавковый выключатель</b><i>Кабель 3 м · к любой модели</i></td>
+        <td>—</td><td>—</td><td><span class="st y">312 шт</span></td><td>20 шт</td>
+        <td class="pr"><b>860</b><i>дилер −15 %</i></td><td><span class="buy">В заявку</span></td>
+      </tr>
+    </table>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Остаток, кратность и дилерская цена — из 1С, в реальном времени</span>
+    <b>Стиль: брутализм · B2B-каталог</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

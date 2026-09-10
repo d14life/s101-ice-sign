@@ -1,0 +1,85 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>27 · Наработка и ТО — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#020806}
+.stage{background:radial-gradient(ellipse at 50% 55%,#0a2018,#020806 72%);color:#5affc8;
+  font-family:"Consolas","Segoe UI",monospace;padding:0;overflow:hidden}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,transparent 52%,#000000b3 100%)}
+svg{position:absolute;left:0;top:0;width:1120px;height:780px}
+.ln{fill:none;stroke:#5affc8;stroke-width:1.5;opacity:.85}
+.ln.dim{opacity:.3;stroke-width:1}
+.ln.hot{stroke:#ffcf5a}
+.ln.red{stroke:#ff6b5a}
+.tx{fill:#5affc8;font:12px Consolas,monospace;letter-spacing:1.5px}
+.tx.big{font-size:52px;letter-spacing:-1px}
+.tx.mid{font-size:22px;letter-spacing:1px}
+.tx.dim{opacity:.55;font-size:11px}
+.tx.hot{fill:#ffcf5a}
+.tx.red{fill:#ff6b5a}
+.hdr{position:absolute;left:44px;top:34px;font-size:12px;letter-spacing:4px}
+.hdr b{display:block;font-size:26px;letter-spacing:2px;margin-top:8px;font-weight:400}
+.corner{position:absolute;width:44px;height:44px;border:2px solid #5affc8;opacity:.65}
+.c1{left:24px;top:24px;border-right:0;border-bottom:0}
+.c2{right:24px;top:24px;border-left:0;border-bottom:0}
+.c3{left:24px;bottom:24px;border-right:0;border-top:0}
+.c4{right:24px;bottom:24px;border-left:0;border-top:0}
+.panelr{position:absolute;right:44px;top:34px;text-align:right;font-size:12px;letter-spacing:2px;line-height:2}
+.panelr b{color:#ffcf5a;font-weight:400}
+.strip{position:absolute;left:44px;right:44px;bottom:44px;display:flex;gap:0;border:1px solid #5affc866}
+.strip div{flex:1;padding:12px 16px;border-right:1px solid #5affc833}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font-size:10px;letter-spacing:2px;opacity:.6;margin-bottom:7px}
+.strip i{font-style:normal;font-size:21px;letter-spacing:1px}
+.strip .w i{color:#ffcf5a}.strip .a i{color:#ff6b5a}
+.blink{animation:bl 1.3s steps(1) infinite}
+@keyframes bl{50%{opacity:.35}}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+  <div class="hdr">НАРАБОТКА · ТО ПО СЧЁТЧИКУ<b>ЭО-2621 №1</b></div>
+  <div class="panelr">РЕЖИМ <b>АРЕНДА</b><br>ЗАКАЗЧИК <b>ООО «ЖИЛКАПИТАЛ»</b><br>ДО <b>14.09.2026</b><br>СМЕНА <b>1 · 8 Ч</b></div>
+  <svg viewBox="0 0 1120 780">
+    <!-- внешнее кольцо -->
+    <circle class="ln dim" cx="560" cy="392" r="252"/>
+    <circle class="ln" cx="560" cy="392" r="238" stroke-dasharray="3 9"/>
+    <!-- дуга наработки -->
+    <path class="ln" d="M560 190 A202 202 0 1 1 359 393" stroke-width="10" opacity=".18"/>
+    <path class="ln hot" d="M560 190 A202 202 0 0 1 730 495" stroke-width="10"/>
+    <text class="tx dim" x="560" y="316" text-anchor="middle">МОТОЧАСЫ ПО СЧЁТЧИКУ</text>
+    <text class="tx big" x="560" y="386" text-anchor="middle">1 292,0</text>
+    <text class="tx mid" x="560" y="424" text-anchor="middle">М/Ч</text>
+    <text class="tx hot" x="560" y="466" text-anchor="middle">ДО ТО-2 ОСТАЛОСЬ 41 М/Ч</text>
+    <!-- шкала слева -->
+    <g>
+      <line class="ln dim" x1="120" y1="230" x2="120" y2="560"/>
+      <line class="ln" x1="112" y1="230" x2="128" y2="230"/><text class="tx dim" x="140" y="234">1 333 · ТО-2</text>
+      <line class="ln" x1="112" y1="313" x2="128" y2="313"/><text class="tx dim" x="140" y="317">1 300</text>
+      <line class="ln hot" x1="106" y1="333" x2="134" y2="333"/><text class="tx hot" x="140" y="337">1 292 · СЕЙЧАС</text>
+      <line class="ln" x1="112" y1="396" x2="128" y2="396"/><text class="tx dim" x="140" y="400">1 250</text>
+      <line class="ln" x1="112" y1="479" x2="128" y2="479"/><text class="tx dim" x="140" y="483">1 200</text>
+      <line class="ln" x1="112" y1="560" x2="128" y2="560"/><text class="tx dim" x="140" y="564">1 150 · ТО-1 ПРОЙДЕНО</text>
+    </g>
+    <!-- шкала справа: расход -->
+    <g>
+      <text class="tx dim" x="1000" y="234" text-anchor="end">РАСХОД ЗА СМЕНУ</text>
+      <text class="tx mid" x="1000" y="268" text-anchor="end">56 Л</text>
+      <text class="tx dim" x="1000" y="316" text-anchor="end">НОРМА</text>
+      <text class="tx mid" x="1000" y="350" text-anchor="end">52 Л</text>
+      <text class="tx red" x="1000" y="392" text-anchor="end">ПРЕВЫШЕНИЕ 7,7 %</text>
+      <line class="ln red" x1="836" y1="410" x2="1000" y2="410"/>
+    </g>
+  </svg>
+  <div class="strip">
+    <div><b>СМЕН ЗА МЕСЯЦ</b><i>11</i></div>
+    <div><b>НАРАБОТКА ЗА МЕСЯЦ</b><i>88 М/Ч</i></div>
+    <div><b>ЗАГРУЗКА</b><i>33 %</i></div>
+    <div class="w"><b>ДО ТО</b><i class="blink">41 М/Ч</i></div>
+    <div class="a"><b>ПРОСТОЙ</b><i>19 ДН.</i></div>
+    <div><b>ВЫРУЧКА</b><i>58 000 ₽</i></div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

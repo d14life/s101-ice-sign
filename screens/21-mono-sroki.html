@@ -1,0 +1,70 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>21 · Сроки долга — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#fff}
+.stage{background:#fff;color:#111;font-family:"Inter","Helvetica Neue",Arial,sans-serif;padding:64px 72px;
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:0}
+h1{margin:0;font-size:15px;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
+.sub{margin:14px 0 46px;font-size:44px;font-weight:300;letter-spacing:-1.6px;line-height:1.1;max-width:660px}
+.sub b{font-weight:500}
+.buckets{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #111}
+.buckets>div{padding:26px 0 30px;border-right:1px solid #e2e2e2}
+.buckets>div:last-child{border-right:0}
+.buckets b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a8a8a;margin-bottom:16px}
+.buckets i{font-style:normal;font-size:38px;font-weight:300;letter-spacing:-1.6px;display:block}
+.buckets u{text-decoration:none;font-size:12px;color:#8a8a8a;display:block;margin-top:10px}
+.buckets .last i{font-weight:500}
+.spark{display:flex;align-items:flex-end;gap:3px;height:44px;margin-top:20px;padding-right:22px}
+.spark i{flex:1;background:#111;opacity:.16}
+.spark i.on{opacity:1}
+.rows{padding-top:44px;font-size:14px}
+.rw{display:grid;grid-template-columns:1fr 96px 152px 152px;gap:20px;padding:15px 0;border-bottom:1px solid #eee;align-items:center}
+.rw.h{border-bottom:1px solid #111;padding-bottom:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8a8a8a}
+.rw span:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums}
+.rw b{font-weight:500}
+.rw small{display:block;color:#8a8a8a;font-size:12px;margin-top:3px}
+.meter{height:3px;background:#eee;position:relative}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:#111}
+.meter i.late{background:#c8102e}
+.foot{padding-top:36px;display:flex;gap:44px;font-size:12px;color:#8a8a8a;border-top:1px solid #111;margin-top:auto}
+.foot b{color:#111;font-weight:500;display:block;margin-bottom:5px;letter-spacing:.02em}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <h1>Solutions 101 — Взаиморасчёты</h1>
+  <p class="sub">Сроки долга по <b>47 контрагентам</b> на 3 сентября 2026 года.</p>
+  <div>
+    <div class="buckets">
+      <div><b>до 30 дней</b><i>11 204 118 ₸</i><u>18 контрагентов</u>
+        <div class="spark"><i class="on" style="height:34%"></i><i class="on" style="height:52%"></i><i class="on" style="height:41%"></i><i class="on" style="height:66%"></i><i class="on" style="height:48%"></i><i style="height:22%"></i><i style="height:18%"></i></div></div>
+      <div><b>31–60 дней</b><i>9 900 000 ₸</i><u>12 контрагентов</u>
+        <div class="spark"><i style="height:24%"></i><i class="on" style="height:44%"></i><i class="on" style="height:61%"></i><i class="on" style="height:38%"></i><i style="height:20%"></i><i style="height:16%"></i><i style="height:12%"></i></div></div>
+      <div><b>61–90 дней</b><i>18 873 607 ₸</i><u>9 контрагентов</u>
+        <div class="spark"><i style="height:18%"></i><i style="height:26%"></i><i class="on" style="height:72%"></i><i class="on" style="height:88%"></i><i class="on" style="height:54%"></i><i style="height:22%"></i><i style="height:14%"></i></div></div>
+      <div class="last"><b>91 день и больше</b><i>8 400 000 ₸</i><u>8 контрагентов · требуют внимания</u>
+        <div class="spark"><i style="height:12%"></i><i style="height:16%"></i><i style="height:24%"></i><i class="on" style="height:46%"></i><i class="on" style="height:96%"></i><i class="on" style="height:78%"></i><i class="on" style="height:62%"></i></div></div>
+    </div>
+    <div class="rows">
+      <div class="rw h"><span>Контрагент</span><span>Срок</span><span>Долг, ₸</span><span>Доля портфеля</span></div>
+      <div class="rw"><span><b>Vertex Trading</b><small>ТОО «Тумар-Строй Павлодар» · 160940822684</small></span><span>91+</span><span>30 817 138,96</span>
+        <span><div class="meter"><i class="late" style="width:64%"></i></div></span></div>
+      <div class="rw"><span><b>ИП «Ускенбаев»</b><small>ТОО «Тумар Курылыс» · 200140488921</small></span><span>до 30</span><span>3 644 727,26</span>
+        <span><div class="meter"><i style="width:8%"></i></div></span></div>
+      <div class="rw"><span><b>Nova Group</b><small>ТОО «Тумар Курылыс» · 100440874076</small></span><span>31–60</span><span>3 513 552,65</span>
+        <span><div class="meter"><i style="width:7%"></i></div></span></div>
+      <div class="rw"><span><b>Vertex Logistics</b><small>ТОО «Тумар Курылыс» · 210240808655</small></span><span>61–90</span><span>3 137 141,22</span>
+        <span><div class="meter"><i style="width:6%"></i></div></span></div>
+      <div class="rw"><span><b>ТОО «Самал-Логистика Алматы»</b><small>ТОО «Тумар Курылыс» · 090540785044</small></span><span>до 30</span><span>2 911 493,71</span>
+        <span><div class="meter"><i style="width:6%"></i></div></span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <span><b>Свёртка</b>долг минус аванс, одна цифра вместо двух счетов</span>
+    <span><b>Счета учёта</b>1210 · 3310 · 3510 · 1710</span>
+    <span><b>Источник</b>остатки 1С на выбранную дату</span>
+    <span style="margin-left:auto"><b>Чистая позиция</b>−431 359 821,98 ₸</span>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

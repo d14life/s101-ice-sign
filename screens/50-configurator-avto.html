@@ -1,0 +1,140 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>50 · Конфигуратор автомобиля — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0b0c0e;--bg:#111316;--panel:#181b20;--ink:#e9ecf1;--dim:#7d8590;--cyan:#38c5d8;--line:#252a31;--green:#3fae72;--amber:#d8a13c}
+.stage{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+nav{display:flex;align-items:center;gap:26px;padding:16px 40px;border-bottom:1px solid var(--line)}
+.logo{font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-right:10px}
+.logo span{color:var(--cyan)}
+nav a{font-size:12.5px;color:var(--dim);text-decoration:none}
+nav a.on{color:var(--ink)}
+nav .r{margin-left:auto;display:flex;gap:14px;align-items:center;font-size:12.5px;color:var(--dim)}
+.tel{color:var(--ink);font-weight:600}
+.body{display:grid;grid-template-columns:1fr 336px;min-height:0;overflow:hidden}
+.left{padding:20px 30px 0 40px;display:grid;grid-template-rows:auto auto 1fr;min-height:0}
+h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-1px;line-height:1.1}
+h1 span{color:var(--dim);font-weight:300}
+.sub{font-size:12px;color:var(--dim);margin-top:7px}
+.car{margin:14px 0 4px;background:linear-gradient(180deg,#1b1f25,#12151a);border:1px solid var(--line);border-radius:6px;
+  padding:8px 12px;position:relative;overflow:hidden}
+.car::after{content:"";position:absolute;left:-30%;top:-60%;width:60%;height:220%;transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,#ffffff0a,transparent);pointer-events:none}
+.car svg{display:block;width:100%;height:126px}
+.swatches{display:flex;gap:7px;margin-top:10px;align-items:center}
+.swatches i{width:22px;height:22px;border-radius:50%;display:block;box-shadow:0 0 0 1px #ffffff1a}
+.swatches i.on{box-shadow:0 0 0 2px var(--cyan)}
+.swatches span{font-size:11.5px;color:var(--dim);margin-left:6px}
+.opts{overflow:hidden;padding-top:12px}
+.lab{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
+.grp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.opt{border:1px solid var(--line);border-radius:5px;padding:9px 11px;background:var(--panel)}
+.opt.on{border-color:var(--cyan);background:#12242a}
+.opt b{display:block;font-size:12.5px;font-weight:600}
+.opt i{font-style:normal;display:block;font-size:10.5px;color:var(--dim);margin-top:3px;line-height:1.4}
+.opt u{text-decoration:none;display:block;font-size:11.5px;margin-top:6px;color:var(--cyan);font-weight:600}
+.opt.on u{color:var(--cyan)}
+.opt.no{opacity:.42}
+.opt.no u{color:var(--dim)}
+aside{border-left:1px solid var(--line);padding:20px 40px 0 24px;display:grid;grid-template-rows:auto 1fr auto;min-height:0}
+.trim{display:flex;gap:6px;margin-bottom:11px}
+.trim span{flex:1;text-align:center;font-size:11.5px;padding:7px 0;border:1px solid var(--line);border-radius:4px;color:var(--dim)}
+.trim span.on{background:var(--cyan);color:#06272c;border-color:var(--cyan);font-weight:700}
+.sum{font-size:12.5px;overflow:hidden}
+.sr{display:flex;justify-content:space-between;gap:10px;padding:3.5px 0;border-bottom:1px solid var(--line);color:var(--dim)}
+.sr b{color:var(--ink);font-weight:600;white-space:nowrap}
+.sr.neg b{color:var(--green)}
+.tot{border-top:2px solid var(--cyan);margin-top:8px;padding-top:10px}
+.tot .l{font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.tot b{display:block;font-size:31px;font-weight:700;letter-spacing:-1.4px;line-height:1.1;margin-top:4px}
+.tot span{display:block;font-size:11.5px;color:var(--dim);margin-top:5px}
+.stock{margin-top:11px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);
+  border-radius:4px;padding:10px 12px;font-size:11.5px;color:var(--dim);line-height:1.5}
+.stock b{color:var(--green);display:block;font-weight:700;margin-bottom:3px}
+.stock.wait{border-left-color:var(--amber)}
+.stock.wait b{color:var(--amber)}
+.cta{margin-top:11px;background:var(--cyan);color:#06272c;text-align:center;border-radius:4px;padding:11px 0;
+  font-size:13px;font-weight:700}
+.cta2{margin-top:7px;border:1px solid var(--line);color:var(--ink);text-align:center;border-radius:4px;padding:10px 0;font-size:12.5px}
+footer{padding:13px 40px 17px;border-top:1px solid var(--line);display:flex;gap:26px;align-items:baseline;
+  font-size:11px;color:var(--dim)}
+footer b{color:var(--cyan);font-weight:700}
+.car img{display:block;width:100%;height:126px;object-fit:cover;border-radius:3px}
+</style></head><body data-screen="50">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="logo">Обо<span>рот</span></span>
+    <a href="#" class="on">Конфигуратор</a><a href="#">В наличии</a><a href="#">Trade-in</a><a href="#">Кредит</a><a href="#">Сервис</a>
+    <span class="r"><span>Салон на Южной</span><span class="tel">8 800 000-00-00</span></span>
+  </nav>
+  <div class="body">
+    <div class="left">
+      <div>
+        <h1>Кроссовер 2.0 <span>· полный привод</span></h1>
+        <div class="sub">Комплектация собирается здесь же: цена, срок и наличие пересчитываются на каждый выбор</div>
+      </div>
+      <div>
+        <div class="car">
+          <img src="img/50-car.jpg" alt="Кроссовер в выбранной комплектации, вид сбоку" loading="lazy">
+        </div>
+        <div class="swatches">
+          <i class="on" style="background:#2f6f7c"></i><i style="background:#c9ccd2"></i><i style="background:#1a1c20"></i>
+          <i style="background:#8c2f2f"></i><i style="background:#d8d3c4"></i>
+          <span>Цвет: изумрудный металлик · +64 000 ₽</span>
+        </div>
+      </div>
+      <div class="opts">
+        <div class="lab">Двигатель и привод</div>
+        <div class="grp">
+          <div class="opt"><b>1.6 · 123 л.с.</b><i>Передний привод · МКПП</i><u>базовая</u></div>
+          <div class="opt on"><b>2.0 · 150 л.с.</b><i>Полный привод · АКПП</i><u>+310 000 ₽</u></div>
+          <div class="opt no"><b>2.5 · 190 л.с.</b><i>Полный привод · АКПП</i><u>нет в этой комплектации</u></div>
+        </div>
+        <div class="lab">Пакеты опций</div>
+        <div class="grp">
+          <div class="opt on"><b>Зимний пакет</b><i>Подогрев руля, сидений, форсунок</i><u>+48 000 ₽</u></div>
+          <div class="opt on"><b>Мультимедиа 10"</b><i>Камеры кругового обзора</i><u>+92 000 ₽</u></div>
+          <div class="opt"><b>Панорамная крыша</b><i>С электрошторкой</i><u>+124 000 ₽</u></div>
+          <div class="opt"><b>Кожаный салон</b><i>Вентиляция передних сидений</i><u>+156 000 ₽</u></div>
+          <div class="opt on"><b>Помощь водителю</b><i>Адаптивный круиз, удержание в полосе</i><u>+87 000 ₽</u></div>
+          <div class="opt no"><b>Пневмоподвеска</b><i>Только для 2.5</i><u>недоступно</u></div>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div>
+        <div class="lab">Комплектация</div>
+        <div class="trim"><span>Base</span><span>Comfort</span><span class="on">Prestige</span><span>Max</span></div>
+      </div>
+      <div class="sum">
+        <div class="sr"><span>Кроссовер Prestige, 2.0</span><b>3 190 000 ₽</b></div>
+        <div class="sr"><span>Изумрудный металлик</span><b>64 000 ₽</b></div>
+        <div class="sr"><span>Зимний пакет</span><b>48 000 ₽</b></div>
+        <div class="sr"><span>Мультимедиа 10"</span><b>92 000 ₽</b></div>
+        <div class="sr"><span>Помощь водителю</span><b>87 000 ₽</b></div>
+        <div class="sr neg"><span>Trade-in, оценка авто</span><b>−410 000 ₽</b></div>
+        <div class="sr neg"><span>Скидка при кредите</span><b>−120 000 ₽</b></div>
+        <div class="tot">
+          <span class="l">Итого к оплате</span>
+          <b>2 951 000 ₽</b>
+          <span>или от 38 900 ₽ в месяц · первый взнос 20 %, 5 лет</span>
+        </div>
+      </div>
+      <div>
+        <div class="stock"><b>Есть в наличии — 2 машины</b>Такая сборка стоит в салоне на Южной. Забрать можно завтра после оформления.</div>
+        <div class="stock wait"><b>С панорамной крышей — под заказ</b>Срок поставки 9 недель, бронь по предоплате 50 000 ₽.</div>
+        <div class="cta">Забронировать эту сборку</div>
+        <div class="cta2">Сохранить конфигурацию и прислать на почту</div>
+      </div>
+    </aside>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Конфигуратор, склад салона, trade-in и кредитный расчёт — одна цена на экране</span>
+    <b>Стиль: технический тёмный · сайт автосалона</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

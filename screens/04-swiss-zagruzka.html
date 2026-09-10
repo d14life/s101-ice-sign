@@ -1,0 +1,57 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>04 · Загрузка парка — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#f4f4f2}
+.stage{background:#f4f4f2;color:#111;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  padding:56px 60px;display:grid;grid-template-rows:auto auto 1fr auto;gap:0}
+.rule{height:3px;background:#111}
+h1{margin:0;font-size:64px;font-weight:700;letter-spacing:-2.6px;line-height:.95;text-transform:uppercase}
+.head{display:grid;grid-template-columns:7fr 5fr;gap:40px;padding-bottom:26px}
+.head aside{font-size:13px;line-height:1.55;color:#111;padding-top:8px}
+.head aside b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#d0021b;margin-bottom:8px}
+.cols{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;padding:30px 0 20px}
+.cols>div{grid-column:span 3}
+.cols b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid #111;margin-bottom:12px}
+.cols i{font-style:normal;font-size:46px;font-weight:700;letter-spacing:-2px;display:block;line-height:1}
+.cols u{text-decoration:none;font-size:12px;color:#555;display:block;margin-top:8px}
+.red{color:#d0021b}
+.bars{display:grid;grid-template-columns:200px 1fr 64px;gap:0 22px;align-content:start;
+  border-top:1px solid #111;padding-top:16px;font-size:13px}
+.bars>*{padding:9px 0;border-bottom:1px solid #d5d5d2}
+.bars .n{font-weight:700;letter-spacing:-.2px}
+.bar{position:relative;height:13px;margin-top:5px;background:#e2e2df}
+.bar span{position:absolute;left:0;top:0;bottom:0;background:#111}
+.bar.hot span{background:#d0021b}
+.pct{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.foot{display:flex;gap:34px;align-items:baseline;padding-top:22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.foot b{color:#d0021b}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="rule"></div>
+  <div class="head" style="padding-top:26px">
+    <h1>Загрузка<br>парка</h1>
+    <aside><b>Сентябрь 2026 · 12 единиц</b>Загрузка считается по сменам, а не по календарным дням. Единица, простоявшая месяц, попадает в отчёт как ноль, а не как «в наличии».</aside>
+  </div>
+  <div class="rule"></div>
+  <div class="cols">
+    <div><b>Единиц в парке</b><i>12</i><u>из них 6 в аренде</u></div>
+    <div><b>Загрузка</b><i>23 %</i><u>по сменам за месяц</u></div>
+    <div><b>Выручка</b><i>198 800</i><u>рублей за месяц</u></div>
+    <div><b>Простой</b><i class="red">278</i><u>дней суммарно</u></div>
+  </div>
+  <div class="bars">
+    <span class="n">ЭО-2621 №1</span><div><div class="bar"><span style="width:33%"></span></div></div><span class="pct">33 %</span>
+    <span class="n">Фронтальный 3 т</span><div><div class="bar"><span style="width:66%"></span></div></div><span class="pct">66 %</span>
+    <span class="n">Самосвал 20 м³ №2</span><div><div class="bar"><span style="width:37%"></span></div></div><span class="pct">37 %</span>
+    <span class="n">Мини-погрузчик</span><div><div class="bar"><span style="width:23%"></span></div></div><span class="pct">23 %</span>
+    <span class="n">Компрессор 5 м³/мин</span><div><div class="bar"><span style="width:66%"></span></div></div><span class="pct">66 %</span>
+    <span class="n">Ямобур на базе ГАЗ</span><div><div class="bar"><span style="width:66%"></span></div></div><span class="pct">66 %</span>
+    <span class="n">Автокран 25 т</span><div><div class="bar hot"><span style="width:2%"></span></div></div><span class="pct">0 %</span>
+    <span class="n">Бульдозер 14 т</span><div><div class="bar hot"><span style="width:2%"></span></div></div><span class="pct">0 %</span>
+  </div>
+  <div class="foot"><span>Solutions&nbsp;101</span><span>Учёт наработки — м/ч, ТО по счётчику</span><b>Четыре единицы не отработали ни смены</b></div>
+</div>
+<script src="_stage.js"></script></body></html>

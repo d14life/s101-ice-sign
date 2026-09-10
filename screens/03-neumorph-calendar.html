@@ -1,0 +1,77 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>03 · Платёжный календарь — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e6e9ef;--bg:#e6e9ef;--up:8px 8px 18px #c3c8d2,-8px -8px 18px #ffffff;--in:inset 5px 5px 11px #c8cdd7,inset -5px -5px 11px #ffffff}
+.stage{background:var(--bg);font-family:"Segoe UI",Arial,sans-serif;color:#4a5268;padding:34px;
+  display:grid;grid-template-rows:auto auto 1fr;gap:26px}
+h1{margin:0;font-size:34px;font-weight:600;color:#3a4257;letter-spacing:-.6px}
+.head{display:flex;align-items:center;gap:18px}
+.head p{margin:0;font-size:14px;color:#8b93a7}
+.pill{margin-left:auto;display:flex;gap:10px}
+.soft{border-radius:18px;background:var(--bg);box-shadow:var(--up)}
+.pill span{padding:11px 20px;font-size:14px;border-radius:14px;background:var(--bg);box-shadow:var(--up)}
+.pill .sel{box-shadow:var(--in);color:#2f6bff;font-weight:600}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kpi div{border-radius:20px;padding:20px 22px;background:var(--bg);box-shadow:var(--up)}
+.kpi b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#98a0b4;margin-bottom:10px}
+.kpi i{font-style:normal;font-size:27px;font-weight:600;color:#3a4257}
+.kpi .hot i{color:#e0574f}.kpi .ok i{color:#2f9e6b}
+.cal{border-radius:22px;padding:24px;background:var(--bg);box-shadow:var(--up);display:grid;
+  grid-template-columns:repeat(7,1fr);grid-template-rows:auto repeat(4,1fr);gap:12px}
+.dow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#a2a9bb;text-align:center;padding-bottom:2px}
+.day{border-radius:14px;padding:10px 8px 12px;min-height:86px;background:var(--bg);box-shadow:var(--up);
+  display:flex;flex-direction:column;gap:6px}
+.day u{text-decoration:none;font-size:13px;color:#98a0b4}
+.day s{text-decoration:none;font-size:15px;font-weight:600;color:#3a4257}
+.day.pay{box-shadow:var(--in)}
+.day.pay s{color:#e0574f}
+.day.get s{color:#2f9e6b}
+.dot{width:7px;height:7px;border-radius:50%;background:#2f6bff;box-shadow:0 0 0 3px #2f6bff22}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="head">
+    <div><h1>Платёжный календарь</h1><p>Сентябрь 2026 · что горит на этой неделе</p></div>
+    <div class="pill"><span class="sel">Месяц</span><span>Неделя</span><span>Список</span></div>
+  </div>
+  <div class="kpi">
+    <div><b>К оплате за месяц</b><i>479 737 547 ₸</i></div>
+    <div class="ok"><b>Ожидаем поступлений</b><i>48 377 725 ₸</i></div>
+    <div class="hot"><b>Просрочено</b><i>41 счёт</i></div>
+    <div><b>Кассовый разрыв</b><i>17 сентября</i></div>
+  </div>
+  <div class="cal">
+    <span class="dow">пн</span><span class="dow">вт</span><span class="dow">ср</span><span class="dow">чт</span><span class="dow">пт</span><span class="dow">сб</span><span class="dow">вс</span>
+    <div class="day"><u>7</u></div>
+    <div class="day get"><u>8</u><s>+3 644 727</s><i class="dot"></i></div>
+    <div class="day"><u>9</u></div>
+    <div class="day pay"><u>10</u><s>−12 900 000</s></div>
+    <div class="day"><u>11</u></div>
+    <div class="day"><u>12</u></div>
+    <div class="day"><u>13</u></div>
+    <div class="day"><u>14</u></div>
+    <div class="day get"><u>15</u><s>+3 513 552</s><i class="dot"></i></div>
+    <div class="day pay"><u>16</u><s>−28 400 000</s></div>
+    <div class="day pay"><u>17</u><s>−61 200 000</s></div>
+    <div class="day"><u>18</u></div>
+    <div class="day"><u>19</u></div>
+    <div class="day"><u>20</u></div>
+    <div class="day"><u>21</u></div>
+    <div class="day"><u>22</u></div>
+    <div class="day get"><u>23</u><s>+3 137 141</s></div>
+    <div class="day"><u>24</u></div>
+    <div class="day pay"><u>25</u><s>−9 800 000</s></div>
+    <div class="day"><u>26</u></div>
+    <div class="day"><u>27</u></div>
+    <div class="day pay"><u>28</u><s>−4 300 000</s></div>
+    <div class="day"><u>29</u></div>
+    <div class="day get"><u>30</u><s>+2 911 493</s><i class="dot"></i></div>
+    <div class="day"><u>1 окт</u></div>
+    <div class="day"><u>2</u></div>
+    <div class="day"><u>3</u></div>
+    <div class="day"><u>4</u></div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

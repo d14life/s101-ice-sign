@@ -1,0 +1,59 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>05 · Приёмка на склад — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#050b05}
+.stage{background:#050b05;color:#4fe04f;font-family:"Consolas","Courier New",monospace;font-size:16px;
+  padding:22px 26px;line-height:1.5;text-shadow:0 0 6px #2fbf2f80}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(#0000 0 2px,#00000059 2px 4px)}
+.bar{display:flex;gap:0;border:1px solid #2a7a2a;margin-bottom:14px}
+.bar span{padding:5px 14px;border-right:1px solid #2a7a2a}
+.bar span:last-child{border-right:0;margin-left:auto;color:#050b05;background:#4fe04f;text-shadow:none;font-weight:700}
+pre{margin:0;white-space:pre;font:inherit}
+.dim{color:#2c8a2c;text-shadow:none}
+.hi{color:#c8ff5a;text-shadow:0 0 8px #a8e03080}
+.err{color:#ff5a4f;text-shadow:0 0 8px #ff5a4f80}
+.box{border:1px solid #2a7a2a;padding:12px 16px;margin-bottom:14px}
+.box h2{margin:0 0 8px;font-size:16px;font-weight:400;letter-spacing:2px;color:#c8ff5a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cursor{display:inline-block;width:9px;height:17px;background:#4fe04f;vertical-align:-3px;animation:b 1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+.field{border:1px solid #4fe04f;padding:8px 12px;margin-top:6px}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="bar"><span>WMS 2.4</span><span>ПРИЁМКА</span><span class="dim">СМЕНА 1 · ТКАЧЕНКО О.М.</span><span>03.09.2026</span></div>
+<pre class="dim">┌──────────────────────────────────────────────────────────────────────────────────────────┐</pre>
+  <div class="box">
+    <h2>ПОСТУПЛЕНИЕ ПН-4471 · ТОО «МОЛОЧНЫЙ ДВОР»</h2>
+<pre>  ТОВАР                          ПАРТИЯ    ГОДЕН ДО    ЗАЯВЛЕНО   ПРИНЯТО   ЯЧЕЙКА
+  <span class="dim">─────────────────────────────  ────────  ──────────  ─────────  ────────  ─────────</span>
+  Молоко «Заречье» 3,2% 900 мл   П-3101    <span class="err">06.09.2026</span>        480       480   A-05-3-04
+  Печенье «Сдобное Утро»         П-3141    01.11.2026        240       240   B-01-1-02
+  Вода минеральная «Ключ»        П-3134    24.07.2027        900       900   B-02-1-03
+  Сыр «Полесье» 45%              П-3150    12.09.2026        <span class="hi">120</span>       <span class="err">108</span>   <span class="err">— РАСХОЖДЕНИЕ</span></pre>
+  </div>
+  <div class="grid">
+    <div class="box">
+      <h2>КОНТРОЛЬ СРОКА</h2>
+<pre>  <span class="err">!</span> П-3101 · срок 3 дн.  → отбор <span class="hi">FEFO</span> первым
+  <span class="err">!</span> П-3150 · срок 9 дн.  → пометить к уценке
+  <span class="dim">·</span> П-3141 · срок 59 дн. → в общий запас
+  <span class="dim">·</span> П-3134 · срок 325 дн.→ в общий запас</pre>
+    </div>
+    <div class="box">
+      <h2>РАСХОЖДЕНИЕ · АКТ ТОРГ-2</h2>
+<pre>  Сыр «Полесье» 45%
+  заявлено <span class="hi">120</span> · принято <span class="err">108</span> · недостача <span class="err">12</span>
+  <span class="dim">акт уйдёт в офис вместе с приёмкой</span></pre>
+    </div>
+  </div>
+  <div class="box" style="margin-bottom:0">
+    <h2>СКАНИРОВАНИЕ ЯЧЕЙКИ</h2>
+    <div class="field">&gt; A-05-3-04<span class="cursor"></span></div>
+  </div>
+<pre class="dim" style="margin-top:12px">  F1 СПРАВКА   F4 РАСХОЖДЕНИЕ   F8 ЗАВЕРШИТЬ ПРИЁМКУ   ESC ПРЕРВАТЬ</pre>
+</div>
+<script src="_stage.js"></script></body></html>

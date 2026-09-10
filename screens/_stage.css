@@ -1,0 +1,11 @@
+/* Общая сцена всех тридцати экранов: артборд 1120×780, вписанный в окно.
+   Один и тот же файл читается и отдельной страницей, и внутри iframe галереи. */
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--void,#0b0b0e)}
+.stage{position:absolute;left:50%;top:50%;width:1120px;height:780px;overflow:hidden;
+  transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center}
+.back{position:fixed;left:14px;top:14px;z-index:99;padding:7px 14px;border-radius:6px;
+  font:500 13px/1 "Segoe UI",Arial,sans-serif;background:#0b1020;color:#c8f31e;
+  text-decoration:none;opacity:.25;transition:opacity .2s}
+.back:hover{opacity:1}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

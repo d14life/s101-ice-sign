@@ -1,0 +1,134 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>38 · Сменное задание и OEE — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#1a1c1e;--conc:#d3d1cc;--dark:#1f2225;--ink:#16181a;--dim:#6d7176;--orange:#f2600c;--green:#3f8f5b;--red:#cc2f26}
+.stage{background:var(--conc);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto auto 1fr auto;overflow:hidden;position:relative}
+.hazard{height:11px;background:repeating-linear-gradient(-45deg,var(--orange) 0 15px,var(--ink) 15px 30px)}
+.top{background:var(--dark);color:#eceae6;padding:19px 40px 20px;display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:29px;font-weight:700;letter-spacing:-.9px;text-transform:uppercase}
+h1 span{color:var(--orange)}
+.sub{font-size:11.5px;color:#9aa0a6;margin-top:7px;letter-spacing:.06em}
+.oee{text-align:right;display:flex;gap:26px;align-items:flex-end}
+.oee div b{display:block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9aa0a6;margin-bottom:4px}
+.oee div i{font-style:normal;font-size:24px;font-weight:700;letter-spacing:-.8px;line-height:1}
+.oee div.main i{font-size:48px;color:var(--orange);letter-spacing:-2.4px}
+.lines{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:3px solid var(--ink)}
+.ln{padding:15px 20px 16px;border-right:1px solid #b9b6b0;background:#dedbd6}
+.ln:last-child{border-right:0}
+.ln.stop{background:#f4ded9}
+.ln .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.ln .hd b{font-size:13px;font-weight:700;letter-spacing:.04em}
+.pill{font-size:9px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;border-radius:2px;color:#fff;background:var(--green)}
+.pill.s{background:var(--red)}
+.pill.w{background:var(--orange)}
+.pf{display:flex;align-items:baseline;gap:7px}
+.pf b{font-size:27px;font-weight:700;letter-spacing:-1.2px;line-height:1}
+.pf u{text-decoration:none;font-size:12px;color:var(--dim)}
+.tr{height:7px;background:#c2bfb9;margin-top:9px;position:relative;overflow:hidden}
+.tr span{position:absolute;left:0;top:0;bottom:0;background:var(--ink)}
+.ln.stop .tr span{background:var(--red)}
+.ln .note{font-size:10.5px;color:var(--dim);margin-top:8px;line-height:1.4}
+.ln.stop .note{color:#963029;font-weight:600}
+.mid{display:grid;grid-template-columns:1fr 350px;min-height:0;overflow:hidden}
+.left{padding:17px 40px 0;border-right:3px solid var(--ink)}
+.lab{font-size:9.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:right;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);font-weight:700;
+  padding-bottom:6px;border-bottom:2px solid var(--ink)}
+th:first-child{text-align:left}
+td{padding:7px 0;border-bottom:1px solid #bfbcb6;text-align:right;font-variant-numeric:tabular-nums}
+td:first-child{text-align:left}
+td b{font-weight:700}
+td i{font-style:normal;display:block;font-size:10px;color:var(--dim);margin-top:1px}
+.ok{color:var(--green);font-weight:700}
+.bad{color:var(--red);font-weight:700}
+.right{padding:17px 30px 0 24px}
+.par{display:grid;grid-template-columns:1fr;gap:8px}
+.prow{display:grid;grid-template-columns:118px 1fr 42px;gap:9px;align-items:center;font-size:11.5px}
+.pbar{height:16px;background:#c2bfb9}
+.pbar span{display:block;height:100%;background:var(--orange)}
+.prow:nth-child(n+4) .pbar span{background:#8d8a84}
+.prow u{text-decoration:none;text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.stopbox{margin-top:16px;background:var(--ink);color:#eceae6;padding:13px 15px}
+.stopbox b{display:block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.stopbox p{margin:0;font-size:11.5px;line-height:1.55;color:#c6c3bd}
+.foot{background:var(--dark);color:#9aa0a6;padding:12px 40px 13px;display:flex;gap:26px;align-items:baseline;
+  font-size:10.5px;letter-spacing:.06em}
+.foot b{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+</style></head><body data-screen="38">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="hazard"></div>
+  <div class="top">
+    <div>
+      <h1>Сменное задание <span>· OEE</span></h1>
+      <div class="sub">Цех розлива «Мера» · смена 2 (16:00–00:00) · мастер Логачёв П.Р. · обновлено 21:14</div>
+    </div>
+    <div class="oee">
+      <div><b>Доступность</b><i>88 %</i></div>
+      <div><b>Производит.</b><i>81 %</i></div>
+      <div><b>Качество</b><i>99 %</i></div>
+      <div class="main"><b>OEE смены</b><i>71 %</i></div>
+    </div>
+  </div>
+  <div class="lines">
+    <div class="ln">
+      <div class="hd"><b>ЛИНИЯ 1 · ПЭТ 0,5</b><span class="pill">работа</span></div>
+      <div class="pf"><b>18 420</b><u>/ 22 000 бут.</u></div>
+      <div class="tr"><span style="width:84%"></span></div>
+      <div class="note">Такт 61 бут/мин · норма 64</div>
+    </div>
+    <div class="ln">
+      <div class="hd"><b>ЛИНИЯ 2 · ПЭТ 1,5</b><span class="pill">работа</span></div>
+      <div class="pf"><b>11 900</b><u>/ 13 000 бут.</u></div>
+      <div class="tr"><span style="width:92%"></span></div>
+      <div class="note">Такт 39 бут/мин · норма 40</div>
+    </div>
+    <div class="ln stop">
+      <div class="hd"><b>ЛИНИЯ 3 · СТЕКЛО</b><span class="pill s">простой</span></div>
+      <div class="pf"><b>4 260</b><u>/ 9 000 бут.</u></div>
+      <div class="tr"><span style="width:47%"></span></div>
+      <div class="note">Укупор — обрыв ленты, 47 мин</div>
+    </div>
+    <div class="ln">
+      <div class="hd"><b>ЛИНИЯ 4 · КЕГИ</b><span class="pill w">переналадка</span></div>
+      <div class="pf"><b>612</b><u>/ 800 кег</u></div>
+      <div class="tr"><span style="width:77%"></span></div>
+      <div class="note">Смена сорта · осталось 12 мин</div>
+    </div>
+  </div>
+  <div class="mid">
+    <div class="left">
+      <div class="lab">Задание на смену</div>
+      <table>
+        <tr><th>Номенклатура · заказ</th><th>План</th><th>Факт</th><th>Брак</th><th>Готовность</th></tr>
+        <tr><td><b>Вода питьевая 0,5 л</b><i>Заказ 22-4417 · отгрузка 09.09</i></td><td>12 000</td><td>12 000</td><td>38</td><td class="ok">100 %</td></tr>
+        <tr><td><b>Вода газированная 0,5 л</b><i>Заказ 22-4418 · отгрузка 09.09</i></td><td>10 000</td><td>6 420</td><td>21</td><td>64 %</td></tr>
+        <tr><td><b>Морс ягодный 1,5 л</b><i>Заказ 22-4402 · отгрузка 10.09</i></td><td>13 000</td><td>11 900</td><td>64</td><td>92 %</td></tr>
+        <tr><td><b>Лимонад стекло 0,33 л</b><i>Заказ 22-4421 · отгрузка 11.09</i></td><td>9 000</td><td>4 260</td><td>112</td><td class="bad">47 %</td></tr>
+        <tr><td><b>Квас, кеги 30 л</b><i>Заказ 22-4390 · самовывоз</i></td><td>800</td><td>612</td><td>4</td><td>77 %</td></tr>
+      </table>
+    </div>
+    <div class="right">
+      <div class="lab">Простои за смену · 214 мин</div>
+      <div class="par">
+        <div class="prow"><span>Обрыв ленты укупора</span><div class="pbar"><span style="width:100%"></span></div><u>47</u></div>
+        <div class="prow"><span>Переналадка сорта</span><div class="pbar"><span style="width:91%"></span></div><u>43</u></div>
+        <div class="prow"><span>Нет преформы</span><div class="pbar"><span style="width:79%"></span></div><u>37</u></div>
+        <div class="prow"><span>Мойка по регламенту</span><div class="pbar"><span style="width:64%"></span></div><u>30</u></div>
+        <div class="prow"><span>Настройка этикетировщика</span><div class="pbar"><span style="width:60%"></span></div><u>28</u></div>
+        <div class="prow"><span>Прочее</span><div class="pbar"><span style="width:62%"></span></div><u>29</u></div>
+      </div>
+      <div class="stopbox"><b>Причина простоя фиксируется оператором</b><p>Кнопка на посту, а не отчёт в конце смены. Поэтому 214 минут разложены по причинам, а не списаны в «прочее» — и видно, что укупор третьей линии встал четвёртый раз за неделю.</p></div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>SOLUTIONS&nbsp;101</span>
+    <span>План, факт, брак и простой — с поста, а не из тетради мастера</span>
+    <b>Линия 3 не выполнит задание: нужен ремонт укупора</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

@@ -1,0 +1,163 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>53 · Система: торговая компания — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#dcdfea;--bg:#f4f5f9;--panel:#fff;--ink:#171a26;--dim:#6b7085;--indigo:#4a55d6;--line:#e4e6f0;
+  --green:#1e8a5c;--amber:#c07f14;--red:#cc3f34;--nav:#1a1f33}
+.stage{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-columns:206px 1fr;overflow:hidden}
+nav{background:var(--nav);color:#c9cfe2;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.brand{padding:15px 16px 13px;border-bottom:1px solid #262d45;display:flex;align-items:center;gap:9px}
+.brand i{width:26px;height:26px;border-radius:7px;background:var(--indigo);display:flex;align-items:center;
+  justify-content:center;color:#fff;font-size:12px;font-weight:800;font-style:normal;flex:none}
+.brand b{font-size:13px;font-weight:600;color:#fff;display:block;line-height:1.2}
+.brand span{font-size:10px;color:#7b83a0}
+.mods{padding:9px 8px;overflow:hidden}
+.mg{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#5f6884;padding:9px 8px 5px}
+.m{display:flex;align-items:center;gap:9px;padding:6.5px 8px;border-radius:6px;font-size:12.5px}
+.m.on{background:var(--indigo);color:#fff;font-weight:600}
+.m i{width:15px;height:15px;flex:none;opacity:.85}
+.m i svg{display:block;width:15px;height:15px}
+.m u{text-decoration:none;margin-left:auto;font-size:10.5px;background:#2b3350;color:#aab2cc;border-radius:9px;padding:1px 7px}
+.m.on u{background:#ffffff2e;color:#fff}
+.m u.hot{background:#4a2226;color:#f0a49c}
+.who{padding:11px 14px;border-top:1px solid #262d45;display:flex;align-items:center;gap:9px;font-size:11.5px}
+.av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#8f7ae8,#4a55d6);flex:none}
+.who b{display:block;color:#fff;font-weight:600;font-size:12px}
+.who span{color:#7b83a0;font-size:10.5px}
+main{display:grid;grid-template-rows:auto auto 1fr;min-height:0;overflow:hidden}
+.bar{background:var(--panel);border-bottom:1px solid var(--line);padding:11px 22px;display:flex;align-items:center;gap:16px}
+.crumb{font-size:11.5px;color:var(--dim)}
+.crumb b{color:var(--ink);font-weight:600}
+.search{margin-left:auto;border:1px solid var(--line);border-radius:6px;padding:6px 13px;font-size:12px;
+  color:#9aa0b4;width:240px;background:#fafbfd}
+.bar .act{font-size:12px;color:var(--dim)}
+.bar .new{background:var(--indigo);color:#fff;border-radius:6px;padding:7px 15px;font-size:12.5px;font-weight:600}
+.head{padding:16px 22px 0;display:flex;justify-content:space-between;align-items:flex-end}
+h1{margin:0;font-size:23px;font-weight:600;letter-spacing:-.6px}
+.head .p{font-size:12px;color:var(--dim);margin-top:4px}
+.period{display:flex;gap:5px}
+.period span{font-size:11.5px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--dim)}
+.period span.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+.body{padding:14px 22px 0;display:grid;grid-template-columns:1fr 268px;gap:16px;min-height:0;overflow:hidden}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi div{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+.kpi b{display:block;font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--dim)}
+.kpi i{font-style:normal;display:block;font-size:23px;font-weight:600;letter-spacing:-.9px;margin-top:4px;line-height:1}
+.kpi u{text-decoration:none;font-size:10.5px;display:block;margin-top:4px}
+.kpi u.g{color:var(--green)}
+.kpi u.r{color:var(--red)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:13px 15px;margin-bottom:14px}
+.card h2{margin:0 0 11px;font-size:13px;font-weight:600;display:flex;align-items:baseline;gap:9px}
+.card h2 span{font-size:11px;color:var(--dim);font-weight:400}
+.card h2 a{margin-left:auto;font-size:11.5px;color:var(--indigo);text-decoration:none}
+.chart{display:grid;grid-template-columns:repeat(12,1fr);gap:7px;align-items:end;height:96px}
+.chart div{background:#dfe3f5;border-radius:3px 3px 0 0;position:relative}
+.chart div.on{background:var(--indigo)}
+.chart div span{position:absolute;left:0;right:0;bottom:-16px;text-align:center;font-size:9.5px;color:var(--dim)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:right;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);
+  padding-bottom:7px;border-bottom:1px solid var(--line)}
+th:first-child{text-align:left}
+td{padding:7px 0;border-bottom:1px solid #f0f2f7;text-align:right;font-variant-numeric:tabular-nums}
+td:first-child{text-align:left}
+td b{font-weight:600}
+td i{font-style:normal;display:block;font-size:10.5px;color:var(--dim);margin-top:1px}
+.st{font-size:10.5px;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.st.w{background:#fdf3e0;color:var(--amber)}
+.st.r{background:#fbe9e7;color:var(--red)}
+.st.g{background:#e6f4ee;color:var(--green)}
+aside .card{margin-bottom:12px}
+.task{display:grid;grid-template-columns:8px 1fr;gap:9px;padding:8px 0;border-bottom:1px solid #f0f2f7;font-size:12px}
+.task:last-child{border-bottom:0}
+.dot{width:8px;height:8px;border-radius:50%;margin-top:4px}
+.task b{display:block;font-weight:600;font-size:12px}
+.task span{display:block;font-size:10.5px;color:var(--dim);margin-top:2px;line-height:1.4}
+.foot{grid-column:1/-1;padding:10px 22px 14px;font-size:11px;color:var(--dim);display:flex;gap:24px;align-items:baseline;
+  border-top:1px solid var(--line);background:var(--panel)}
+.foot b{color:var(--indigo);font-weight:600}
+</style></head><body data-screen="53">
+<a class="back" href="../otrasli.html">← Двадцать четыре экрана</a>
+<div class="stage">
+  <nav>
+    <div class="brand"><i>С</i><span><b>Сквозняк</b><span>ООО «Ветротех», 3 юрлица</span></span></div>
+    <div class="mods">
+      <div class="mg">Операции</div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg></i>Закупки<u>14</u></div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M3 8l9 5 9-5"/></svg></i>Склад<u>62</u></div>
+      <div class="m on"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 15v-4M12 15V8M16 15v-6"/></svg></i>Продажи<u>38</u></div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg></i>Финансы<u class="hot">6</u></div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6Z"/><path d="M15 3v4h4"/></svg></i>Документы<u>23</u></div>
+      <div class="mg">Данные</div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg></i>Справочники</div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></i>Аналитика</div>
+      <div class="m"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></i>Настройки</div>
+    </div>
+    <div class="who"><span class="av"></span><span><b>Руководитель</b><span>Полный доступ</span></span></div>
+  </nav>
+  <main>
+    <div class="bar">
+      <span class="crumb">Продажи › <b>Панель руководителя</b></span>
+      <span class="search">Поиск по документам и контрагентам</span>
+      <span class="act">Уведомления · 9</span>
+      <span class="new">Новый заказ</span>
+    </div>
+    <div class="head">
+      <div><h1>Продажи за сентябрь</h1><div class="p">Одна база на три юрлица · данные обновлены минуту назад</div></div>
+      <div class="period"><span>Неделя</span><span class="on">Месяц</span><span>Квартал</span><span>Год</span></div>
+    </div>
+    <div class="body">
+      <div>
+        <div class="kpi">
+          <div><b>Выручка</b><i>18,4 млн ₽</i><u class="g">+12 % к августу</u></div>
+          <div><b>Заказов</b><i>412</i><u class="g">+38 к августу</u></div>
+          <div><b>Средний чек</b><i>44 700 ₽</i><u>−3 % к августу</u></div>
+          <div><b>Просрочка оплат</b><i>2,1 млн ₽</i><u class="r">6 контрагентов</u></div>
+        </div>
+        <div class="card">
+          <h2>Отгрузки по неделям<span>млн ₽, отгружено и оплачено</span><a href="#">Выгрузить</a></h2>
+          <div class="chart">
+            <div style="height:44%"><span>1</span></div><div style="height:58%"><span>2</span></div>
+            <div style="height:51%"><span>3</span></div><div style="height:69%"><span>4</span></div>
+            <div style="height:62%"><span>5</span></div><div style="height:78%"><span>6</span></div>
+            <div style="height:71%"><span>7</span></div><div style="height:88%"><span>8</span></div>
+            <div style="height:74%"><span>9</span></div><div class="on" style="height:96%"><span>10</span></div>
+            <div class="on" style="height:83%"><span>11</span></div><div style="height:34%"><span>12</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0">
+          <h2>Требует решения<span>заказы, которые встали</span><a href="#">Все 38</a></h2>
+          <table>
+            <tr><th>Заказ и контрагент</th><th>Сумма</th><th>Отгрузка</th><th>Состояние</th></tr>
+            <tr><td><b>З-22418 · ООО «Гранит»</b><i>Менеджер Волкова Е.С.</i></td><td>1 240 000</td><td>10.09</td><td><span class="st r">нет оплаты 12 дней</span></td></tr>
+            <tr><td><b>З-22431 · ИП Ковригин А.С.</b><i>Менеджер Ткач О.В.</i></td><td>318 000</td><td>11.09</td><td><span class="st w">не хватает 2 позиций</span></td></tr>
+            <tr><td><b>З-22447 · АО «Мера»</b><i>Менеджер Панкратов Д.И.</i></td><td>904 000</td><td>12.09</td><td><span class="st w">ждёт согласования цены</span></td></tr>
+            <tr><td><b>З-22452 · ООО «Полдень»</b><i>Менеджер Волкова Е.С.</i></td><td>176 400</td><td>12.09</td><td><span class="st g">готов к отгрузке</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <aside>
+        <div class="card">
+          <h2>Мои согласования<span>6</span></h2>
+          <div class="task"><span class="dot" style="background:var(--red)"></span><span><b>Скидка 18 % сверх матрицы</b><span>З-22447 · АО «Мера» · Панкратов Д.И.</span></span></div>
+          <div class="task"><span class="dot" style="background:var(--amber)"></span><span><b>Отсрочка платежа 45 дней</b><span>ООО «Гранит» · лимит превышен</span></span></div>
+          <div class="task"><span class="dot" style="background:var(--amber)"></span><span><b>Закупка сверх бюджета</b><span>Заявка 4417 · 1,8 млн ₽</span></span></div>
+          <div class="task"><span class="dot" style="background:var(--indigo)"></span><span><b>Списание брака</b><span>Склад №2 · 112 позиций</span></span></div>
+        </div>
+        <div class="card" style="margin-bottom:0">
+          <h2>Что стоит на складе</h2>
+          <div class="task"><span class="dot" style="background:var(--red)"></span><span><b>Неликвид больше 180 дней</b><span>4,7 млн ₽ · 312 позиций</span></span></div>
+          <div class="task"><span class="dot" style="background:var(--amber)"></span><span><b>Ниже минимального остатка</b><span>48 позиций · заявка не создана</span></span></div>
+          <div class="task"><span class="dot" style="background:var(--green)"></span><span><b>Инвентаризация закрыта</b><span>Склад №1 · расхождений нет</span></span></div>
+        </div>
+      </aside>
+      <div class="foot">
+        <span>Solutions&nbsp;101</span>
+        <span>Система — это восемь разделов на одной базе: закупка, склад, продажа, деньги и документы считают одни и те же цифры</span>
+        <b>Категория: система</b>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

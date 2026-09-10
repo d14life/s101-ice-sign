@@ -1,0 +1,170 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>43 · Витрина ювелирного — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#150c10;--velvet:#2a141c;--gold:#d9b56a;--cream:#f3e8d4;--dim:#a08d78}
+.stage{background:radial-gradient(ellipse at 50% -10%,#4a2430 0%,#2a141c 46%,#170c11 100%);
+  color:var(--cream);font-family:Georgia,"Times New Roman",serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden;position:relative}
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(38deg,#ffffff06 0 2px,transparent 2px 5px)}
+.goldline{height:3px;background:linear-gradient(90deg,#6b5220,#f6e2a8 18%,#c9a24a 42%,#f6e2a8 62%,#6b5220);
+  box-shadow:0 1px 4px #00000080}
+nav{display:flex;align-items:center;gap:30px;padding:17px 44px;position:relative;z-index:2;
+  background:linear-gradient(180deg,#00000038,transparent)}
+.logo{font-size:19px;letter-spacing:.3em;text-transform:uppercase;
+  background:linear-gradient(180deg,#fdf2cf,#d9b56a 46%,#8f6a24);-webkit-background-clip:text;background-clip:text;
+  color:transparent;text-shadow:0 1px 0 #00000060;margin-right:16px}
+nav a{font-size:12.5px;color:#c9b598;text-decoration:none;letter-spacing:.06em}
+nav a.on{color:var(--cream);border-bottom:1px solid var(--gold);padding-bottom:2px}
+nav .r{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:12px;color:#c9b598}
+.bag{border:1px solid #7d6234;border-radius:3px;padding:6px 13px;color:var(--gold);
+  background:linear-gradient(180deg,#3a2028,#22121a);box-shadow:inset 0 1px 0 #ffffff1f,0 2px 5px #00000060}
+.hero{padding:16px 44px 20px;display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:2}
+h1{margin:0;font-size:38px;font-weight:400;letter-spacing:.4px;line-height:1.08;
+  text-shadow:0 1px 0 #00000090,0 0 22px #d9b56a2e}
+h1 em{font-style:italic;background:linear-gradient(180deg,#fdf2cf,#d9b56a 52%,#a37c2c);-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.hero p{margin:9px 0 0;font-size:12.5px;color:var(--dim);max-width:440px;line-height:1.6;font-family:"Segoe UI",Arial,sans-serif}
+.sel{display:flex;gap:9px;font-family:"Segoe UI",Arial,sans-serif}
+.sel span{font-size:11.5px;padding:7px 14px;border:1px solid #6b5427;border-radius:3px;color:#c9b598;
+  background:linear-gradient(180deg,#38202a,#24131b);box-shadow:inset 0 1px 0 #ffffff14}
+.sel span.on{color:#2a1a08;border-color:#e6cf95;
+  background:linear-gradient(180deg,#fbeec4,#d9b56a 52%,#b08a35);box-shadow:inset 0 1px 0 #fffbe8,0 2px 6px #00000070;font-weight:600}
+.tray{padding:0 44px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;position:relative;z-index:2;
+  align-content:start;overflow:hidden}
+.item{border:1px solid #5d4720;border-radius:5px;overflow:hidden;
+  background:linear-gradient(180deg,#3b222b,#25141c);
+  box-shadow:inset 0 1px 0 #ffffff1a,0 6px 18px #00000073}
+.pad{height:108px;position:relative;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at 50% 34%,#6a3444 0%,#3a1c26 62%,#2a141c 100%);
+  border-bottom:1px solid #5d4720;box-shadow:inset 0 -12px 24px #00000059}
+.pad::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(126deg,#ffffff1f 0 22%,transparent 42%);pointer-events:none}
+.pad svg{width:74px;height:74px}
+.badge{position:absolute;left:9px;top:9px;font-family:"Segoe UI",Arial,sans-serif;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:#2a1a08;padding:3px 8px;border-radius:2px;
+  background:linear-gradient(180deg,#fbeec4,#d9b56a 54%,#b08a35);box-shadow:0 1px 3px #00000070}
+.info{padding:9px 13px 11px}
+.info h3{margin:0;font-size:14px;font-weight:400;letter-spacing:.2px}
+.info .m{font-size:10px;color:var(--dim);margin-top:3px;font-family:"Segoe UI",Arial,sans-serif;line-height:1.45}
+.price{margin-top:8px;display:flex;align-items:baseline;justify-content:space-between}
+.price b{font-size:17px;letter-spacing:-.2px;
+  background:linear-gradient(180deg,#fdf2cf,#d9b56a 56%,#a37c2c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price s{font-size:11px;color:#7d6b58;font-family:"Segoe UI",Arial,sans-serif}
+.sizes{display:flex;gap:4px;margin-top:7px;font-family:"Segoe UI",Arial,sans-serif}
+.sizes i{font-style:normal;font-size:9.5px;color:#c9b598;border:1px solid #5d4720;border-radius:2px;padding:2px 6px}
+.sizes i.on{color:#2a1a08;background:linear-gradient(180deg,#fbeec4,#d9b56a);border-color:#e6cf95}
+.sizes i.no{color:#6a5a48;text-decoration:line-through}
+footer{padding:14px 44px 18px;display:flex;gap:26px;align-items:baseline;font-family:"Segoe UI",Arial,sans-serif;
+  font-size:11px;color:var(--dim);position:relative;z-index:2;background:linear-gradient(0deg,#00000045,transparent)}
+footer b{color:var(--gold)}
+.pad img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+</style></head><body data-screen="43">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div>
+    <div class="goldline"></div>
+    <nav>
+      <span class="logo">Аурум</span>
+      <a href="#" class="on">Витрина</a><a href="#">Кольца</a><a href="#">Серьги</a><a href="#">Подвески</a><a href="#">Помолвка</a>
+      <span class="r"><span>Размер кольца</span><span>Рассрочка</span><span class="bag">Шкатулка · 2</span></span>
+    </nav>
+  </div>
+  <div class="hero">
+    <div>
+      <h1>Витрина <em>сентября</em></h1>
+      <p>Каждая позиция — конкретное изделие с биркой: вес металла, характеристика вставки и наличие в салоне обновляются из товарного учёта.</p>
+    </div>
+    <div class="sel"><span class="on" data-cat="all">Все</span><span data-cat="beloe">Белое золото</span><span data-cat="zheltoe">Жёлтое</span><span data-cat="rozovoe">Розовое</span><span data-cat="do200">До 200 000 ₽</span></div>
+  </div>
+  <div class="tray">
+    <div class="item" data-cat="beloe do200">
+      <div class="pad"><span class="badge">Хит</span>
+        <img src="img/43-iris.jpg" alt="Кольцо «Ирис» из белого золота" loading="lazy"></div>
+      <div class="info">
+        <h3>Кольцо «Ирис»</h3>
+        <div class="m">Белое золото 585 · 2,41 г<br>бриллиант 0,25 ct · 3/4 А</div>
+        <div class="price"><b>148 900 ₽</b><s>176 000 ₽</s></div>
+        <div class="sizes"><i>15,5</i><i class="on">16</i><i>16,5</i><i class="no">17</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="zheltoe">
+      <div class="pad">
+        <img src="img/43-triada.jpg" alt="Кольцо «Триада» из жёлтого золота" loading="lazy"></div>
+      <div class="info">
+        <h3>Кольцо «Триада»</h3>
+        <div class="m">Жёлтое золото 585 · 3,08 г<br>три бриллианта · 0,33 ct</div>
+        <div class="price"><b>201 400 ₽</b></div>
+        <div class="sizes"><i class="no">15,5</i><i>16</i><i class="on">17</i><i>17,5</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="beloe">
+      <div class="pad"><span class="badge">Помолвка</span>
+        <img src="img/43-solo.jpg" alt="Кольцо «Соло» с бриллиантом" loading="lazy"></div>
+      <div class="info">
+        <h3>Кольцо «Соло»</h3>
+        <div class="m">Белое золото 750 · 2,86 г<br>бриллиант 0,50 ct · 2/3 А</div>
+        <div class="price"><b>389 000 ₽</b></div>
+        <div class="sizes"><i>16</i><i class="on">16,5</i><i>17</i><i>18</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="rozovoe do200">
+      <div class="pad">
+        <img src="img/43-pletenie.jpg" alt="Кольцо «Плетение» из розового золота" loading="lazy"></div>
+      <div class="info">
+        <h3>Кольцо «Плетение»</h3>
+        <div class="m">Розовое золото 585 · 4,12 г<br>без вставки · полировка</div>
+        <div class="price"><b>74 600 ₽</b><s>82 000 ₽</s></div>
+        <div class="sizes"><i>16</i><i>17</i><i class="on">18</i><i>19</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="beloe do200">
+      <div class="pad">
+        <img src="img/43-sergi.jpg" alt="Серьги «Капля»" loading="lazy"></div>
+      <div class="info">
+        <h3>Серьги «Капля»</h3>
+        <div class="m">Белое золото 585 · 3,64 г<br>два бриллианта · 0,36 ct</div>
+        <div class="price"><b>167 200 ₽</b></div>
+        <div class="sizes"><i class="on">английский замок</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="zheltoe do200">
+      <div class="pad"><span class="badge">Новинка</span>
+        <img src="img/43-podveska.jpg" alt="Подвеска «Медальон» на цепочке" loading="lazy"></div>
+      <div class="info">
+        <h3>Подвеска «Медальон»</h3>
+        <div class="m">Жёлтое золото 585 · 2,18 г<br>цепь якорная 45 см в комплекте</div>
+        <div class="price"><b>58 400 ₽</b><s>66 000 ₽</s></div>
+        <div class="sizes"><i>40 см</i><i class="on">45 см</i><i class="no">50 см</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="rozovoe do200">
+      <div class="pad">
+        <img src="img/43-braslet.jpg" alt="Браслет «Звенья»" loading="lazy"></div>
+      <div class="info">
+        <h3>Браслет «Звенья»</h3>
+        <div class="m">Розовое золото 585 · 6,42 г<br>замок с предохранителем</div>
+        <div class="price"><b>112 800 ₽</b></div>
+        <div class="sizes"><i>17 см</i><i class="on">18 см</i><i>19 см</i></div>
+      </div>
+    </div>
+    <div class="item" data-cat="zheltoe beloe do200">
+      <div class="pad"><span class="badge">Пара</span>
+        <img src="img/43-obruch.jpg" alt="Обручальные кольца, пара" loading="lazy"></div>
+      <div class="info">
+        <h3>Обручальные кольца</h3>
+        <div class="m">Жёлтое и белое золото 585<br>4,90 г пара · матовая грань</div>
+        <div class="price"><b>96 300 ₽</b></div>
+        <div class="sizes"><i>16 / 19</i><i class="on">17 / 20</i><i>18 / 21</i></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Бирка, вес, вставка и остаток по салонам — одна карточка изделия</span>
+    <b>Стиль: скевоморфизм · витрина магазина</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

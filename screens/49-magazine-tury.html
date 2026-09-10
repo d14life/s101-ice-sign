@@ -1,0 +1,105 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>49 · Подборка туров — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#efece5;--paper:#fbf9f5;--ink:#171614;--dim:#7d786e;--rust:#b4552d;--sea:#2f6b78;--line:#e2ded4}
+.stage{background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+nav{display:flex;align-items:center;gap:26px;padding:16px 46px;border-bottom:1px solid var(--line)}
+.logo{font-size:14px;letter-spacing:.36em;text-transform:uppercase;margin-right:14px}
+nav a{font-size:11.5px;color:var(--dim);text-decoration:none;font-family:"Segoe UI",Arial,sans-serif;
+  letter-spacing:.09em;text-transform:uppercase}
+nav a.on{color:var(--ink)}
+nav .r{margin-left:auto;font-family:"Segoe UI",Arial,sans-serif;font-size:11.5px;color:var(--dim);display:flex;gap:16px;align-items:center}
+.pick{border:1px solid var(--ink);border-radius:2px;padding:7px 15px;color:var(--ink);letter-spacing:.06em}
+.mast{padding:22px 46px 18px;display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:end;
+  border-bottom:2px solid var(--ink)}
+h1{margin:0;font-size:56px;font-weight:400;line-height:.94;letter-spacing:-1.8px}
+h1 em{font-style:italic;color:var(--rust)}
+.mast p{margin:12px 0 0;font-size:12.5px;color:var(--dim);line-height:1.6;font-family:"Segoe UI",Arial,sans-serif;max-width:430px}
+.issue{font-family:"Segoe UI",Arial,sans-serif;font-size:11px;color:var(--dim);line-height:1.9;text-align:right;
+  letter-spacing:.08em;text-transform:uppercase}
+.issue b{display:block;font-family:Georgia,serif;font-size:15px;color:var(--ink);letter-spacing:0;text-transform:none}
+.feed{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:0;min-height:0;overflow:hidden}
+.t{padding:18px 26px 0;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.t:first-child{padding-left:46px}
+.t:last-child{border-right:0;padding-right:46px}
+.pic{border-radius:2px;position:relative;overflow:hidden;margin-bottom:13px}
+.pic svg{display:block;width:100%}
+.kick{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--paper);font-family:"Segoe UI",Arial,sans-serif;
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px}
+.kick.r{background:var(--rust)}
+.t h2{margin:0;font-size:24px;font-weight:400;line-height:1.1;letter-spacing:-.6px}
+.t:not(:first-child) h2{font-size:19px}
+.t .lede{font-size:12px;color:var(--dim);margin-top:9px;line-height:1.6;font-family:"Segoe UI",Arial,sans-serif}
+.rule{height:1px;background:var(--line);margin:13px 0 11px}
+.fx{display:flex;gap:20px;font-family:"Segoe UI",Arial,sans-serif;font-size:10.5px;color:var(--dim);
+  letter-spacing:.08em;text-transform:uppercase}
+.fx b{display:block;font-family:Georgia,serif;font-size:16px;color:var(--ink);letter-spacing:0;text-transform:none;margin-bottom:2px}
+.pr{margin-top:auto;padding-top:13px;display:flex;align-items:flex-end;justify-content:space-between;
+  border-top:2px solid var(--ink)}
+.pr .v b{display:block;font-size:24px;letter-spacing:-.8px;line-height:1}
+.pr .v span{font-family:"Segoe UI",Arial,sans-serif;font-size:10.5px;color:var(--dim);display:block;margin-top:3px}
+.pr .go{font-family:"Segoe UI",Arial,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid var(--rust);color:var(--rust);padding-bottom:2px}
+.left{font-family:"Segoe UI",Arial,sans-serif;font-size:10.5px;color:var(--rust);margin-top:8px}
+footer{display:flex;gap:26px;align-items:baseline;padding:14px 46px 18px;border-top:1px solid var(--line);
+  font-family:"Segoe UI",Arial,sans-serif;font-size:11px;color:var(--dim);margin-top:16px}
+footer b{color:var(--rust);font-weight:600}
+.pic img{display:block;width:100%;object-fit:cover;aspect-ratio:300/132}
+.t:first-child .pic img{aspect-ratio:420/168}
+</style></head><body data-screen="49">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="logo">Меридиан</span>
+    <a href="#" class="on">Подборки</a><a href="#">Направления</a><a href="#">Сезон</a><a href="#">Визы</a><a href="#">Журнал</a>
+    <span class="r"><span>Вылет из Москвы</span><span>Сентябрь — ноябрь</span><span class="pick">Подобрать тур</span></span>
+  </nav>
+  <div class="mast">
+    <div>
+      <h1>Куда ехать,<br>когда <em>кончилось лето</em></h1>
+      <p>Двадцать восемь направлений с вылетом до конца ноября. Цена и места пересчитываются от подтверждённой брони отеля и блока мест на рейсе — не от прайса месячной давности.</p>
+    </div>
+    <div class="issue">выпуск 09 · сентябрь 2026<b>28 направлений в подборке</b>обновлено сегодня в 08:40</div>
+  </div>
+  <div class="feed">
+    <div class="t">
+      <div class="pic"><img src="img/49-kappadokia.jpg" alt="Воздушные шары над Каппадокией" loading="lazy">
+        <span class="kick r">Главное направление</span></div>
+      <h2>Каппадокия и побережье, 9 ночей</h2>
+      <div class="lede">Перелёт, две гостиницы, переезд между ними и утренний полёт на шаре — одним пакетом. Группа до шестнадцати человек, русскоговорящий гид на весь маршрут.</div>
+      <div class="rule"></div>
+      <div class="fx"><span><b>9 ночей</b>длительность</span><span><b>3 ★★★</b>отели</span><span><b>16 чел.</b>группа</span></div>
+      <div class="pr"><span class="v"><b>142 400 ₽</b><span>на двоих, всё включено</span></span><span class="go">Смотреть даты</span></div>
+      <div class="left">Осталось 4 места на вылет 24 сентября</div>
+    </div>
+    <div class="t">
+      <div class="pic"><img src="img/49-gruzia.jpg" alt="Горная долина в Грузии" loading="lazy">
+        <span class="kick">Горы</span></div>
+      <h2>Грузия: Тбилиси и Казбеги</h2>
+      <div class="lede">Пять ночей в старом городе, два дня в горах и дегустация в Кахетии. Виза не нужна, перелёт три часа.</div>
+      <div class="rule"></div>
+      <div class="fx"><span><b>7 ночей</b>длительность</span><span><b>4 ★★★★</b>отель</span></div>
+      <div class="pr"><span class="v"><b>96 800 ₽</b><span>на двоих, завтраки</span></span><span class="go">Даты</span></div>
+      <div class="left">Осталось 9 мест</div>
+    </div>
+    <div class="t">
+      <div class="pic"><img src="img/49-marokko.jpg" alt="Песчаные дюны в Марокко" loading="lazy">
+        <span class="kick">Пустыня</span></div>
+      <h2>Марокко: Фес, Мерзуга, Марракеш</h2>
+      <div class="lede">Ночь в пустыне под тентом, три медины и переезды на минивэне. Выезд фиксированной группой раз в две недели.</div>
+      <div class="rule"></div>
+      <div class="fx"><span><b>10 ночей</b>длительность</span><span><b>12 чел.</b>группа</span></div>
+      <div class="pr"><span class="v"><b>218 600 ₽</b><span>на двоих, полупансион</span></span><span class="go">Даты</span></div>
+      <div class="left">Ближайший выезд 11 октября</div>
+    </div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Цена собирается из блока мест, брони отеля и курса — а не правится в тексте вручную</span>
+    <b>Стиль: журнальный · туристический сайт</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

@@ -1,0 +1,82 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>23 · Печать накладной — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#3a3d42}
+.stage{background:linear-gradient(#4a4e55,#2b2e33);font-family:"Courier New",monospace;color:#1a1a1a;
+  display:grid;place-items:center;padding:0}
+.slot{position:absolute;left:50%;top:0;width:520px;height:26px;margin-left:-260px;background:#16181c;
+  border-radius:0 0 8px 8px;box-shadow:inset 0 -6px 12px #000000a6,0 3px 8px #0006}
+.paper{width:460px;max-height:720px;background:#fdfcf7;padding:26px 30px 34px;font-size:13px;line-height:1.55;
+  box-shadow:0 24px 50px #00000073,0 0 0 1px #00000014;position:relative;top:14px;
+  -webkit-mask-image:linear-gradient(#000 96%,transparent 96%),
+    radial-gradient(circle at 6px 0,transparent 5px,#000 5px);
+  mask-image:linear-gradient(#000 96%,transparent 96%);
+  background-image:repeating-linear-gradient(90deg,#00000005 0 2px,transparent 2px 4px)}
+.paper:after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:#fdfcf7;
+  -webkit-mask-image:repeating-linear-gradient(90deg,#000 0 8px,transparent 8px 16px);
+  mask-image:repeating-linear-gradient(90deg,#000 0 8px,transparent 8px 16px)}
+.c{text-align:center}
+.b{font-weight:700}
+h1{margin:0;font-size:19px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.sep{border-top:1px dashed #999;margin:11px 0}
+.sep.d{border-top:2px solid #1a1a1a}
+.kv{display:flex;justify-content:space-between;gap:12px}
+.kv span:last-child{text-align:right}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+td{padding:3px 0;vertical-align:top}
+td.n{text-align:right;white-space:nowrap}
+.item td:first-child{padding-right:8px}
+.tot{display:flex;justify-content:space-between;font-size:17px;font-weight:700;margin-top:4px}
+.bc{margin:14px 0 6px;height:52px;display:flex;gap:2px;align-items:stretch;justify-content:center}
+.bc i{background:#1a1a1a}
+.small{font-size:11px;color:#555;line-height:1.5}
+.stampp{position:absolute;right:22px;bottom:64px;transform:rotate(-11deg);border:3px solid #2f6fbf;color:#2f6fbf;
+  padding:5px 12px;font-size:13px;font-weight:700;letter-spacing:2px;opacity:.75}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="slot"></div>
+  <div class="paper">
+    <div class="c"><h1>Накладная</h1>
+      <div style="font-size:12px;margin-top:4px">SOLUTIONS 101 · АРЕНДА СПЕЦТЕХНИКИ</div>
+      <div style="font-size:11px;color:#555">Демо-город, ул. Центральная, 1 · 8 800 000-00-00</div></div>
+    <div class="sep d"></div>
+    <div class="kv"><span>Документ</span><span class="b">№ 1301</span></div>
+    <div class="kv"><span>Дата</span><span class="b">16.08.2026 14:22</span></div>
+    <div class="kv"><span>Плательщик</span><span class="b">ООО «Гранит»</span></div>
+    <div class="kv"><span>Договор</span><span>№ 1 от 12.01.2024</span></div>
+    <div class="kv"><span>Кассир</span><span>Ткаченко О. М.</span></div>
+    <div class="sep"></div>
+    <table>
+      <tr class="item"><td colspan="2">Аренда фронт. погрузчика 3 т</td></tr>
+      <tr class="item"><td>&nbsp;&nbsp;8 смен × 16 000,00</td><td class="n">128 000,00</td></tr>
+      <tr class="item"><td colspan="2" style="padding-top:6px">Доставка на объект и обратно</td></tr>
+      <tr class="item"><td>&nbsp;&nbsp;2 рейса × 7 000,00</td><td class="n">14 000,00</td></tr>
+      <tr class="item"><td colspan="2" style="padding-top:6px">Топливо по норме расхода</td></tr>
+      <tr class="item"><td>&nbsp;&nbsp;320 л × 60,00</td><td class="n">19 200,00</td></tr>
+      <tr class="item"><td colspan="2" style="padding-top:6px">Скидка постоянного клиента</td></tr>
+      <tr class="item"><td>&nbsp;&nbsp;−8 %</td><td class="n">−12 400,00</td></tr>
+    </table>
+    <div class="sep"></div>
+    <div class="kv"><span>Позиций</span><span>4</span></div>
+    <div class="kv"><span>Наработка по счётчику</span><span>64 м/ч</span></div>
+    <div class="sep d"></div>
+    <div class="tot"><span>ИТОГО</span><span>148 800,00 ₽</span></div>
+    <div class="kv" style="margin-top:5px"><span>НДС не облагается</span><span>—</span></div>
+    <div class="sep"></div>
+    <div class="bc">
+      <i style="width:3px"></i><i style="width:1px"></i><i style="width:5px"></i><i style="width:2px"></i><i style="width:1px"></i>
+      <i style="width:4px"></i><i style="width:1px"></i><i style="width:2px"></i><i style="width:6px"></i><i style="width:1px"></i>
+      <i style="width:3px"></i><i style="width:4px"></i><i style="width:1px"></i><i style="width:2px"></i><i style="width:5px"></i>
+      <i style="width:1px"></i><i style="width:3px"></i><i style="width:2px"></i><i style="width:4px"></i><i style="width:1px"></i>
+      <i style="width:2px"></i><i style="width:6px"></i><i style="width:1px"></i><i style="width:3px"></i><i style="width:2px"></i>
+    </div>
+    <div class="c" style="font-size:11px;letter-spacing:3px">1301 160940 822684</div>
+    <div class="sep"></div>
+    <p class="small c" style="margin:0">Договор, акт и счёт напечатаны из тех же цифр, по которым<br>считается загрузка парка и окупаемость единицы.<br>Демо-данные. Реальных контрагентов на чеке нет.</p>
+    <div class="stampp">ОПЛАЧЕНО</div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

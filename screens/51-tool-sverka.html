@@ -1,0 +1,128 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>51 · Инструмент: сверка выгрузок — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#b9bec7;--desk:#cfd4dc;--win:#fbfcfd;--ink:#1c2230;--dim:#6d7686;--blue:#2f6fed;--line:#dfe3ea;
+  --red:#d0453a;--green:#1e8a5c;--amber:#c07f14}
+.stage{background:linear-gradient(160deg,#d7dbe3,#c3c9d3);color:var(--ink);
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;display:flex;align-items:center;justify-content:center}
+.win{width:940px;background:var(--win);border-radius:9px;border:1px solid #aeb5c1;
+  box-shadow:0 22px 60px #1c223052,0 2px 6px #1c223026;overflow:hidden;display:flex;flex-direction:column}
+.bar{height:36px;background:linear-gradient(180deg,#f2f4f8,#e6e9ef);border-bottom:1px solid #d2d7e0;
+  display:flex;align-items:center;padding:0 12px;gap:8px;flex:none}
+.dots{display:flex;gap:6px}
+.dots i{width:11px;height:11px;border-radius:50%;display:block}
+.bar b{font-size:12.5px;font-weight:600;margin-left:6px}
+.bar span{font-size:11.5px;color:var(--dim)}
+.bar .x{margin-left:auto;color:#9aa2b1;font-size:14px}
+.body{padding:20px 22px 0}
+h1{margin:0;font-size:21px;font-weight:600;letter-spacing:-.4px}
+.lead{font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.5;max-width:640px}
+.drops{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+.drop{border:1.5px dashed #b8c0cd;border-radius:7px;padding:11px 13px;background:#f5f7fa;
+  display:grid;grid-template-columns:32px 1fr auto;gap:11px;align-items:center}
+.drop.ok{border-style:solid;border-color:#bcd0f5;background:#f1f6ff}
+.fic{width:32px;height:38px;border-radius:3px;background:#fff;border:1px solid #c8d0dd;position:relative}
+.fic::after{content:"";position:absolute;right:0;top:0;border-width:0 9px 9px 0;border-style:solid;
+  border-color:#c8d0dd transparent}
+.fic b{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:7.5px;font-weight:700;color:var(--blue)}
+.drop .n{font-size:13px;font-weight:600;display:block}
+.drop .m{font-size:11px;color:var(--dim);margin-top:2px;display:block}
+.drop .r{font-size:11px;color:var(--blue)}
+.opts{display:flex;gap:22px;align-items:center;margin-top:14px;padding:11px 13px;background:#f5f7fa;
+  border:1px solid var(--line);border-radius:7px;font-size:12px}
+.opts b{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:5px}
+.sel{border:1px solid #c8d0dd;background:#fff;border-radius:5px;padding:5px 10px;font-size:12px}
+.chk{display:flex;gap:12px}
+.chk span{display:flex;align-items:center;gap:6px}
+.chk i{width:13px;height:13px;border-radius:3px;border:1px solid #b0b9c8;background:#fff;display:block;position:relative}
+.chk span.on i{background:var(--blue);border-color:var(--blue)}
+.chk span.on i::after{content:"";position:absolute;left:4px;top:1px;width:3px;height:6.5px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+.run{margin-left:auto;background:var(--blue);color:#fff;border-radius:6px;padding:9px 20px;font-size:13px;font-weight:600}
+.res{margin-top:15px;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.rhead{display:flex;align-items:center;gap:16px;padding:9px 13px;background:#f5f7fa;border-bottom:1px solid var(--line);font-size:12px}
+.rhead b{font-weight:600}
+.pill{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;opacity:.55}
+.pill.on{opacity:1;box-shadow:0 0 0 1.5px currentColor}
+.pills{display:flex;gap:8px}
+.pill.r{background:#fbe9e7;color:var(--red)}
+.pill.a{background:#fdf3e0;color:var(--amber)}
+.pill.g{background:#e6f4ee;color:var(--green)}
+.rhead .dl{margin-left:auto;color:var(--blue);font-size:12px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:right;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
+  padding:7px 13px;border-bottom:1px solid var(--line);background:#fafbfd}
+th:first-child,th:nth-child(2){text-align:left}
+td{padding:6.5px 13px;border-bottom:1px solid #eef1f5;text-align:right;font-variant-numeric:tabular-nums}
+td:first-child,td:nth-child(2){text-align:left}
+td b{font-weight:600}
+.art{font-family:Consolas,monospace;font-size:11.5px;color:var(--dim)}
+.was{color:var(--dim)}
+.now{font-weight:600}
+.up{color:var(--red)}
+.down{color:var(--green)}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.tag.d{background:#fbe9e7;color:var(--red)}
+.tag.n{background:#eef2fb;color:#3b5aa8}
+.tag.p{background:#fdf3e0;color:var(--amber)}
+.foot{display:flex;gap:20px;align-items:baseline;padding:12px 22px 15px;font-size:11px;color:var(--dim)}
+.foot b{color:var(--blue);font-weight:600}
+</style></head><body data-screen="51">
+<a class="back" href="../otrasli.html">← Двадцать четыре экрана</a>
+<div class="stage">
+  <div class="win">
+    <div class="bar">
+      <span class="dots"><i style="background:#e05c53"></i><i style="background:#e3b341"></i><i style="background:#4aa96c"></i></span>
+      <b>Сверка выгрузок</b><span>— прайс поставщика и номенклатура 1С</span><span class="x">✕</span>
+    </div>
+    <div class="body">
+      <h1>Что разошлось между двумя файлами</h1>
+      <div class="lead">Инструмент делает одну вещь: берёт два файла, сопоставляет их по ключу и показывает, где расходятся цены и что пропало. Ни базы, ни входа, ни внедрения — открыл, сверил, выгрузил результат.</div>
+      <div class="drops">
+        <div class="drop ok">
+          <span class="fic"><b>XLSX</b></span>
+          <span><span class="n">nomenklatura-1c.xlsx</span><span class="m">Выгрузка из 1С · 2 418 строк · сегодня в 09:12</span></span>
+          <span class="r">заменить</span>
+        </div>
+        <div class="drop ok">
+          <span class="fic"><b>CSV</b></span>
+          <span><span class="n">postavshchik-sentyabr.csv</span><span class="m">Прайс поставщика · 2 371 строка · сегодня в 09:14</span></span>
+          <span class="r">заменить</span>
+        </div>
+      </div>
+      <div class="opts">
+        <span><b>Ключ сопоставления</b><span class="sel">Артикул ▾</span></span>
+        <span><b>Что сравнивать</b>
+          <span class="chk">
+            <span class="on"><i></i>цену</span><span class="on"><i></i>наличие</span><span><i></i>название</span><span><i></i>кратность</span>
+          </span>
+        </span>
+        <span class="run">Сверить</span>
+      </div>
+      <div class="res">
+        <div class="rhead">
+          <b>87 расхождений</b>
+          <span class="pills"><span class="pill r" data-cat="cena">41 цена выросла</span><span class="pill a" data-cat="netu">29 нет у поставщика</span><span class="pill g" data-cat="novaya">17 новых позиций</span></span>
+          <span class="dl">Скачать XLSX</span>
+        </div>
+        <table>
+          <tr><th>Артикул</th><th>Наименование</th><th>Было</th><th>Стало</th><th>Δ</th><th>Что случилось</th></tr>
+          <tr data-cat="cena"><td class="art">НД-4021</td><td>Дренажный НД 750 Вт</td><td class="was">7 420</td><td class="now">7 980</td><td class="up">+7,5 %</td><td><span class="tag d">цена выросла</span></td></tr>
+          <tr data-cat="netu"><td class="art">НД-4090</td><td>Дренажный НД 1100 Вт</td><td class="was">11 900</td><td class="now">11 900</td><td>—</td><td><span class="tag p">нет у поставщика</span></td></tr>
+          <tr data-cat="cena"><td class="art">НД-4115</td><td>Дренажный НД 1500 Вт</td><td class="was">18 350</td><td class="now">17 200</td><td class="down">−6,3 %</td><td><span class="tag d">цена упала</span></td></tr>
+          <tr data-cat="cena"><td class="art">НФ-4210</td><td>Фекальный НФ 1300 Вт</td><td class="was">21 700</td><td class="now">23 400</td><td class="up">+7,8 %</td><td><span class="tag d">цена выросла</span></td></tr>
+          <tr data-cat="novaya"><td class="art">НД-4507</td><td>Дренажный НД 900 Вт</td><td class="was">—</td><td class="now">9 180</td><td>—</td><td><span class="tag n">новая позиция</span></td></tr>
+          <tr data-cat="cena"><td class="art">НД-4720</td><td>Поплавковый выключатель</td><td class="was">860</td><td class="now">905</td><td class="up">+5,2 %</td><td><span class="tag d">цена выросла</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="foot">
+      <span>Solutions&nbsp;101</span>
+      <span>Инструмент — одна задача и один экран. Внедрять нечего.</span>
+      <b>Категория: инструмент</b>
+    </div>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

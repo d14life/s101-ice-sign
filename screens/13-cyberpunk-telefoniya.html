@@ -1,0 +1,88 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>13 · Мониторинг телефонии — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#07000f}
+.stage{background:#07000f;color:#e8d9ff;font-family:"Consolas","Segoe UI",monospace;padding:26px 30px;
+  display:grid;grid-template-rows:auto auto 1fr;gap:18px;
+  background-image:linear-gradient(#ff00c81a 1px,transparent 1px),linear-gradient(90deg,#00f0ff14 1px,transparent 1px);
+  background-size:44px 44px,44px 44px}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(#0000 0 3px,#00000047 3px 5px)}
+.hdr{display:flex;align-items:center;gap:18px;border:1px solid #ff2bd6;padding:12px 18px;
+  background:#1a0030b3;box-shadow:0 0 22px #ff2bd64d,inset 0 0 22px #ff2bd626}
+h1{margin:0;font-size:27px;letter-spacing:3px;color:#00f0ff;text-shadow:0 0 12px #00f0ff,2px 0 0 #ff2bd6}
+.hdr span{font-size:12px;letter-spacing:2px;color:#b98fff}
+.live{margin-left:auto;display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:2px;color:#39ff8f}
+.live i{width:9px;height:9px;border-radius:50%;background:#39ff8f;box-shadow:0 0 12px #39ff8f;animation:p 1.2s infinite}
+@keyframes p{50%{opacity:.25}}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.kpi>div{border:1px solid #4d1a80;padding:14px 16px;background:linear-gradient(#16002e,#0b0018)}
+.kpi b{display:block;font-size:10px;letter-spacing:2px;color:#a67dff;margin-bottom:9px}
+.kpi i{font-style:normal;font-size:29px;letter-spacing:-1px;color:#00f0ff;text-shadow:0 0 14px #00f0ff80}
+.kpi .m i{color:#ff2bd6;text-shadow:0 0 14px #ff2bd680}
+.kpi .g i{color:#39ff8f;text-shadow:0 0 14px #39ff8f80}
+.body{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;min-height:0}
+.pane{border:1px solid #4d1a80;background:#0b0018cc;padding:14px 16px;display:flex;flex-direction:column;min-height:0}
+h2{margin:0 0 12px;font-size:12px;letter-spacing:3px;color:#ff2bd6;text-shadow:0 0 10px #ff2bd680}
+.row{display:grid;grid-template-columns:78px 1fr 128px 86px 82px;gap:10px;font-size:12.5px;padding:8px 0;
+  border-bottom:1px solid #2a0f4a;align-items:center}
+.row.h{color:#a67dff;font-size:10px;letter-spacing:1.5px;border-bottom:1px solid #ff2bd6}
+.st{padding:2px 8px;font-size:10px;letter-spacing:1px;text-align:center}
+.st.on{color:#39ff8f;border:1px solid #39ff8f;box-shadow:0 0 10px #39ff8f4d}
+.st.wait{color:#ffd23f;border:1px solid #ffd23f}
+.st.no{color:#ff5555;border:1px solid #ff5555}
+.wave{display:flex;align-items:flex-end;gap:3px;height:26px}
+.wave i{flex:1;background:#00f0ff;box-shadow:0 0 8px #00f0ff80}
+.q{display:flex;flex-direction:column;gap:9px;font-size:12.5px}
+.q div{display:flex;gap:10px;padding:9px 11px;border-left:3px solid #ff2bd6;background:#1a003080}
+.q em{font-style:normal;margin-left:auto;color:#00f0ff}
+.bar{margin-top:auto;padding-top:12px;font-size:11px;letter-spacing:2px;color:#a67dff}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="hdr"><h1>ТЕЛЕФОНИЯ // АВТООБЗВОН</h1><span>SOLUTIONS 101 · УЗЕЛ 03</span>
+    <span class="live"><i></i>ЭФИР 17:52:56</span></div>
+  <div class="kpi">
+    <div><b>ЛИНИЙ АКТИВНО</b><i>7</i></div>
+    <div class="g"><b>ДОЗВОН</b><i>68 %</i></div>
+    <div class="m"><b>В ОЧЕРЕДИ</b><i>12</i></div>
+    <div><b>СРЕДНИЙ РАЗГОВОР</b><i>2:14</i></div>
+    <div class="m"><b>ПОТЕРЯНО</b><i>3</i></div>
+  </div>
+  <div class="body">
+    <div class="pane">
+      <h2>АКТИВНЫЕ ЛИНИИ</h2>
+      <div class="row h"><span>ЛИНИЯ</span><span>КОНТРАГЕНТ</span><span>УРОВЕНЬ</span><span>ВРЕМЯ</span><span>СТАТУС</span></div>
+      <div class="row"><span>L-01</span><span>Vertex Trading</span>
+        <span class="wave"><i style="height:40%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:95%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:50%"></i></span>
+        <span>03:42</span><span class="st on">ЗАПИСЬ</span></div>
+      <div class="row"><span>L-02</span><span>ИП «Ускенбаев»</span>
+        <span class="wave"><i style="height:20%"></i><i style="height:45%"></i><i style="height:30%"></i><i style="height:60%"></i><i style="height:25%"></i><i style="height:40%"></i><i style="height:35%"></i></span>
+        <span>01:07</span><span class="st on">ЗАПИСЬ</span></div>
+      <div class="row"><span>L-03</span><span>Nova Group</span>
+        <span class="wave"><i style="height:10%"></i><i style="height:12%"></i><i style="height:8%"></i><i style="height:14%"></i><i style="height:9%"></i><i style="height:11%"></i><i style="height:7%"></i></span>
+        <span>00:19</span><span class="st wait">ГУДКИ</span></div>
+      <div class="row"><span>L-04</span><span>Vertex Logistics</span>
+        <span class="wave"><i style="height:65%"></i><i style="height:35%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:25%"></i><i style="height:60%"></i></span>
+        <span>06:28</span><span class="st on">ЗАПИСЬ</span></div>
+      <div class="row"><span>L-05</span><span>ТОО «Самал-Логистика»</span>
+        <span class="wave"><i style="height:5%"></i><i style="height:5%"></i><i style="height:5%"></i><i style="height:5%"></i><i style="height:5%"></i><i style="height:5%"></i><i style="height:5%"></i></span>
+        <span>00:00</span><span class="st no">СБРОС</span></div>
+      <div class="bar">ВСЕ РАЗГОВОРЫ ПИШУТСЯ И ПРИВЯЗЫВАЮТСЯ К КАРТОЧКЕ КЛИЕНТА</div>
+    </div>
+    <div class="pane">
+      <h2>ПРОВЕРКА ДО СДЕЛКИ</h2>
+      <div class="q">
+        <div>БИН 160940822684<em>ЧИСТО</em></div>
+        <div>БИН 100440874076<em>ЧИСТО</em></div>
+        <div>ИИН 210240808655<em>ДОЛГ 91+</em></div>
+        <div>БИН 090540785044<em>ЧИСТО</em></div>
+        <div>БИН 150240367640<em>ПРОВЕРКА…</em></div>
+      </div>
+      <div class="bar">РЕКВИЗИТЫ СВЕРЯЮТСЯ ДО ТОГО,<br>КАК МЕНЕДЖЕР СКАЖЕТ «ДА»</div>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

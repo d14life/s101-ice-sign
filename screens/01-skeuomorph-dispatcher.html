@@ -1,0 +1,76 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>01 · Пульт диспетчера — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#2b2823}
+.stage{background:linear-gradient(#4a453d,#2f2b26);font-family:"Segoe UI",Arial,sans-serif;color:#efe9dc;
+  padding:26px;display:grid;grid-template-rows:auto 1fr auto;gap:20px}
+.panel{background:
+    repeating-linear-gradient(90deg,#00000012 0 1px,transparent 1px 3px),
+    linear-gradient(160deg,#8d8579,#5f594f 46%,#7b7468);
+  border-radius:14px;box-shadow:inset 0 2px 0 #ffffff4d,inset 0 -3px 8px #00000073,0 12px 26px #0000006e;
+  position:relative;padding:18px 22px}
+.panel:before,.panel:after{content:"";position:absolute;top:11px;width:11px;height:11px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#e8e2d4,#8b8375 60%,#413c34);
+  box-shadow:inset 0 -1px 2px #00000080}
+.panel:before{left:11px}.panel:after{right:11px}
+.brand{display:flex;align-items:baseline;gap:14px}
+.brand b{font-size:26px;letter-spacing:2px;text-shadow:0 1px 0 #ffffff59,0 -1px 1px #0009;color:#3b352d}
+.brand span{font-size:13px;letter-spacing:3px;color:#efe9dc;text-shadow:0 1px 1px #000000a6}
+.lamps{margin-left:auto;display:flex;gap:12px;align-items:center}
+.lamp{width:15px;height:15px;border-radius:50%;box-shadow:inset 0 -2px 3px #00000099,0 0 10px currentColor}
+.on{background:radial-gradient(circle at 35% 30%,#d6ffb0,#63c21e);color:#63c21e}
+.warn{background:radial-gradient(circle at 35% 30%,#ffe6a8,#e0a020);color:#e0a020}
+.off{background:radial-gradient(circle at 35% 30%,#6d6659,#3a352e);color:transparent}
+.body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.dial{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:6px 10px}
+.gauge{width:212px;height:212px;border-radius:50%;position:relative;
+  background:conic-gradient(from 200deg,var(--fill) 0 var(--deg),#211e1a var(--deg) 280deg,transparent 280deg),
+    radial-gradient(circle,#1b1815 62%,#57514700 63%);
+  box-shadow:inset 0 0 0 8px #4b463e,inset 0 6px 14px #000000a6,0 5px 12px #00000073}
+.gauge:after{content:"";position:absolute;inset:22px;border-radius:50%;
+  background:radial-gradient(circle at 40% 25%,#3d3831,#191713);
+  box-shadow:inset 0 3px 9px #000000b3,inset 0 -2px 0 #ffffff17}
+.read{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center;line-height:1}
+.read b{font-size:40px;color:#f6f1e2;text-shadow:0 2px 3px #000000a6;display:block}
+.read i{font-style:normal;font-size:11px;letter-spacing:2px;color:#c4bba6;display:block;margin-top:10px}
+.plate{font-size:12px;letter-spacing:2.5px;padding:6px 16px;border-radius:4px;color:#e6dfcf;
+  background:linear-gradient(#3a352e,#22201b);box-shadow:inset 0 1px 0 #ffffff21,0 2px 4px #0009}
+.strip{display:flex;gap:14px;align-items:center;justify-content:space-between}
+.readout{flex:1;font-family:"Consolas",monospace;font-size:19px;letter-spacing:1px;padding:13px 18px;border-radius:7px;
+  color:#8fe86a;background:linear-gradient(#12180f,#1d2617);text-shadow:0 0 9px #6dd44a80;
+  box-shadow:inset 0 3px 10px #000000b3,inset 0 0 0 1px #ffffff14}
+.knob{width:62px;height:62px;border-radius:50%;flex-shrink:0;position:relative;
+  background:conic-gradient(#8f8879,#5b554b,#8f8879,#5b554b,#8f8879);
+  box-shadow:inset 0 0 0 4px #6e6759,0 4px 8px #000000a6}
+.knob:after{content:"";position:absolute;left:50%;top:8px;width:4px;height:18px;margin-left:-2px;border-radius:2px;
+  background:#efe9dc;box-shadow:0 0 4px #0009}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="panel brand" style="display:flex;align-items:center">
+    <b>АРЕНДНЫЙ ПАРК</b><span>ПУЛЬТ ДИСПЕТЧЕРА · СМЕНА 1</span>
+    <div class="lamps"><i class="lamp on"></i><i class="lamp warn"></i><i class="lamp off"></i></div>
+  </div>
+  <div class="panel body">
+    <div class="dial">
+      <div class="gauge" style="--deg:78deg;--fill:#7fd23c"><div class="read"><b>23<small style="font-size:22px">%</small></b><i>ЗАГРУЗКА</i></div></div>
+      <span class="plate">6 ИЗ 12 В АРЕНДЕ</span>
+    </div>
+    <div class="dial">
+      <div class="gauge" style="--deg:214deg;--fill:#e0a020"><div class="read"><b>198 800</b><i>ВЫРУЧКА ₽</i></div></div>
+      <span class="plate">ЗА ТЕКУЩИЙ МЕСЯЦ</span>
+    </div>
+    <div class="dial">
+      <div class="gauge" style="--deg:252deg;--fill:#d05a3c"><div class="read"><b>278</b><i>ПРОСТОЙ, ДН.</i></div></div>
+      <span class="plate">ТРЕБУЕТ ВНИМАНИЯ</span>
+    </div>
+  </div>
+  <div class="panel strip">
+    <div class="knob"></div>
+    <div class="readout">ЭО-2621 №1 · ООО «ЖИЛКАПИТАЛ» · ДО 14.09 · 33 % · ТО ЧЕРЕЗ 41 М/Ч</div>
+    <div class="knob"></div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

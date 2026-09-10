@@ -1,0 +1,167 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>46 · Доска объявлений — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#dfe2e6;--bg:#f2f3f5;--card:#fff;--ink:#1b1f24;--dim:#6b7280;--link:#0b6bcb;--line:#e2e5e9;--green:#137a4b;--red:#c4362e}
+.stage{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden;font-size:13px}
+.bar{background:var(--card);border-bottom:1px solid var(--line);padding:10px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-size:17px;font-weight:800;color:var(--link);letter-spacing:-.6px;margin-right:6px}
+.cat{border:1px solid var(--line);border-radius:5px;padding:7px 12px;font-size:12.5px;color:var(--dim);white-space:nowrap}
+.search{flex:1;display:flex}
+.search input,.search .fake{flex:1;border:1px solid #c9ced6;border-right:0;border-radius:5px 0 0 5px;padding:7px 12px;
+  font-size:13px;background:#fff;color:var(--ink)}
+.search .go{background:var(--link);color:#fff;border-radius:0 5px 5px 0;padding:7px 20px;font-size:13px;font-weight:600}
+.bar .r{display:flex;gap:14px;align-items:center;font-size:12.5px;color:var(--link)}
+.crumbs{padding:8px 24px;font-size:12px;color:var(--dim);display:flex;gap:7px;align-items:center;
+  background:var(--card);border-bottom:1px solid var(--line)}
+.crumbs a{color:var(--link);text-decoration:none}
+.crumbs b{margin-left:auto;color:var(--ink);font-weight:600}
+.crumbs .sort{color:var(--link);font-weight:400;margin-left:14px}
+.body{display:grid;grid-template-columns:214px 1fr;gap:14px;padding:12px 24px 0;min-height:0;overflow:hidden}
+aside{font-size:12.5px}
+.fg{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:9px}
+.fg h3{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.ck{display:flex;justify-content:space-between;padding:3.5px 0;color:var(--ink)}
+.ck i{font-style:normal;width:13px;height:13px;border:1px solid #b9bfc8;border-radius:3px;display:inline-block;
+  margin-right:7px;vertical-align:-2px;background:#fff}
+.ck.on i{background:var(--link);border-color:var(--link);position:relative}
+.ck.on i::after{content:"";position:absolute;left:3.5px;top:1px;width:3px;height:6px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+.ck u{text-decoration:none;color:#9aa1ab;font-size:11.5px}
+.pr2{display:flex;gap:6px}
+.pr2 span{flex:1;border:1px solid #c9ced6;border-radius:4px;padding:5px 8px;font-size:12px;color:var(--dim);background:#fff}
+.list{overflow:hidden;display:flex;flex-direction:column;gap:5px}
+.ad{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px;display:grid;
+  grid-template-columns:104px 1fr 152px;gap:12px}
+.ad.vip{border-color:#f0c25a;box-shadow:inset 3px 0 #f0c25a}
+.th{height:70px;border-radius:4px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#dfe4ea,#c3cad3)}
+.th svg{position:absolute;inset:0;width:100%;height:100%}
+.th b{position:absolute;right:4px;bottom:4px;background:#000000a6;color:#fff;font-size:9.5px;padding:1px 5px;border-radius:3px;font-weight:600}
+.ad h2{margin:0;font-size:14px;font-weight:600;color:var(--link);letter-spacing:-.2px}
+.ad .sp{font-size:11.5px;color:var(--dim);margin-top:3px;line-height:1.45}
+.ad .meta{font-size:11.5px;color:#8a919b;margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+.ad .meta b{color:var(--green);font-weight:600}
+.ad .meta b.r{color:var(--red)}
+.right{text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end}
+.price{font-size:19px;font-weight:700;letter-spacing:-.6px;white-space:nowrap}
+.price s{display:block;font-size:11.5px;color:#9aa1ab;font-weight:400}
+.who{font-size:11px;color:var(--dim);line-height:1.5;text-align:right}
+.who b{display:block;color:var(--ink);font-weight:600;font-size:12px}
+.star{color:#e8a33d}
+.btn{background:var(--link);color:#fff;border-radius:5px;padding:5px 14px;font-size:12px;font-weight:600;margin-top:5px}
+footer{display:flex;gap:24px;align-items:baseline;padding:11px 24px 15px;font-size:11px;color:var(--dim);
+  border-top:1px solid var(--line);background:var(--card);margin-top:12px}
+footer b{color:var(--link);font-weight:700}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+</style></head><body data-screen="46">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="bar">
+    <span class="logo">Толкучка</span>
+    <span class="cat">Электроника ▾</span>
+    <span class="search"><span class="fake">ноутбук 16 гб</span><span class="go">Найти</span></span>
+    <span class="r"><span>Москва</span><span>Избранное</span><span>Сообщения</span><span>Подать объявление</span></span>
+  </div>
+  <div class="crumbs">
+    <a href="#">Главная</a><span>›</span><a href="#">Электроника</a><span>›</span><a href="#">Ноутбуки</a>
+    <b>2 418 объявлений</b><span class="sort">Сначала дешевле ▾</span>
+  </div>
+  <div class="body">
+    <aside>
+      <div class="fg">
+        <h3>Цена, ₽</h3>
+        <div class="pr2"><span>от 25 000</span><span>до 90 000</span></div>
+      </div>
+      <div class="fg">
+        <h3>Состояние</h3>
+        <div class="ck" data-cat="bu"><span><i></i>Б/у</span><u>1 903</u></div>
+        <div class="ck" data-cat="novoe"><span><i></i>Новое</span><u>515</u></div>
+      </div>
+      <div class="fg">
+        <h3>Оперативная память</h3>
+        <div class="ck"><span><i></i>8 ГБ</span><u>812</u></div>
+        <div class="ck on"><span><i></i>16 ГБ</span><u>944</u></div>
+        <div class="ck"><span><i></i>32 ГБ и больше</span><u>287</u></div>
+      </div>
+      <div class="fg">
+        <h3>Продавец</h3>
+        <div class="ck" data-cat="chastnoe"><span><i></i>Частное лицо</span><u>1 640</u></div>
+        <div class="ck" data-cat="magazin"><span><i></i>Магазин</span><u>778</u></div>
+      </div>
+      <div class="fg">
+        <h3>Доставка</h3>
+        <div class="ck" data-cat="dostavka"><span><i></i>С доставкой</span><u>1 122</u></div>
+      </div>
+    </aside>
+    <div class="list">
+      <div data-cat="magazin bu dostavka" class="ad vip">
+        <div class="th"><img src="img/46-a.jpg" alt="Ноутбук 15,6 дюйма, фото объявления" loading="lazy"><b>8 фото</b></div>
+        <div>
+          <h2>Ноутбук 15,6" · 16 ГБ / 512 ГБ SSD</h2>
+          <div class="sp">Процессор 8 ядер · экран 2560×1440 · батарея держит 6 часов. Куплен год назад, есть чек и коробка.</div>
+          <div class="meta"><span>Москва, Хорошёвский</span><span>сегодня, 09:12</span><b>Доставка от 390 ₽</b></div>
+        </div>
+        <div class="right">
+          <div><div class="price">48 900 ₽</div><s>было 54 000 ₽</s></div>
+          <div class="who"><b>Магазин «Техно»</b><span class="star">★ 4,8</span> · 214 отзывов<div class="btn">Написать</div></div>
+        </div>
+      </div>
+      <div data-cat="chastnoe bu" class="ad">
+        <div class="th"><img src="img/46-b.jpg" alt="Ультрабук 14 дюймов, фото объявления" loading="lazy"><b>5 фото</b></div>
+        <div>
+          <h2>Ультрабук 14" · 16 ГБ / 1 ТБ</h2>
+          <div class="sp">Вес 1,1 кг, металлический корпус. Состояние отличное, циклов батареи — 84.</div>
+          <div class="meta"><span>Москва, Аэропорт</span><span>вчера, 18:40</span><b class="r">Только самовывоз</b></div>
+        </div>
+        <div class="right">
+          <div><div class="price">61 500 ₽</div></div>
+          <div class="who"><b>Частное лицо</b><span class="star">★ 5,0</span> · 12 отзывов<div class="btn">Написать</div></div>
+        </div>
+      </div>
+      <div data-cat="chastnoe bu dostavka" class="ad">
+        <div class="th"><img src="img/46-c.jpg" alt="Игровой ноутбук 17 дюймов, фото объявления" loading="lazy"><b>11 фото</b></div>
+        <div>
+          <h2>Игровой ноутбук 17" · 16 ГБ / 1 ТБ</h2>
+          <div class="sp">Дискретная видеокарта, экран 165 Гц. Использовался для работы, не для майнинга. Сумка в подарок.</div>
+          <div class="meta"><span>Химки</span><span>вчера, 12:05</span><b>Доставка от 450 ₽</b></div>
+        </div>
+        <div class="right">
+          <div><div class="price">87 000 ₽</div><s>торг уместен</s></div>
+          <div class="who"><b>Частное лицо</b><span class="star">★ 4,6</span> · 31 отзыв<div class="btn">Написать</div></div>
+        </div>
+      </div>
+      <div data-cat="chastnoe bu dostavka" class="ad">
+        <div class="th"><img src="img/46-d.jpg" alt="Ноутбук 13,3 дюйма, фото объявления" loading="lazy"><b>3 фото</b></div>
+        <div>
+          <h2>Ноутбук 13,3" · 16 ГБ / 256 ГБ</h2>
+          <div class="sp">Компактный, для учёбы и офиса. Незначительные потёртости на крышке, всё показано на фото.</div>
+          <div class="meta"><span>Мытищи</span><span>7 сентября</span><b>Доставка от 350 ₽</b></div>
+        </div>
+        <div class="right">
+          <div><div class="price">32 400 ₽</div></div>
+          <div class="who"><b>Частное лицо</b><span class="star">★ 4,9</span> · 58 отзывов<div class="btn">Написать</div></div>
+        </div>
+      </div>
+      <div data-cat="magazin novoe dostavka" class="ad">
+        <div class="th"><img src="img/46-e.jpg" alt="Ноутбук 15,6 дюйма на гарантии, фото объявления" loading="lazy"><b>6 фото</b></div>
+        <div>
+          <h2>Ноутбук 15,6" · 16 ГБ / 512 ГБ · на гарантии</h2>
+          <div class="sp">Куплен в апреле, гарантия до апреля 2028. Полный комплект, зарядка оригинальная.</div>
+          <div class="meta"><span>Москва, Отрадное</span><span>7 сентября</span><b>Доставка от 390 ₽</b></div>
+        </div>
+        <div class="right">
+          <div><div class="price">54 700 ₽</div><s>было 59 900 ₽</s></div>
+          <div class="who"><b>Магазин «Техно»</b><span class="star">★ 4,8</span> · 214 отзывов<div class="btn">Написать</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Модерация, платное продвижение и переписка с продавцом — одна система</span>
+    <b>Стиль: плотный утилитарный · доска объявлений</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

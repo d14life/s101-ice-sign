@@ -1,0 +1,82 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>06 · Маршрут отбора FEFO — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0d3a6b}
+.stage{background:#0d3a6b;color:#cfe4ff;font-family:"Consolas","Courier New",monospace;
+  background-image:linear-gradient(#ffffff14 1px,transparent 1px),linear-gradient(90deg,#ffffff14 1px,transparent 1px),
+    linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px;padding:0}
+.frame{position:absolute;inset:22px;border:2px solid #9dc6ff}
+.title{position:absolute;right:22px;bottom:22px;width:392px;border:2px solid #9dc6ff;background:#0d3a6bee}
+.title div{display:grid;grid-template-columns:auto 1fr;border-bottom:1px solid #9dc6ff88;font-size:12px}
+.title div:last-child{border-bottom:0}
+.title b{padding:7px 10px;border-right:1px solid #9dc6ff88;letter-spacing:1px;color:#9dc6ff;font-weight:400}
+.title i{font-style:normal;padding:7px 10px;color:#fff}
+.title .big i{font-size:19px;letter-spacing:1px}
+h1{position:absolute;left:52px;top:48px;margin:0;font-size:15px;letter-spacing:5px;color:#9dc6ff;font-weight:400}
+h1 b{display:block;font-size:38px;letter-spacing:-.5px;color:#fff;margin-top:8px;font-weight:400}
+svg{position:absolute;left:0;top:0;width:1120px;height:780px;overflow:visible}
+.cell{fill:none;stroke:#9dc6ff;stroke-width:1.5}
+.cell.used{fill:#9dc6ff1f}
+.cell.pick{fill:#ffe45e33;stroke:#ffe45e;stroke-width:2.5}
+.lbl{fill:#9dc6ff;font:11px Consolas,monospace;letter-spacing:1px}
+.lbl.on{fill:#ffe45e}
+.path{fill:none;stroke:#ffe45e;stroke-width:2.5;stroke-dasharray:9 6}
+.step{fill:#0d3a6b;stroke:#ffe45e;stroke-width:2}
+.stepn{fill:#ffe45e;font:bold 13px Consolas,monospace;text-anchor:middle}
+.dimline{stroke:#9dc6ff88;stroke-width:1}
+.dimtxt{fill:#9dc6ff;font:10px Consolas,monospace;letter-spacing:1px}
+.note{position:absolute;left:52px;bottom:40px;font-size:12px;line-height:1.9;letter-spacing:.5px}
+.note b{color:#ffe45e;font-weight:400}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="frame"></div>
+  <h1>СКЛАД · СЕТЬ «ДОМОВОЙ ДВОР»<b>Маршрут отбора · ЗО-7057</b></h1>
+  <svg viewBox="0 0 1120 780">
+    <g>
+      <rect class="cell used" x="120" y="170" width="118" height="66"/><text class="lbl" x="130" y="196">A-01-1-01</text><text class="lbl" x="130" y="212">П-3102 19.09</text>
+      <rect class="cell" x="256" y="170" width="118" height="66"/><text class="lbl" x="266" y="196">A-01-2-01</text>
+      <rect class="cell" x="392" y="170" width="118" height="66"/><text class="lbl" x="402" y="196">A-03-1-02</text>
+      <rect class="cell pick" x="528" y="170" width="118" height="66"/><text class="lbl on" x="538" y="196">A-05-3-04</text><text class="lbl on" x="538" y="212">П-3101 06.09</text>
+      <rect class="cell" x="664" y="170" width="118" height="66"/><text class="lbl" x="674" y="196">A-06-1-01</text>
+
+      <rect class="cell" x="120" y="300" width="118" height="66"/><text class="lbl" x="130" y="326">B-01-1-01</text>
+      <rect class="cell used" x="256" y="300" width="118" height="66"/><text class="lbl" x="266" y="326">B-01-1-02</text><text class="lbl" x="266" y="342">П-3141 01.11</text>
+      <rect class="cell" x="392" y="300" width="118" height="66"/><text class="lbl" x="402" y="326">B-01-2-01</text>
+      <rect class="cell used" x="528" y="300" width="118" height="66"/><text class="lbl" x="538" y="326">B-02-1-03</text><text class="lbl" x="538" y="342">П-3134 24.07</text>
+      <rect class="cell" x="664" y="300" width="118" height="66"/><text class="lbl" x="674" y="326">B-03-1-01</text>
+
+      <rect class="cell" x="120" y="430" width="118" height="66"/><text class="lbl" x="130" y="456">C-01-1-01</text>
+      <rect class="cell" x="256" y="430" width="118" height="66"/><text class="lbl" x="266" y="456">C-01-1-02</text>
+      <rect class="cell" x="392" y="430" width="118" height="66"/><text class="lbl" x="402" y="456">C-02-1-01</text>
+      <rect class="cell" x="528" y="430" width="118" height="66"/><text class="lbl" x="538" y="456">C-02-2-01</text>
+      <rect class="cell" x="664" y="430" width="118" height="66"/><text class="lbl" x="674" y="456">C-04-1-01</text>
+    </g>
+    <path class="path" d="M179 236 L179 268 L587 268 L587 170"/>
+    <path class="path" d="M587 236 L587 268 L315 268 L315 300"/>
+    <path class="path" d="M315 366 L315 400 L587 400 L587 366"/>
+    <circle class="step" cx="179" cy="153" r="14"/><text class="stepn" x="179" y="158">1</text>
+    <circle class="step" cx="587" cy="153" r="14"/><text class="stepn" x="587" y="158">2</text>
+    <circle class="step" cx="315" cy="283" r="14"/><text class="stepn" x="315" y="288">3</text>
+    <circle class="step" cx="587" cy="283" r="14"/><text class="stepn" x="587" y="288">4</text>
+    <line class="dimline" x1="120" y1="540" x2="782" y2="540"/>
+    <line class="dimline" x1="120" y1="532" x2="120" y2="548"/><line class="dimline" x1="782" y1="532" x2="782" y2="548"/>
+    <text class="dimtxt" x="405" y="558">ПРОХОД 34 М · 4 ОСТАНОВКИ</text>
+  </svg>
+  <div class="note">
+    ПРАВИЛО ОТБОРА · <b>FEFO ПО СРОКУ ПАРТИИ</b><br>
+    ТЕРМИНАЛ НЕ ДАЁТ ВЗЯТЬ ПАРТИЮ С БОЛЬШИМ СРОКОМ,<br>
+    ПОКА НА СКЛАДЕ ЕСТЬ БОЛЕЕ РАННЯЯ.
+  </div>
+  <div class="title">
+    <div class="big"><b>ЗАКАЗ</b><i>ЗО-7057</i></div>
+    <div><b>СТРОК</b><i>3 · шаг 2 из 4</i></div>
+    <div><b>ОТБОРЩИК</b><i>Ткаченко О.М.</i></div>
+    <div><b>ДАТА</b><i>03.09.2026 · смена 1</i></div>
+    <div><b>ПРАВИЛО</b><i>FEFO</i></div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

@@ -1,0 +1,61 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>07 · Сводка за смену — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#efe9dd}
+.stage{background:#efe9dd;color:#1a1713;font-family:Georgia,"Times New Roman",serif;padding:34px 40px;
+  display:grid;grid-template-rows:auto auto 1fr;gap:0}
+.masthead{border-bottom:4px double #1a1713;padding-bottom:10px;text-align:center}
+.masthead h1{margin:0;font-size:66px;letter-spacing:-2px;font-weight:400;font-variant:small-caps}
+.masthead p{margin:6px 0 0;font-size:11px;letter-spacing:.4em;text-transform:uppercase}
+.deck{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 0;border-bottom:1px solid #1a1713}
+.cols{column-count:4;column-gap:26px;column-rule:1px solid #b9b0a1;padding-top:18px;font-size:13px;line-height:1.62;text-align:justify;hyphens:auto}
+h2{font-size:27px;line-height:1.05;margin:0 0 8px;font-weight:400;letter-spacing:-.5px}
+h3{font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 6px;font-weight:400;color:#6d6153}
+.lead:first-letter{float:left;font-size:62px;line-height:.78;padding:5px 8px 0 0;font-weight:400}
+.break{break-inside:avoid;margin-bottom:16px}
+.rulebox{border-top:2px solid #1a1713;border-bottom:2px solid #1a1713;padding:11px 0;margin:6px 0 14px;text-align:center}
+.rulebox b{display:block;font-size:39px;line-height:1;letter-spacing:-2px}
+.rulebox span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6d6153}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+td{padding:4px 0;border-bottom:1px dotted #9d9384}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.sig{font-style:italic;color:#6d6153;font-size:12px}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="masthead"><h1>Сводка за смену</h1><p>Solutions 101 · Складской терминал и офис</p></div>
+  <div class="deck"><span>Среда, 3 сентября 2026</span><span>Смена 1 · Ткаченко О. М.</span><span>Сеть «Домовой двор»</span><span>Выпуск № 248</span></div>
+  <div class="cols">
+    <div class="break">
+      <h3>Главное</h3>
+      <h2>Склад закрыл смену с одним расхождением</h2>
+      <p class="lead">За смену обработано четыре заказа на отбор и одно поступление. Терминал провёл сборщика по маршруту из четырёх остановок и ни разу не дал взять партию с большим сроком, пока на складе оставалась более ранняя.</p>
+    </div>
+    <div class="break">
+      <div class="rulebox"><b>44 %</b><span>Занятость склада</span></div>
+      <p>Занятость выросла на четыре пункта против прошлой смены за счёт поступления ПН-4471. Свободными остаются ячейки третьего и четвёртого ярусов в зоне C.</p>
+    </div>
+    <div class="break">
+      <h3>Отбор</h3>
+      <h2>FEFO отработал без ручных правок</h2>
+      <table>
+        <tr><td>Заказ ЗО-7057</td><td>3 строки</td></tr>
+        <tr><td>Отобрано</td><td>12 / 12</td></tr>
+        <tr><td>Пропущено строк</td><td>0</td></tr>
+        <tr><td>Ошибок ячейки</td><td>1</td></tr>
+      </table>
+      <p>Единственная ошибка ячейки — скан B-01-1-01 вместо A-05-3-04 — была отклонена терминалом сразу, до снятия товара с полки.</p>
+    </div>
+    <div class="break">
+      <h3>Приёмка</h3>
+      <h2>Недостача 12 единиц оформлена актом</h2>
+      <p>По сыру «Полесье» 45 % заявлено 120 единиц, принято 108. Расхождение ушло в офис вместе с приёмкой; акт ТОРГ-2 сформирован из тех же цифр, что и приходная накладная.</p>
+      <div class="rulebox"><b>9</b><span>Партий со сроком &lt; 7 дней</span></div>
+      <p class="sig">Данные демонстрационные. Реальных контрагентов и сотрудников на этой странице нет.</p>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

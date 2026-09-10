@@ -1,0 +1,105 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>34 · Абонементы и посещаемость — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#050608;--volt:#d4ff2b;--ink:#0a0c0f;--dim:#7c8590;--red:#ff4d3d}
+.stage{background:var(--ink);color:#fff;font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden;position:relative}
+.stripe{position:absolute;right:-90px;top:-40px;width:420px;height:900px;transform:rotate(18deg);opacity:.07;
+  background:repeating-linear-gradient(90deg,var(--volt) 0 18px,transparent 18px 44px);pointer-events:none}
+.top{padding:30px 44px 22px;display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid #1c2027;position:relative;z-index:2}
+h1{margin:0;font-size:44px;font-weight:800;line-height:.92;letter-spacing:-2.2px;text-transform:uppercase;
+  font-stretch:condensed;font-family:"Arial Narrow","Segoe UI",Arial,sans-serif;transform:skewX(-7deg)}
+h1 span{color:var(--volt);display:block}
+.sub{font-size:12px;color:var(--dim);margin-top:11px;letter-spacing:.09em;text-transform:uppercase}
+.live{display:flex;align-items:center;gap:9px;justify-content:flex-end}
+.live b{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--volt);box-shadow:0 0 0 4px #d4ff2b26}
+.now{font-family:"Arial Narrow",Arial,sans-serif;font-size:62px;font-weight:800;letter-spacing:-3px;line-height:.9;
+  text-align:right;margin-top:6px;transform:skewX(-7deg)}
+.now u{text-decoration:none;font-size:17px;color:var(--dim);letter-spacing:0}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid #1c2027;position:relative;z-index:2}
+.kpi div{padding:18px 44px 20px;border-right:1px solid #1c2027}
+.kpi div:last-child{border:0}
+.kpi b{display:block;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.kpi i{font-style:normal;display:block;font-family:"Arial Narrow",Arial,sans-serif;font-size:52px;font-weight:800;
+  letter-spacing:-2.4px;line-height:1;margin-top:6px;transform:skewX(-7deg);transform-origin:left}
+.kpi i.v{color:var(--volt)}
+.kpi i.r{color:var(--red)}
+.kpi u{text-decoration:none;font-size:11px;color:var(--dim);display:block;margin-top:7px}
+.mid{display:grid;grid-template-columns:1fr 330px;position:relative;z-index:2;min-height:0}
+.chart{padding:20px 44px 0;border-right:1px solid #1c2027;display:flex;flex-direction:column}
+.lab{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.bars{flex:1;display:grid;grid-template-columns:repeat(15,1fr);gap:6px;align-items:end;padding-bottom:9px}
+.bars div{background:#252b33;border-radius:2px 2px 0 0;position:relative}
+.bars div.peak{background:var(--volt)}
+.bars div em{position:absolute;top:-17px;left:0;right:0;text-align:center;font-style:normal;font-size:10px;
+  font-weight:700;color:var(--volt)}
+.axis{display:grid;grid-template-columns:repeat(15,1fr);gap:6px;font-size:9.5px;color:#565e69;text-align:center;
+  padding-bottom:16px;font-variant-numeric:tabular-nums}
+.side{padding:20px 44px 0}
+.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px solid #1c2027;font-size:13px}
+.row i{font-style:normal;display:block;font-size:10.5px;color:var(--dim);margin-top:2px}
+.row b{font-family:"Arial Narrow",Arial,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.8px}
+.row b.v{color:var(--volt)}
+.row b.r{color:var(--red)}
+.alert{margin-top:14px;border-left:3px solid var(--red);background:#ff4d3d0f;padding:11px 13px;font-size:11.5px;
+  line-height:1.5;color:#e6b3ad}
+.alert b{color:var(--red);display:block;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
+.foot{padding:15px 44px 20px;display:flex;gap:28px;align-items:baseline;font-size:11px;color:var(--dim);
+  border-top:2px solid #1c2027;position:relative;z-index:2;letter-spacing:.04em}
+.foot b{color:var(--volt);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+</style></head><body data-screen="34">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="stripe"></div>
+  <div class="top">
+    <div>
+      <h1>Абонементы<span>и посещаемость</span></h1>
+      <div class="sub">Фитнес-клуб «Атлет» · сентябрь 2026 · турникет и карта — одна база</div>
+    </div>
+    <div>
+      <div class="live"><b>в зале сейчас</b><i class="pulse"></i></div>
+      <div class="now">64<u> / 120</u></div>
+    </div>
+  </div>
+  <div class="kpi">
+    <div><b>Активных карт</b><i>1 284</i><u>+37 за месяц</u></div>
+    <div><b>Заморожено</b><i>96</i><u>7,5 % базы</u></div>
+    <div><b>Посещений за месяц</b><i class="v">8 410</i><u>6,5 на карту</u></div>
+    <div><b>Отток</b><i class="r">4,1 %</i><u>53 карты не продлены</u></div>
+  </div>
+  <div class="mid">
+    <div class="chart">
+      <div class="lab">Посещаемость по часам · среднее за будни</div>
+      <div class="bars">
+        <div style="height:9%"></div><div style="height:22%"></div><div style="height:38%"></div>
+        <div style="height:31%"></div><div style="height:24%"></div><div style="height:20%"></div>
+        <div style="height:26%"></div><div style="height:33%"></div><div style="height:47%"></div>
+        <div style="height:68%"></div><div class="peak" style="height:100%"><em>142</em></div>
+        <div class="peak" style="height:94%"></div><div style="height:71%"></div>
+        <div style="height:44%"></div><div style="height:19%"></div>
+      </div>
+      <div class="axis">
+        <span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span>
+        <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+      </div>
+    </div>
+    <div class="side">
+      <div class="lab">Что продаётся</div>
+      <div class="row"><span>Годовой безлимит<i>412 карт · 38 % выручки</i></span><b class="v">32 900 ₽</b></div>
+      <div class="row"><span>Полугодовой<i>331 карта</i></span><b>19 500 ₽</b></div>
+      <div class="row"><span>Утренний<i>288 карт · до 16:00</i></span><b>12 400 ₽</b></div>
+      <div class="row"><span>Разовое посещение<i>253 за месяц</i></span><b>1 200 ₽</b></div>
+      <div class="alert"><b>Требует решения</b>У 118 карт срок заканчивается в ближайшие 14 дней. По 41 из них не было ни одного визита больше месяца — эти уйдут, если не позвонить.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Карта, турникет, продление и заморозка — одна запись на клиента</span>
+    <b>Пик 17:00–18:00 — зал заполнен на 118 %</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

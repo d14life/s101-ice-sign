@@ -1,0 +1,111 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>44 · Лендинг клининга — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#f0eee8;--ink:#111014;--orange:#ff5a3c;--blue:#2b2ae0;--yellow:#ffd400;--mint:#00c98d;--paper:#fffdf7}
+.stage{background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:0;
+  display:grid;grid-template-rows:auto 1fr auto auto;overflow:hidden}
+nav{display:flex;align-items:center;gap:26px;padding:18px 40px}
+.logo{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;letter-spacing:-.5px;margin-right:12px}
+.logo i{width:26px;height:26px;border-radius:9px;background:var(--orange);display:block;position:relative}
+.logo i::after{content:"";position:absolute;left:8px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--yellow)}
+nav a{font-size:13px;color:#54525c;text-decoration:none;font-weight:500}
+nav .r{margin-left:auto;display:flex;gap:12px;align-items:center}
+.phone{font-size:14px;font-weight:700}
+.btn{background:var(--ink);color:#fff;border-radius:22px;padding:9px 20px;font-size:13px;font-weight:600}
+.hero{display:grid;grid-template-columns:1fr 400px;gap:34px;padding:6px 40px 0;min-height:0;overflow:hidden}
+h1{margin:0;font-size:47px;font-weight:800;letter-spacing:-2.1px;line-height:.98}
+h1 mark{background:var(--yellow);padding:0 8px;border-radius:8px}
+h1 em{font-style:normal;color:var(--orange)}
+.hero p{margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#4b4952;max-width:440px}
+.pills{display:flex;gap:9px;margin-top:15px;flex-wrap:wrap}
+.pills span{font-size:12px;font-weight:600;padding:8px 15px;border-radius:20px;background:#f1f0ea}
+.pills span.b{background:var(--blue);color:#fff}
+.pills span.m{background:var(--mint);color:#04301f}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.tile{border-radius:16px;padding:12px 15px 14px;color:#fff}
+.tile:nth-child(1){background:var(--orange)}
+.tile:nth-child(2){background:var(--blue)}
+.tile:nth-child(3){background:var(--ink)}
+.tile b{display:block;font-size:30px;font-weight:800;letter-spacing:-1.4px;line-height:1}
+.tile span{display:block;font-size:11.5px;margin-top:6px;opacity:.9;line-height:1.4}
+.calc{background:var(--ink);border-radius:22px;padding:20px 22px 22px;color:#fff;align-self:start}
+.calc h2{margin:0;font-size:19px;font-weight:700;letter-spacing:-.5px}
+.calc .sub{font-size:11.5px;color:#9c9aa6;margin-top:5px}
+.row{margin-top:12px}
+.row b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#8b8996;margin-bottom:7px}
+.opt{display:flex;gap:6px}
+.opt span{flex:1;text-align:center;font-size:12px;font-weight:600;padding:8px 0;border-radius:11px;background:#232230;color:#c8c6d2}
+.opt span.on{background:var(--yellow);color:var(--ink)}
+.track{height:5px;background:#232230;border-radius:3px;position:relative;margin:11px 0 7px}
+.track i{position:absolute;left:0;top:0;bottom:0;width:47%;background:var(--mint);border-radius:3px}
+.track b{position:absolute;left:47%;top:-6px;width:17px;height:17px;margin-left:-8px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 6px #00000059}
+.mk{display:flex;justify-content:space-between;font-size:11px;color:#8b8996}
+.total{margin-top:16px;border-top:1px solid #2c2b3a;padding-top:14px;display:flex;align-items:flex-end;justify-content:space-between}
+.total span{font-size:11.5px;color:#9c9aa6}
+.total b{font-size:34px;font-weight:800;letter-spacing:-1.6px;color:var(--yellow);line-height:1}
+.go{margin-top:14px;background:var(--orange);border-radius:14px;text-align:center;padding:13px 0;font-size:14.5px;font-weight:700}
+.note{font-size:10.5px;color:#8b8996;margin-top:9px;text-align:center;line-height:1.45}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 40px 0}
+.step{border:2px solid #ecebe4;border-radius:14px;padding:12px 14px}
+.step i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;
+  font-weight:700;display:flex;align-items:center;justify-content:center}
+.step b{display:block;font-size:13px;font-weight:700;margin-top:9px}
+.step span{display:block;font-size:11px;color:#6c6a75;margin-top:3px;line-height:1.45}
+footer{display:flex;gap:26px;align-items:baseline;padding:16px 40px 20px;font-size:11.5px;color:#7c7a85}
+footer b{color:var(--orange);font-weight:700}
+</style></head><body data-screen="44">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <nav>
+    <span class="logo"><i></i>Чисто</span>
+    <a href="#">Услуги</a><a href="#">Цены</a><a href="#">Юрлицам</a><a href="#">Отзывы</a>
+    <span class="r"><span class="phone">8 800 000-00-00</span><span class="btn">Вызвать бригаду</span></span>
+  </nav>
+  <div class="hero">
+    <div>
+      <h1>Уберём квартиру<br><mark>за 2 часа</mark><br>или <em>вернём деньги</em></h1>
+      <p>Цена считается по площади и типу уборки — она видна до звонка. Бригада приезжает со своей химией и техникой, оплата после приёмки работы.</p>
+      <div class="pills"><span class="b">Свои моющие</span><span class="m">Оплата после уборки</span><span>Договор для юрлиц</span><span>Работаем 7 дней</span></div>
+      <div class="tiles">
+        <div class="tile"><b>4 200</b><span>уборок за год</span></div>
+        <div class="tile"><b>2 ч</b><span>средний выезд по городу</span></div>
+        <div class="tile"><b>4,9</b><span>оценка после уборки</span></div>
+      </div>
+    </div>
+    <div class="calc">
+      <h2>Сколько будет стоить</h2>
+      <div class="sub">Расчёт по вашим параметрам, без звонка</div>
+      <div class="row"><b>Тип уборки</b>
+        <div class="opt"><span>Поддерживающая</span><span class="on">Генеральная</span><span>После ремонта</span></div>
+      </div>
+      <div class="row"><b>Площадь</b>
+        <div class="track"><i></i><b></b></div>
+        <div class="mk"><span>20 м²</span><span>64 м²</span><span>150 м²</span></div>
+      </div>
+      <div class="row"><b>Санузлы</b>
+        <div class="opt"><span>1</span><span class="on">2</span><span>3</span><span>4+</span></div>
+      </div>
+      <div class="row"><b>Дополнительно</b>
+        <div class="opt"><span class="on">Окна</span><span>Холодильник</span><span>Балкон</span></div>
+      </div>
+      <div class="total"><span>Итого за уборку<br>64 м² · 2 санузла · окна</span><b>8 640 ₽</b></div>
+      <div class="go">Вызвать бригаду на завтра</div>
+      <div class="note">Ближайшее свободное окно — завтра с 10:00. Подтверждение придёт в течение пяти минут.</div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><i>1</i><b>Считаете цену</b><span>Площадь и тип уборки — цена сразу на экране</span></div>
+    <div class="step"><i>2</i><b>Выбираете окно</b><span>Свободное время видно из графика бригад</span></div>
+    <div class="step"><i>3</i><b>Приезжает бригада</b><span>Со своей химией, техникой и чек-листом</span></div>
+    <div class="step"><i>4</i><b>Платите после</b><span>Принимаете работу — тогда оплата</span></div>
+  </div>
+  <footer>
+    <span>Solutions&nbsp;101</span>
+    <span>Калькулятор, график бригад и заявка — одна система, а не три разных таблицы</span>
+    <b>Стиль: поп-флэт · лендинг услуги</b>
+  </footer>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

@@ -1,0 +1,159 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>40 · Шахматка бронирования — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#08170f;--green:#0e2a21;--deep:#0a2019;--gold:#c9a961;--cream:#efe8d9;--dim:#8fa79b;--line:#1d4034;--rose:#c8746a}
+.stage{background:var(--green);color:var(--cream);font-family:Georgia,"Times New Roman",serif;padding:0;
+  display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+.top{padding:28px 40px 20px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:34px;font-weight:400;letter-spacing:-.2px;line-height:1.05}
+h1 em{font-style:italic;color:var(--gold)}
+.sub{font-family:"Segoe UI",Arial,sans-serif;font-size:11.5px;color:#b9ccc2;margin-top:9px;letter-spacing:.07em;text-transform:uppercase}
+.kpi{display:flex;gap:32px;text-align:right}
+.kpi div b{display:block;font-family:"Segoe UI",Arial,sans-serif;font-size:9px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+.kpi div i{font-style:normal;font-size:27px;letter-spacing:-.6px;line-height:1;color:var(--gold)}
+.kpi div i.c{color:var(--cream)}
+.flow{display:flex;gap:0;border-bottom:1px solid var(--line)}
+.flow div{padding:12px 40px 13px;border-right:1px solid var(--line);font-family:"Segoe UI",Arial,sans-serif}
+.flow div:first-child{padding-left:40px}
+.flow div:last-child{border-right:0}
+.flow b{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:4px}
+.flow i{font-style:normal;font-size:13px;color:var(--cream)}
+.flow i u{text-decoration:none;color:var(--gold);font-weight:600}
+.board{padding:18px 40px 0;overflow:hidden;display:grid;grid-template-columns:1fr 262px;gap:26px;min-height:0}
+.lab{font-family:"Segoe UI",Arial,sans-serif;font-size:9px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:12px}
+.sh{display:grid;grid-template-columns:126px repeat(9,1fr);grid-auto-rows:36px;gap:3px;
+  font-family:"Segoe UI",Arial,sans-serif;font-size:11px}
+.dh{grid-row:1;text-align:center;color:var(--dim);font-size:10px;padding-bottom:5px;line-height:1.3}
+.dh b{display:block;color:var(--cream);font-size:12.5px;font-weight:600}
+.dh.we b{color:var(--gold)}
+.rm{grid-column:1;display:flex;flex-direction:column;justify-content:center;padding-right:10px;
+  border-right:1px solid var(--line)}
+.rm b{font-size:11.5px;font-weight:600;color:var(--cream);white-space:nowrap}
+.rm i{font-style:normal;font-size:9.5px;color:var(--dim);white-space:nowrap}
+.cell{background:#0c2419;border-radius:2px}
+.bk{border-radius:3px;padding:5px 9px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+  background:var(--gold);color:#20180a}
+.bk b{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
+.bk i{font-style:normal;font-size:9px;opacity:.72;white-space:nowrap}
+.bk.hold{background:transparent;box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold)}
+.bk.in{background:var(--cream);color:#1c2a22}
+.bk.out{background:var(--rose);color:#2a100c}
+.bk.clean{background:#1d4034;color:var(--dim)}
+aside .row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;
+  border-bottom:1px solid var(--line);font-family:"Segoe UI",Arial,sans-serif;font-size:12px}
+aside .row i{font-style:normal;display:block;font-size:10px;color:var(--dim);margin-top:2px}
+aside .row b{color:var(--gold);white-space:nowrap;padding-left:10px;font-weight:600}
+.rate{margin-top:18px;border:1px solid var(--line);border-radius:4px;padding:13px 15px}
+.rate .r{display:flex;justify-content:space-between;font-family:"Segoe UI",Arial,sans-serif;font-size:12px;padding:4.5px 0}
+.rate .r b{color:var(--cream);font-weight:600}
+.rate .r.t{border-top:1px solid var(--line);margin-top:7px;padding-top:9px}
+.rate .r.t b{color:var(--gold);font-size:19px;font-family:Georgia,serif;font-weight:400}
+.leg{display:flex;gap:20px;font-family:"Segoe UI",Arial,sans-serif;font-size:10px;color:var(--dim);margin-top:14px;flex-wrap:wrap}
+.leg span i{width:11px;height:11px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:-1px}
+.foot{padding:14px 40px 20px;border-top:1px solid var(--line);display:flex;gap:28px;align-items:baseline;
+  font-family:"Segoe UI",Arial,sans-serif;font-size:11px;color:var(--dim);letter-spacing:.04em}
+.foot b{color:var(--gold);font-weight:600}
+</style></head><body data-screen="40">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="top">
+    <div>
+      <h1>Шахматка <em>бронирования</em></h1>
+      <div class="sub">Отель «Гранат» · 8–16 сентября · 24 номера</div>
+    </div>
+    <div class="kpi">
+      <div><b>Загрузка</b><i>78 %</i></div>
+      <div><b>ADR</b><i class="c">14 200 ₽</i></div>
+      <div><b>RevPAR</b><i class="c">11 076 ₽</i></div>
+      <div><b>Свободно сегодня</b><i>5</i></div>
+    </div>
+  </div>
+  <div class="flow">
+    <div><b>Заезды сегодня</b><i><u>7</u> · ближайший в 14:00</i></div>
+    <div><b>Выезды сегодня</b><i><u>4</u> · расчётный час 12:00</i></div>
+    <div><b>Ранний заезд</b><i><u>2</u> запроса · номера готовы</i></div>
+    <div><b>Бронь без предоплаты</b><i><u>3</u> · держим до 18:00</i></div>
+    <div><b>Овербукинг</b><i>нет</i></div>
+  </div>
+  <div class="board">
+    <div>
+      <div class="lab">Номера · девять суток</div>
+      <div class="sh">
+        <div class="dh" style="grid-column:2"><b>08</b>пн</div>
+        <div class="dh" style="grid-column:3"><b>09</b>вт</div>
+        <div class="dh" style="grid-column:4"><b>10</b>ср</div>
+        <div class="dh" style="grid-column:5"><b>11</b>чт</div>
+        <div class="dh we" style="grid-column:6"><b>12</b>пт</div>
+        <div class="dh we" style="grid-column:7"><b>13</b>сб</div>
+        <div class="dh we" style="grid-column:8"><b>14</b>вс</div>
+        <div class="dh" style="grid-column:9"><b>15</b>пн</div>
+        <div class="dh" style="grid-column:10"><b>16</b>вт</div>
+        <div class="rm" style="grid-row:2"><b>101 · Стандарт</b><i>2 гостя</i></div>
+        <div class="rm" style="grid-row:3"><b>102 · Стандарт</b><i>2 гостя</i></div>
+        <div class="rm" style="grid-row:4"><b>204 · Улучшенный</b><i>2 гостя</i></div>
+        <div class="rm" style="grid-row:5"><b>205 · Улучшенный</b><i>3 гостя</i></div>
+        <div class="rm" style="grid-row:6"><b>301 · Люкс</b><i>2 гостя · вид</i></div>
+        <div class="rm" style="grid-row:7"><b>302 · Люкс</b><i>4 гостя · вид</i></div>
+        <div class="bk in"   style="grid-column:2/span 3;grid-row:2"><b>Ерофеева С.В.</b><i>2 гостя · завтрак включён</i></div>
+        <div class="cell"    style="grid-column:5;grid-row:2"></div>
+        <div class="bk"      style="grid-column:6/span 4;grid-row:2"><b>Наумов А.Д.</b><i>предоплата 100 %</i></div>
+        <div class="bk out"  style="grid-column:2;grid-row:3"><b>Выезд</b><i>12:00</i></div>
+        <div class="bk clean" style="grid-column:3;grid-row:3"><b>Уборка</b><i>после выезда</i></div>
+        <div class="bk"      style="grid-column:4/span 3;grid-row:3"><b>Гурина П.Н.</b><i>3 ночи · сайт</i></div>
+        <div class="bk hold" style="grid-column:7/span 2;grid-row:3"><b>Бронь без оплаты</b><i>держим до 18:00</i></div>
+        <div class="cell"    style="grid-column:9/span 2;grid-row:3"></div>
+        <div class="bk"      style="grid-column:2/span 5;grid-row:4"><b>Тимербаев И.К.</b><i>5 ночей · корпоративный тариф</i></div>
+        <div class="bk"      style="grid-column:7/span 4;grid-row:4"><b>Селиванова Э.А.</b><i>агрегатор · комиссия 15 %</i></div>
+        <div class="cell"    style="grid-column:2/span 2;grid-row:5"></div>
+        <div class="bk in"   style="grid-column:4/span 4;grid-row:5"><b>Ковтун Д.С.</b><i>3 гостя · доп. кровать</i></div>
+        <div class="bk hold" style="grid-column:8/span 3;grid-row:5"><b>Запрос группы</b><i>ждём подтверждения</i></div>
+        <div class="bk"      style="grid-column:2/span 4;grid-row:6"><b>Абдрахманова Ж.С.</b><i>4 ночи · поздний выезд</i></div>
+        <div class="cell"    style="grid-column:6;grid-row:6"></div>
+        <div class="bk out"  style="grid-column:7/span 4;grid-row:6"><b>Пешков В.А.</b><i>заезд 13.09 в 22:00</i></div>
+        <div class="bk in"   style="grid-column:2/span 6;grid-row:7"><b>Семья Литвиненко</b><i>6 ночей · 4 гостя · детская кровать</i></div>
+        <div class="cell"    style="grid-column:8;grid-row:7"></div>
+        <div class="bk"      style="grid-column:9/span 2;grid-row:7"><b>Байжанов Н.Т.</b><i>телефон · предоплата 50 %</i></div>
+        <div class="rm" style="grid-row:8"><b>210 · Стандарт</b><i>2 гостя</i></div>
+        <div class="rm" style="grid-row:9"><b>401 · Апартаменты</b><i>4 гостя · кухня</i></div>
+        <div class="cell"     style="grid-column:2;grid-row:8"></div>
+        <div class="bk in"    style="grid-column:3/span 3;grid-row:8"><b>Рахимова Г.Б.</b><i>3 ночи · поздний заезд</i></div>
+        <div class="bk clean" style="grid-column:6;grid-row:8"><b>Уборка</b><i>после выезда</i></div>
+        <div class="bk"       style="grid-column:7/span 4;grid-row:8"><b>Ерёменко С.В.</b><i>агрегатор · завтрак включён</i></div>
+        <div class="bk"       style="grid-column:2/span 4;grid-row:9"><b>Дюсенов К.А.</b><i>4 ночи · корпоративный договор</i></div>
+        <div class="bk hold"  style="grid-column:6/span 2;grid-row:9"><b>Бронь без оплаты</b><i>держим до 20:00</i></div>
+        <div class="bk"       style="grid-column:8/span 3;grid-row:9"><b>Семья Ковалёвых</b><i>3 ночи · 4 гостя</i></div>
+      </div>
+      <div class="leg">
+        <span><i style="background:#c9a961"></i>подтверждено</span>
+        <span><i style="background:#efe8d9"></i>гость заселён</span>
+        <span><i style="background:#c8746a"></i>заезд / выезд в этот день</span>
+        <span><i style="box-shadow:inset 0 0 0 1px #c9a961"></i>бронь без предоплаты</span>
+        <span><i style="background:#1d4034"></i>уборка</span>
+      </div>
+    </div>
+    <aside>
+      <div class="lab">Заезды сегодня</div>
+      <div class="row"><span>14:00 · номер 205<i>Ковтун Д.С. · 3 гостя</i></span><b>готов</b></div>
+      <div class="row"><span>15:30 · номер 101<i>Ерофеева С.В. · ранний заезд</i></span><b>готов</b></div>
+      <div class="row"><span>18:00 · номер 302<i>Семья Литвиненко · детская кровать</i></span><b>убирается</b></div>
+      <div class="row"><span>21:40 · номер 210<i>поздний заезд · встреча на ресепшн</i></span><b>готов</b></div>
+      <div class="rate">
+        <div class="r"><span>Тариф «Стандарт», будни</span><b>9 800 ₽</b></div>
+        <div class="r"><span>Тариф «Стандарт», выходные</span><b>13 400 ₽</b></div>
+        <div class="r"><span>Тариф «Люкс», будни</span><b>21 000 ₽</b></div>
+        <div class="r"><span>Комиссия агрегаторов</span><b>−184 500 ₽</b></div>
+        <div class="r t"><span>Выручка за 9 суток</span><b>2 393 000 ₽</b></div>
+      </div>
+    </aside>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Шахматка, тарифы, уборка и счёт — одна база; агрегатор закрывает даты сам</span>
+    <b>Пятница–воскресенье заполнены: тариф выходного дня можно поднимать</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

@@ -25,6 +25,18 @@ needs a network connection but no build step and no `npm install`.
 | `textures/ice_*.png` | the ice maps: colour, normal, roughness, height |
 | `index.html` | the viewer, ~120 lines, no dependencies of its own |
 
+## Also in this repo
+
+| path | what it is |
+|---|---|
+| `screens/01…54-*.html` | the 54 Solutions 101 screens, each a self-contained 1120×780 artboard (no CDN, no external assets) |
+| `screens.html` | 01–30: one business process in thirty visual styles |
+| `otrasli.html` | 31–50: twenty different programs — ten industry systems, ten selling sites |
+| `demo.html` | 51–54: tool → integration → system → ecosystem |
+| `spaceship/index.html` | the Solutions 101 shuttle in low Earth orbit — live 3D, drag to orbit (one self-contained 12 MB page; sky credit inside) |
+| `spaceship/shuttle_solutions101.glb` | the rebranded shuttle with animated 3D engine plumes (morph targets); `_noflag` variant without the US flags |
+| `spaceship/hero.png` | 2560×1440 still of the flight scene |
+
 ## The material
 
 Ice does not read as ice from texture maps alone. What makes it convincing is

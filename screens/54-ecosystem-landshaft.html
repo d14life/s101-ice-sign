@@ -1,0 +1,121 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>54 · Экосистема: группа компаний — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e8e4da;--paper:#f8f6f1;--ink:#1e1c18;--dim:#7a7468;--teal:#2f7d74;--amber:#b7791f;--violet:#5b4bb8;
+  --line:#dedad0;--card:#fff}
+.stage{background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;
+  padding:24px 40px 0;display:grid;align-content:start;gap:0}
+.top{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+h1{margin:0;font-size:27px;font-weight:600;letter-spacing:-.8px}
+h1 span{color:var(--teal)}
+.sub{font-size:12.5px;color:var(--dim);margin-top:6px;max-width:560px;line-height:1.5}
+.stats{display:flex;gap:24px;text-align:right}
+.stats div b{display:block;font-size:22px;font-weight:600;letter-spacing:-.7px;line-height:1}
+.stats div span{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);display:block;margin-top:4px}
+.lab{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  padding:21px 0 8px;display:flex;align-items:center;gap:10px}
+.lab::after{content:"";flex:1;height:1px;background:var(--line)}
+.band{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.who{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px 12px;
+  display:flex;align-items:center;gap:8px;font-size:12px}
+.who i{width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;font-style:normal;color:#fff}
+.who b{font-weight:600;font-size:12px;display:block;line-height:1.15}
+.who u{text-decoration:none;font-size:10px;color:var(--dim);display:block}
+.link{display:grid;grid-template-columns:repeat(6,1fr);height:50px}
+.link span{position:relative}
+.link span::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1.5px;background:var(--line)}
+.link span.t::before{background:var(--teal);opacity:.5}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 12px 12px;
+  border-top:3px solid var(--teal);display:flex;flex-direction:column}
+.prod h2{margin:0;font-size:13px;font-weight:600;letter-spacing:-.2px;line-height:1.2}
+.prod .m{font-size:10.5px;color:var(--dim);margin-top:5px;line-height:1.45;flex:1}
+.prod .k{font-size:10px;color:var(--teal);margin-top:8px;font-weight:600}
+.prod.v{border-top-color:var(--violet)}
+.prod.v .k{color:var(--violet)}
+.core{background:#1e1c18;color:#f3f1eb;border-radius:10px;padding:22px 18px;display:grid;
+  grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.core h2{margin:0;font-size:16px;font-weight:600;letter-spacing:-.3px}
+.core h2 span{display:block;font-size:10.5px;color:#a8a294;font-weight:400;margin-top:3px;letter-spacing:0}
+.core .items{display:flex;gap:8px;flex-wrap:wrap}
+.core .items span{font-size:11px;background:#2e2b25;border-radius:5px;padding:5px 11px;color:#ddd8cc}
+.core .rt{text-align:right;font-size:10.5px;color:#a8a294;line-height:1.6}
+.core .rt b{display:block;color:#f3f1eb;font-size:15px;font-weight:600}
+.ext{background:#f1eee7;border:1px solid var(--line);border-radius:7px;padding:9px 11px;font-size:11.5px}
+.ext b{display:block;font-weight:600;font-size:11.5px}
+.ext u{text-decoration:none;display:block;font-size:10px;color:var(--dim);margin-top:2px}
+.ext.a{border-left:3px solid var(--amber)}
+.foot{display:flex;gap:24px;align-items:baseline;padding:14px 0 18px;font-size:11px;color:var(--dim);
+  border-top:1px solid var(--line);margin-top:12px}
+.foot b{color:var(--teal);font-weight:600}
+</style></head><body data-screen="54">
+<a class="back" href="../otrasli.html">← Двадцать четыре экрана</a>
+<div class="stage">
+  <div class="top">
+    <div>
+      <h1>Экосистема <span>группы компаний</span></h1>
+      <div class="sub">Шесть продуктов, которые выглядят как разные программы, но считают одни и те же цифры. Клиент, кладовщик и бухгалтер работают в разных окнах и не знают, что база у них общая.</div>
+    </div>
+    <div class="stats">
+      <div><b>6</b><span>продуктов</span></div>
+      <div><b>11</b><span>интеграций</span></div>
+      <div><b>340</b><span>пользователей</span></div>
+      <div><b>4</b><span>юрлица</span></div>
+      <div><b>1</b><span>база</span></div>
+    </div>
+  </div>
+
+  <div class="lab">Кто работает</div>
+  <div class="band">
+    <span class="who"><i style="background:#2f7d74">К</i><span><b>Клиент</b><u>сайт, кабинет</u></span></span>
+    <span class="who"><i style="background:#5b4bb8">М</i><span><b>Менеджер</b><u>CRM, касса</u></span></span>
+    <span class="who"><i style="background:#b7791f">С</i><span><b>Кладовщик</b><u>терминал</u></span></span>
+    <span class="who"><i style="background:#2f7d74">Кр</i><span><b>Курьер</b><u>приложение</u></span></span>
+    <span class="who"><i style="background:#7a7468">Б</i><span><b>Бухгалтер</b><u>1С, ЭДО</u></span></span>
+    <span class="who"><i style="background:#1e1c18">Р</i><span><b>Руководитель</b><u>отчётность</u></span></span>
+  </div>
+
+  <div class="link"><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span><span></span><span class="t"></span></div>
+
+  <div class="lab">Продукты — то, что мы построили</div>
+  <div class="band">
+    <div class="prod"><h2>Сайт и каталог</h2><div class="m">Витрина с наличием и ценой из учёта. Заказ падает сразу в CRM.</div><div class="k">40 000 позиций</div></div>
+    <div class="prod"><h2>CRM продаж</h2><div class="m">Сделки, звонки, счета и отгрузка. Одна карточка клиента на всю группу.</div><div class="k">28 менеджеров</div></div>
+    <div class="prod"><h2>Складской терминал</h2><div class="m">Приёмка, отбор по FEFO, инвентаризация. Работает на ТСД в руках.</div><div class="k">3 склада</div></div>
+    <div class="prod"><h2>Приложение курьера</h2><div class="m">Маршрут, подпись, оплата на месте. Статус виден клиенту сразу.</div><div class="k">42 курьера</div></div>
+    <div class="prod v"><h2>Личный кабинет</h2><div class="m">Заказы, акт сверки, долг и закрывающие документы — без звонка.</div><div class="k">1 100 клиентов</div></div>
+    <div class="prod v"><h2>Отчётность и BI</h2><div class="m">Выручка, маржа и оборачиваемость по всем четырём юрлицам сразу.</div><div class="k">18 отчётов</div></div>
+  </div>
+
+  <div class="link"><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span></div>
+
+  <div class="core">
+    <h2>Единая база<span>ядро экосистемы</span></h2>
+    <div class="items">
+      <span>Контрагенты</span><span>Номенклатура</span><span>Остатки и резервы</span><span>Документы</span>
+      <span>Цены и скидки</span><span>Права доступа</span><span>Журнал изменений</span>
+    </div>
+    <div class="rt"><b>одна запись</b>на клиента, товар<br>и документ</div>
+  </div>
+
+  <div class="link"><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span><span class="t"></span></div>
+
+  <div class="lab">Внешние системы — то, с чем это разговаривает</div>
+  <div class="band">
+    <div class="ext a"><b>1С:Бухгалтерия</b><u>документы и НДС</u></div>
+    <div class="ext a"><b>Банк</b><u>выписка, платежи</u></div>
+    <div class="ext a"><b>Маркетплейсы</b><u>заказы и остатки</u></div>
+    <div class="ext a"><b>ЭДО</b><u>УПД и подписи</u></div>
+    <div class="ext a"><b>Транспортные</b><u>накладные, трек</u></div>
+    <div class="ext a"><b>Телефония</b><u>звонки к сделке</u></div>
+  </div>
+
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Экосистема — это не один большой продукт, а несколько маленьких, у которых общее ядро и общий справочник</span>
+    <b>Категория: экосистема</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

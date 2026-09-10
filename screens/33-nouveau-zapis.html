@@ -1,0 +1,148 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>33 · Онлайн-запись — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#efe6d7;--cream:#f8f2e7;--ink:#2c2620;--dim:#8a7f70;--copper:#a2683a;--sage:#6d7f62;--blush:#c08a86;--line:#e0d4c0}
+.stage{background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif;padding:0;
+  display:grid;grid-template-rows:auto 1fr auto;position:relative;overflow:hidden}
+.arc{position:absolute;left:0;top:0;width:1120px;height:120px;pointer-events:none}
+.arc path{fill:none;stroke:var(--copper);stroke-width:1.2;opacity:.42}
+.top{padding:30px 46px 0;position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start}
+h1{margin:0;font-size:40px;font-weight:400;letter-spacing:.5px;line-height:1.05}
+h1 em{font-style:italic;color:var(--copper)}
+.sub{font-family:"Segoe UI",Arial,sans-serif;font-size:12px;color:var(--dim);margin-top:10px;letter-spacing:.06em}
+.stats{display:flex;gap:30px;text-align:right;font-family:"Segoe UI",Arial,sans-serif}
+.stats div b{display:block;font-size:26px;font-weight:300;letter-spacing:-.5px;color:var(--copper);font-family:Georgia,serif}
+.stats div span{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.rule{height:1px;background:var(--line);margin:20px 46px 0;position:relative}
+.rule::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;margin-left:-3.5px;
+  background:var(--copper);transform:rotate(45deg);opacity:.55}
+.body{padding:22px 46px 0;display:grid;grid-template-columns:1fr 250px;gap:34px;min-height:0;position:relative;z-index:2}
+.grid{display:grid;grid-template-columns:52px repeat(4,1fr);grid-auto-rows:40px;gap:0 12px;font-family:"Segoe UI",Arial,sans-serif}
+.mst{grid-row:1;text-align:center;padding-bottom:9px}
+.mst b{display:block;font-family:Georgia,serif;font-size:15px;font-weight:400;letter-spacing:.2px}
+.mst i{font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.mst u{text-decoration:none;display:block;width:26px;height:1px;background:var(--copper);margin:7px auto 0;opacity:.5}
+.hh{grid-column:1;font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;padding-top:4px;font-family:"Segoe UI",Arial,sans-serif}
+.sl{border:1px solid var(--line);border-radius:16px 16px 4px 4px;padding:5px 10px;margin:2px 0;background:#fff;overflow:hidden}
+.sl b{display:block;font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sl i{font-style:normal;font-size:10px;color:var(--dim);display:block}
+.sl.on{border-color:var(--copper);background:#fdf6ec}
+.sl.on b{color:var(--copper)}
+.sl.new{border-color:var(--sage);background:#f4f7f1}
+.sl.new b{color:var(--sage)}
+.sl.hold{border-style:dashed;background:transparent}
+.sl.hold b{color:var(--blush)}
+.free{border:1px dashed var(--line);border-radius:16px 16px 4px 4px;margin:2px 0;display:flex;align-items:center;
+  justify-content:center;font-family:"Segoe UI",Arial,sans-serif;font-size:10.5px;color:#c3b7a4;letter-spacing:.05em}
+aside h2{margin:0 0 12px;font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  font-family:"Segoe UI",Arial,sans-serif}
+.svc{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px dotted var(--line);font-size:13px}
+.svc i{font-style:normal;color:var(--dim);font-size:10.5px;display:block;font-family:"Segoe UI",Arial,sans-serif}
+.svc b{font-weight:400;color:var(--copper);white-space:nowrap;padding-left:12px}
+.load{margin-top:20px}
+.lrow{display:grid;grid-template-columns:74px 1fr 34px;align-items:center;gap:9px;font-size:11.5px;margin-bottom:8px;
+  font-family:"Segoe UI",Arial,sans-serif}
+.lbar{height:5px;background:#eadfcc;border-radius:3px;overflow:hidden}
+.lbar span{display:block;height:100%;background:var(--copper);border-radius:3px}
+.lrow u{text-decoration:none;text-align:right;color:var(--dim);font-variant-numeric:tabular-nums}
+.foot{padding:16px 46px 22px;display:flex;gap:28px;align-items:baseline;font-family:"Segoe UI",Arial,sans-serif;
+  font-size:11.5px;color:var(--dim);position:relative;z-index:2}
+.foot b{color:var(--copper);font-weight:600}
+</style></head><body data-screen="33">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <svg class="arc" viewBox="0 0 1120 120" aria-hidden="true">
+    <path d="M-20 96 C 150 96 168 22 320 22 S 490 96 660 96 S 830 22 1000 22 S 1140 78 1140 78"/>
+    <path d="M-20 108 C 150 108 168 34 320 34 S 490 108 660 108 S 830 34 1000 34 S 1140 90 1140 90" opacity=".5"/>
+  </svg>
+  <div>
+    <div class="top">
+      <div>
+        <h1>Онлайн-<em>запись</em></h1>
+        <div class="sub">САЛОН «ВЕРБЕНА» · ВТОРНИК, 8 СЕНТЯБРЯ · ЧЕТЫРЕ МАСТЕРА</div>
+      </div>
+      <div class="stats">
+        <div><b>39</b><span>записей</span></div>
+        <div><b>81 %</b><span>загрузка кресел</span></div>
+        <div><b>4 380 ₽</b><span>средний чек</span></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </div>
+  <div class="body">
+    <div class="grid">
+      <div class="mst" style="grid-column:2"><b>Ирина К.</b><i>Колорист</i><u></u></div>
+      <div class="mst" style="grid-column:3"><b>Дана А.</b><i>Стилист</i><u></u></div>
+      <div class="mst" style="grid-column:4"><b>Мария Т.</b><i>Ногтевой сервис</i><u></u></div>
+      <div class="mst" style="grid-column:5"><b>Олег В.</b><i>Барбер</i><u></u></div>
+      <span class="hh" style="grid-row:2">10:00</span>
+      <span class="hh" style="grid-row:3">11:00</span>
+      <span class="hh" style="grid-row:4">12:00</span>
+      <span class="hh" style="grid-row:5">13:00</span>
+      <span class="hh" style="grid-row:6">14:00</span>
+      <span class="hh" style="grid-row:7">15:00</span>
+      <span class="hh" style="grid-row:8">16:00</span>
+      <span class="hh" style="grid-row:9">17:00</span>
+      <span class="hh" style="grid-row:10">18:00</span>
+      <span class="hh" style="grid-row:11">19:00</span>
+      <span class="hh" style="grid-row:12">20:00</span>
+      <div class="sl on"   style="grid-column:2;grid-row:2/span 3"><b>Тарасенко О.В.</b><i>Окрашивание в два тона · 3 ч</i></div>
+      <div class="sl"      style="grid-column:2;grid-row:5/span 2"><b>Жумабаева А.С.</b><i>Тонирование · 2 ч</i></div>
+      <div class="sl new"  style="grid-column:2;grid-row:7/span 2"><b>Ивашина Л.П.</b><i>Первый визит · консультация</i></div>
+      <div class="sl"      style="grid-column:3;grid-row:2/span 2"><b>Гаврилюк Е.А.</b><i>Стрижка и укладка</i></div>
+      <div class="free"    style="grid-column:3;grid-row:4/span 1">свободно</div>
+      <div class="sl on"   style="grid-column:3;grid-row:5/span 2"><b>Мендыбаева Р.К.</b><i>Кератиновое выпрямление · 2 ч</i></div>
+      <div class="sl hold" style="grid-column:3;grid-row:7/span 1"><b>Резерв</b><i>Держим до 14:00</i></div>
+      <div class="sl"      style="grid-column:3;grid-row:8/span 1"><b>Пахомова С.И.</b><i>Укладка</i></div>
+      <div class="sl"      style="grid-column:4;grid-row:2/span 2"><b>Найдёнова К.Э.</b><i>Маникюр с покрытием</i></div>
+      <div class="sl"      style="grid-column:4;grid-row:4/span 2"><b>Абишева Г.Д.</b><i>Маникюр и педикюр</i></div>
+      <div class="sl new"  style="grid-column:4;grid-row:6/span 2"><b>Шульга В.М.</b><i>Первый визит · дизайн</i></div>
+      <div class="free"    style="grid-column:4;grid-row:8/span 1">свободно</div>
+      <div class="sl"      style="grid-column:5;grid-row:2/span 1"><b>Логвинов Д.Р.</b><i>Стрижка</i></div>
+      <div class="sl"      style="grid-column:5;grid-row:3/span 1"><b>Ералиев Т.Б.</b><i>Стрижка и борода</i></div>
+      <div class="sl on"   style="grid-column:5;grid-row:4/span 1"><b>Кравец И.Н.</b><i>Камуфляж седины</i></div>
+      <div class="sl"      style="grid-column:5;grid-row:5/span 1"><b>Портнов А.Ю.</b><i>Стрижка</i></div>
+      <div class="free"    style="grid-column:5;grid-row:6/span 1">свободно</div>
+      <div class="sl"      style="grid-column:5;grid-row:7/span 2"><b>Демьяненко П.С.</b><i>Стрижка и уход · 2 ч</i></div>
+      <div class="sl on"   style="grid-column:2;grid-row:9/span 3"><b>Верещагина О.Д.</b><i>Сложное окрашивание · 3 ч</i></div>
+      <div class="sl"      style="grid-column:2;grid-row:12/span 1"><b>Асанова К.М.</b><i>Уход за длиной</i></div>
+      <div class="sl"      style="grid-column:3;grid-row:9/span 2"><b>Соколовская Т.Е.</b><i>Стрижка и укладка · 2 ч</i></div>
+      <div class="sl new"  style="grid-column:3;grid-row:11/span 2"><b>Литвиненко Я.С.</b><i>Первый визит · стрижка</i></div>
+      <div class="sl"      style="grid-column:4;grid-row:9/span 2"><b>Бекмуратова С.А.</b><i>Педикюр · 2 ч</i></div>
+      <div class="free"    style="grid-column:4;grid-row:11/span 1">свободно</div>
+      <div class="sl on"   style="grid-column:4;grid-row:12/span 1"><b>Панченко Р.И.</b><i>Коррекция</i></div>
+      <div class="sl"      style="grid-column:5;grid-row:9/span 1"><b>Стеценко М.А.</b><i>Стрижка</i></div>
+      <div class="sl"      style="grid-column:5;grid-row:10/span 1"><b>Жапаров А.С.</b><i>Стрижка и борода</i></div>
+      <div class="sl hold" style="grid-column:5;grid-row:11/span 1"><b>Резерв</b><i>Держим до 18:00</i></div>
+      <div class="sl"      style="grid-column:5;grid-row:12/span 1"><b>Гладков П.Е.</b><i>Камуфляж седины</i></div>
+    </div>
+    <aside>
+      <h2>Услуги дня</h2>
+      <div class="svc"><span>Окрашивание<i>7 записей</i></span><b>от 9 500 ₽</b></div>
+      <div class="svc"><span>Стрижка и укладка<i>9 записей</i></span><b>от 3 200 ₽</b></div>
+      <div class="svc"><span>Ногтевой сервис<i>6 записей</i></span><b>от 4 100 ₽</b></div>
+      <div class="svc"><span>Барбер<i>5 записей</i></span><b>от 2 800 ₽</b></div>
+      <div class="load">
+        <h2>Загрузка кресел</h2>
+        <div class="lrow"><span>Ирина К.</span><div class="lbar"><span style="width:100%"></span></div><u>100 %</u></div>
+        <div class="lrow"><span>Дана А.</span><div class="lbar"><span style="width:71%"></span></div><u>71 %</u></div>
+        <div class="lrow"><span>Мария Т.</span><div class="lbar"><span style="width:86%"></span></div><u>86 %</u></div>
+        <div class="lrow"><span>Олег В.</span><div class="lbar"><span style="width:67%"></span></div><u>67 %</u></div>
+      </div>
+      <div class="load">
+        <h2>Напоминания</h2>
+        <div class="svc"><span>Ушли за 2 часа<i>39 клиентов</i></span><b>доставлено</b></div>
+        <div class="svc"><span>Не подтвердили<i>2 записи</i></span><b>звоним</b></div>
+        <div class="svc"><span>Лист ожидания<i>5 человек</i></span><b>окно в 18:00</b></div>
+      </div>
+    </aside>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Клиент выбирает мастера и время сам — слот закрывается в ту же секунду</span>
+    <b>Три свободных окна · напоминание уходит за 2 часа</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

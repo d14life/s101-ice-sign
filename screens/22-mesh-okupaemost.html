@@ -1,0 +1,92 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>22 · Окупаемость единицы — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#07131f}
+.stage{color:#eaf6ff;font-family:"Segoe UI",Arial,sans-serif;padding:44px 50px;display:grid;
+  grid-template-rows:auto 1fr auto;gap:30px;
+  background:radial-gradient(120% 90% at 8% 6%,#00d4a0 0%,transparent 45%),
+             radial-gradient(90% 80% at 92% 12%,#2b6bff 0%,transparent 48%),
+             radial-gradient(110% 100% at 50% 108%,#7a1fd4 0%,transparent 52%),#07131f}
+.hdr{display:flex;align-items:flex-end;gap:24px}
+h1{margin:0;font-size:50px;font-weight:200;letter-spacing:-2px;line-height:1}
+h1 b{font-weight:600;display:block}
+.hdr p{margin:0 0 5px;font-size:14px;color:#a7c4dd;max-width:280px;line-height:1.5}
+.hdr .pick{margin-left:auto;padding:14px 24px;border-radius:40px;font-size:15px;
+  background:#ffffff1a;border:1px solid #ffffff33;backdrop-filter:blur(10px)}
+.body{display:grid;grid-template-columns:1fr 1.5fr;gap:30px;align-items:stretch}
+.num{display:flex;flex-direction:column;justify-content:center;gap:0}
+.num .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8fb4d0}
+.num .big{font-size:118px;font-weight:200;letter-spacing:-6px;line-height:.92;
+  background:linear-gradient(100deg,#00ffc8,#7ec8ff 45%,#c79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.num .u{font-size:19px;color:#a7c4dd;margin-top:6px}
+.num hr{border:0;border-top:1px solid #ffffff26;margin:26px 0}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mini b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8fb4d0;margin-bottom:7px}
+.mini i{font-style:normal;font-size:25px;font-weight:300;letter-spacing:-.8px}
+.chartbox{border-radius:22px;background:#ffffff0f;border:1px solid #ffffff26;backdrop-filter:blur(14px);
+  padding:26px 28px;display:flex;flex-direction:column}
+.chartbox h2{margin:0 0 3px;font-size:16px;font-weight:600}
+.chartbox p{margin:0 0 20px;font-size:12.5px;color:#a7c4dd}
+svg{flex:1;width:100%;overflow:visible}
+.axis{stroke:#ffffff26;stroke-width:1}
+.tick{fill:#8fb4d0;font:11px "Segoe UI",Arial,sans-serif}
+.zero{stroke:#ffffff59;stroke-width:1;stroke-dasharray:4 4}
+.legend{display:flex;gap:22px;margin-top:16px;font-size:12px;color:#a7c4dd;align-items:center}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:7px;vertical-align:2px}
+.foot{display:flex;gap:34px;font-size:12.5px;color:#a7c4dd;padding-top:20px;border-top:1px solid #ffffff1f}
+.foot b{color:#eaf6ff;display:block;margin-bottom:4px}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="hdr">
+    <h1>Окупаемость<b>единицы</b></h1>
+    <p>Считается по отработанным сменам, а не по календарю владения.</p>
+    <span class="pick">Фронтальный погрузчик 3 т ▾</span>
+  </div>
+  <div class="body">
+    <div class="num">
+      <span class="lbl">Окупится через</span>
+      <span class="big">19</span>
+      <span class="u">месяцев при текущей загрузке 66 %</span>
+      <hr>
+      <div class="mini">
+        <div><b>Стоимость</b><i>3 480 000 ₽</i></div>
+        <div><b>Выручка / мес.</b><i>128 725 ₽</i></div>
+        <div><b>Расходы / мес.</b><i>─ 45 300 ₽</i></div>
+        <div><b>Наработка</b><i>412 м/ч</i></div>
+      </div>
+    </div>
+    <div class="chartbox">
+      <h2>Накопленный результат</h2><p>Тысячи рублей · 24 месяца · точка выхода в плюс — месяц 19</p>
+      <svg viewBox="0 0 620 250" preserveAspectRatio="none">
+        <line class="axis" x1="0" y1="249" x2="620" y2="249"/>
+        <line class="zero" x1="0" y1="176" x2="620" y2="176"/>
+        <defs>
+          <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00ffc8" stop-opacity=".55"/><stop offset="100%" stop-color="#00ffc8" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 176 L52 190 L103 202 L155 210 L207 214 L258 212 L310 205 L362 192 L413 176 L465 152 L517 118 L568 74 L620 24 L620 249 L0 249Z" fill="url(#fill)"/>
+        <polyline points="0,176 52,190 103,202 155,210 207,214 258,212 310,205 362,192 413,176 465,152 517,118 568,74 620,24"
+          fill="none" stroke="#00ffc8" stroke-width="3"/>
+        <polyline points="0,176 52,183 103,190 155,196 207,200 258,201 310,199 362,194 413,186 465,174 517,158 568,138 620,114"
+          fill="none" stroke="#7ec8ff" stroke-width="2" stroke-dasharray="6 5"/>
+        <circle cx="413" cy="176" r="6" fill="#07131f" stroke="#00ffc8" stroke-width="3"/>
+        <text class="tick" x="0" y="246">мес. 1</text>
+        <text class="tick" x="390" y="246">мес. 19</text>
+        <text class="tick" x="574" y="246">мес. 24</text>
+      </svg>
+      <div class="legend"><span><i style="background:#00ffc8"></i>При загрузке 66 %</span>
+        <span><i style="background:#7ec8ff"></i>При средней по парку 23 %</span>
+        <span style="margin-left:auto">При 23 % не окупится за 24 месяца</span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <span><b>Учёт наработки</b>м/ч по счётчику, ТО назначается автоматически</span>
+    <span><b>Что входит в расходы</b>ТО, топливо, доставка, простой</span>
+    <span><b>Источник</b>те же смены, из которых печатается акт</span>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

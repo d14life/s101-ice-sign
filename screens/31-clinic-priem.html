@@ -1,0 +1,142 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>31 · Расписание приёма — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e8f0ee;--paper:#f3f8f7;--card:#fff;--ink:#0e2420;--dim:#5d7a74;
+  --mint:#0f9e8d;--soft:#dbf0ec;--amber:#c98a2b;--coral:#d9594c;--line:#dceae6}
+.stage{background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;
+  padding:32px 36px;display:grid;grid-template-rows:auto auto 1fr auto;gap:16px}
+.top{display:flex;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px}
+.glyph{width:30px;height:30px;border-radius:9px;background:var(--mint);position:relative;flex:none}
+.glyph::before,.glyph::after{content:"";position:absolute;background:#fff;border-radius:2px}
+.glyph::before{left:13.5px;top:7px;width:3px;height:16px}
+.glyph::after{left:7px;top:13.5px;width:16px;height:3px}
+h1{margin:0;font-size:24px;font-weight:600;letter-spacing:-.6px}
+.top .sub{font-size:12.5px;color:var(--dim);margin-top:3px}
+.seg{display:flex;background:#e6f1ef;border-radius:9px;padding:3px}
+.seg span{font-size:12.5px;padding:6px 15px;border-radius:6px;color:var(--dim)}
+.seg span.on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 3px #0e242014}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.kpi div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+.kpi b{display:block;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.kpi i{font-style:normal;font-size:26px;font-weight:600;letter-spacing:-1px;display:block;margin-top:4px;line-height:1}
+.kpi u{text-decoration:none;font-size:11px;color:var(--dim);display:block;margin-top:4px}
+.board{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px 14px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 228px;gap:16px}
+.sched{display:grid;grid-template-columns:44px repeat(4,1fr);grid-auto-rows:33px;gap:0 7px;font-size:12px}
+.doc{grid-row:1;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.doc b{display:block;font-size:12.5px;font-weight:600}
+.doc i{font-style:normal;font-size:10.5px;color:var(--dim)}
+.hh{color:var(--dim);font-size:11px;font-variant-numeric:tabular-nums;padding-top:3px;
+  border-top:1px dashed #e9f2f0;grid-column:1}
+.ap{border-radius:8px;padding:4px 8px;overflow:hidden;margin:1px 0;line-height:1.22}
+.ap b{display:block;font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap i{font-style:normal;font-size:10.5px;opacity:.85;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap.go{background:var(--soft);color:#0a5c52;box-shadow:inset 2px 0 var(--mint)}
+.ap.wait{background:#fbf0da;color:#7d5510;box-shadow:inset 2px 0 var(--amber)}
+.ap.new{background:#eef4f9;color:#2a5170;box-shadow:inset 2px 0 #4d84b3}
+.ap.off{background:#fbe9e7;color:#9c3b31;box-shadow:inset 2px 0 var(--coral);opacity:.8}
+.ap.off b{text-decoration:line-through}
+.lunch{background:repeating-linear-gradient(45deg,#eef4f3 0 7px,#e6eeec 7px 14px);border-radius:8px;margin:1px 0;
+  display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#6f8a84;letter-spacing:.05em}
+.side h2{margin:0 0 8px;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.q{border:1px solid var(--line);border-radius:10px;padding:8px 11px;margin-bottom:7px;font-size:12px}
+.q b{display:block;font-weight:600;font-size:12.5px}
+.q i{font-style:normal;color:var(--dim);font-size:11px}
+.q em{font-style:normal;float:right;font-size:11px;font-weight:600;color:var(--mint)}
+.q.late em{color:var(--coral)}
+.note{margin-top:11px;background:#f0f7f6;border-radius:10px;padding:10px 12px;font-size:11.5px;line-height:1.5;color:#3d5b56}
+.foot{display:flex;gap:24px;font-size:11.5px;color:var(--dim);align-items:baseline}
+.foot b{color:var(--mint)}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px}
+</style></head><body data-screen="31">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="top">
+    <div class="brand"><i class="glyph"></i>
+      <div><h1>Расписание приёма</h1><div class="sub">Клиника «Ветвь» · вторник, 8 сентября · четыре кабинета</div></div>
+    </div>
+    <div class="seg"><span class="on">День</span><span>Неделя</span><span>Врач</span></div>
+  </div>
+  <div class="kpi">
+    <div><b>Записано</b><i>35</i><u>из 40 слотов</u></div>
+    <div><b>Загрузка</b><i>88 %</i><u>по кабинетам</u></div>
+    <div><b>Не пришли</b><i style="color:var(--coral)">3</i><u>слоты освободились</u></div>
+    <div><b>Первичных</b><i>10</i><u>29 % приёма</u></div>
+  </div>
+  <div class="board">
+    <div class="sched">
+      <div class="doc" style="grid-column:2"><b>Терапевт</b><i>Каб. 201 · Белова А.И.</i></div>
+      <div class="doc" style="grid-column:3"><b>Невролог</b><i>Каб. 204 · Гринько М.П.</i></div>
+      <div class="doc" style="grid-column:4"><b>УЗИ</b><i>Каб. 108 · Ращупкин Д.О.</i></div>
+      <div class="doc" style="grid-column:5"><b>Стоматолог</b><i>Каб. 110 · Ярцева Н.С.</i></div>
+      <span class="hh" style="grid-row:2">09:00</span>
+      <span class="hh" style="grid-row:3">09:30</span>
+      <span class="hh" style="grid-row:4">10:00</span>
+      <span class="hh" style="grid-row:5">10:30</span>
+      <span class="hh" style="grid-row:6">11:00</span>
+      <span class="hh" style="grid-row:7">11:30</span>
+      <span class="hh" style="grid-row:8">12:00</span>
+      <span class="hh" style="grid-row:9">12:30</span>
+      <span class="hh" style="grid-row:10">13:00</span>
+      <span class="hh" style="grid-row:11">13:30</span>
+      <span class="hh" style="grid-row:12">14:00</span>
+      <span class="hh" style="grid-row:13">14:30</span>
+      <span class="hh" style="grid-row:14">15:00</span>
+      <span class="hh" style="grid-row:15">15:30</span>
+      <div class="ap go"   style="grid-column:2;grid-row:2/span 1"><b>Никитина В.Р.</b><i>Повторный · 30 мин</i></div>
+      <div class="ap new"  style="grid-column:2;grid-row:3/span 2"><b>Севостьянов К.А.</b><i>Первичный · 60 мин · ДМС</i></div>
+      <div class="ap go"   style="grid-column:2;grid-row:5/span 1"><b>Ахметова Ж.Т.</b><i>Повторный · 30 мин</i></div>
+      <div class="ap off"  style="grid-column:2;grid-row:6/span 1"><b>Плотников Е.С.</b><i>Отменён за 2 ч</i></div>
+      <div class="ap wait" style="grid-column:2;grid-row:7/span 2"><b>Демченко О.В.</b><i>Первичный · ждёт в холле</i></div>
+      <div class="ap go"   style="grid-column:2;grid-row:9/span 1"><b>Литвинов Р.Б.</b><i>Выписка · 30 мин</i></div>
+      <div class="ap go"   style="grid-column:3;grid-row:2/span 2"><b>Кожевников И.А.</b><i>Первичный · 60 мин</i></div>
+      <div class="ap go"   style="grid-column:3;grid-row:4/span 2"><b>Байсеитова А.М.</b><i>Повторный · 60 мин</i></div>
+      <div class="ap wait" style="grid-column:3;grid-row:6/span 2"><b>Тюрин С.Н.</b><i>ЭЭГ · ждёт</i></div>
+      <div class="ap new"  style="grid-column:3;grid-row:8/span 2"><b>Соловей П.К.</b><i>Первичный · 60 мин</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:2/span 1"><b>Ким Э.В.</b><i>УЗИ брюшной полости</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:3/span 1"><b>Расулова Д.Х.</b><i>УЗИ щитовидной железы</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:4/span 1"><b>Верхогляд А.А.</b><i>УЗИ сосудов</i></div>
+      <div class="ap off"  style="grid-column:4;grid-row:5/span 1"><b>Панин Ю.Г.</b><i>Не явился</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:6/span 1"><b>Шайхиева Л.Р.</b><i>УЗИ почек</i></div>
+      <div class="ap new"  style="grid-column:4;grid-row:7/span 1"><b>Оленич Т.В.</b><i>Первичный</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:8/span 1"><b>Дубровин А.Э.</b><i>УЗИ суставов</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:9/span 1"><b>Мажит Н.Б.</b><i>Контроль</i></div>
+      <div class="ap go"   style="grid-column:5;grid-row:2/span 3"><b>Ковригина С.Л.</b><i>Лечение · 90 мин</i></div>
+      <div class="ap wait" style="grid-column:5;grid-row:5/span 2"><b>Егоршин В.Д.</b><i>Гигиена · ждёт</i></div>
+      <div class="ap off"  style="grid-column:5;grid-row:7/span 1"><b>Ходжаева М.Т.</b><i>Перенесён</i></div>
+      <div class="ap new"  style="grid-column:5;grid-row:8/span 2"><b>Бурцев Г.Н.</b><i>Первичный · 60 мин</i></div>
+      <div class="lunch" style="grid-column:2/span 4;grid-row:10">Перерыв 13:00–13:30</div>
+      <div class="ap go"   style="grid-column:2;grid-row:11/span 2"><b>Гончаренко М.В.</b><i>Первичный · 60 мин</i></div>
+      <div class="ap go"   style="grid-column:2;grid-row:13/span 1"><b>Юрченко А.П.</b><i>Повторный · 30 мин</i></div>
+      <div class="ap wait" style="grid-column:2;grid-row:14/span 2"><b>Сатыбалды Н.Е.</b><i>Первичный · ждёт в холле</i></div>
+      <div class="ap go"   style="grid-column:3;grid-row:11/span 2"><b>Прохоренко В.И.</b><i>Повторный · 60 мин</i></div>
+      <div class="ap new"  style="grid-column:3;grid-row:13/span 2"><b>Аубакиров С.Ж.</b><i>Первичный · 60 мин</i></div>
+      <div class="ap go"   style="grid-column:3;grid-row:15/span 1"><b>Крамаренко Д.А.</b><i>Выписка · 30 мин</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:11/span 1"><b>Нурланова А.Б.</b><i>УЗИ брюшной полости</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:12/span 1"><b>Захарченко Е.М.</b><i>УЗИ сосудов шеи</i></div>
+      <div class="ap new"  style="grid-column:4;grid-row:13/span 1"><b>Тыртышный В.П.</b><i>Первичный</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:14/span 1"><b>Сагындык М.А.</b><i>УЗИ малого таза</i></div>
+      <div class="ap go"   style="grid-column:4;grid-row:15/span 1"><b>Овчаренко И.Д.</b><i>Контроль</i></div>
+      <div class="ap go"   style="grid-column:5;grid-row:11/span 2"><b>Приходько Л.Н.</b><i>Лечение · 60 мин</i></div>
+      <div class="ap go"   style="grid-column:5;grid-row:13/span 3"><b>Жаксыбеков Т.Р.</b><i>Имплантация · 90 мин</i></div>
+    </div>
+    <div class="side">
+      <h2>Сейчас в холле</h2>
+      <div class="q"><em>7 мин</em><b>Демченко О.В.</b><i>Терапевт · 11:30</i></div>
+      <div class="q"><em>3 мин</em><b>Тюрин С.Н.</b><i>Невролог · 11:00</i></div>
+      <div class="q late"><em>21 мин</em><b>Егоршин В.Д.</b><i>Стоматолог · 10:30</i></div>
+      <div class="note">Три отменённых слота освободились и предложены листу ожидания — сообщения ушли автоматически, двое пока не ответили.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span><i class="dot" style="background:var(--mint)"></i>принят</span>
+    <span><i class="dot" style="background:var(--amber)"></i>ждёт</span>
+    <span><i class="dot" style="background:#4d84b3"></i>первичный</span>
+    <span><i class="dot" style="background:var(--coral)"></i>отменён</span>
+    <span style="margin-left:auto">Solutions&nbsp;101 · <b>отрасль: медицина</b></span>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>

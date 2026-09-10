@@ -1,0 +1,82 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>18 · Сборщик прайсов — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#0d1117}
+.stage{background:#0d1117;color:#c9d1d9;font-family:"Cascadia Code","Consolas",monospace;font-size:13px;
+  padding:22px 26px;display:grid;grid-template-rows:auto auto 1fr;gap:16px}
+.hdr{display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:1px solid #21262d}
+h1{margin:0;font-size:19px;font-weight:600;color:#e6edf3;font-family:"Segoe UI",Arial,sans-serif}
+.hdr p{margin:2px 0 0;font-size:12px;color:#7d8590;font-family:"Segoe UI",Arial,sans-serif}
+.run{margin-left:auto;display:flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid #2ea04366;
+  border-radius:6px;background:#2ea04326;color:#3fb950;font-size:12px}
+.run i{width:8px;height:8px;border-radius:50%;background:#3fb950;animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.3}}
+.cols{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.src{border:1px solid #21262d;border-radius:6px;background:#161b22;padding:11px 12px}
+.src b{display:block;font-size:11.5px;color:#e6edf3;margin-bottom:5px;font-family:"Segoe UI",Arial,sans-serif}
+.src u{text-decoration:none;font-size:10.5px;color:#7d8590;display:block;margin-bottom:9px}
+.src .st{font-size:11px;display:flex;align-items:center;gap:6px}
+.ok{color:#3fb950}.wr{color:#d29922}.no{color:#f85149}.rn{color:#58a6ff}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.body{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;min-height:0}
+.pane{border:1px solid #21262d;border-radius:6px;background:#161b22;display:flex;flex-direction:column;overflow:hidden}
+.pane h2{margin:0;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7d8590;
+  border-bottom:1px solid #21262d;font-family:"Segoe UI",Arial,sans-serif}
+.log{padding:12px 15px;line-height:1.85;overflow:hidden;font-size:12.5px}
+.log .t{color:#484f58}
+.log .k{color:#58a6ff}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:9px 15px;color:#7d8590;font-weight:400;border-bottom:1px solid #21262d;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+td{padding:10px 15px;border-bottom:1px solid #21262d}
+td.n{text-align:right;font-variant-numeric:tabular-nums;color:#e6edf3}
+.d{color:#3fb950}.u{color:#f85149}
+.bar{display:flex;gap:18px;padding:11px 15px;border-top:1px solid #21262d;font-size:11.5px;color:#7d8590;margin-top:auto}
+.bar b{color:#e6edf3;font-weight:400}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="hdr"><div><h1>Сборщик прайсов</h1><p>12 форматов поставщиков → одна таблица · запуск 03.09.2026 06:00</p></div>
+    <span class="run"><i></i>ВЫПОЛНЯЕТСЯ · 9 из 12</span></div>
+  <div class="cols">
+    <div class="src"><b>Автотрейд Юг</b><u>price_2026.xlsx</u><span class="st ok">4 118 строк</span></div>
+    <div class="src"><b>Vertex Trading</b><u>ostatki.csv</u><span class="st ok">2 904 строки</span></div>
+    <div class="src"><b>Nova Group</b><u>прайс.pdf</u><span class="st wr">OCR · 1 640</span></div>
+    <div class="src"><b>ИП Ускенбаев</b><u>письмо · вложение</u><span class="st ok">812 строк</span></div>
+    <div class="src"><b>Самал-Логистика</b><u>выгрузка 1С</u><span class="st rn">чтение…</span></div>
+    <div class="src"><b>Болашак Инж.</b><u>price.xls (2003)</u><span class="st no">кодировка</span></div>
+  </div>
+  <div class="body">
+    <div class="pane">
+      <h2>Журнал разбора</h2>
+      <div class="log">
+<span class="t">06:00:02</span> <span class="k">open</span> price_2026.xlsx · лист «Прайс» · шапка на строке 7<br>
+<span class="t">06:00:04</span> <span class="k">map</span> артикул→A, наименование→C, цена→F, остаток→H<br>
+<span class="t">06:00:19</span> <span class="ok">ok</span> Автотрейд Юг · 4 118 позиций · валюта RUB<br>
+<span class="t">06:01:07</span> <span class="k">open</span> прайс.pdf · таблица не размечена → OCR<br>
+<span class="t">06:03:41</span> <span class="wr">warn</span> Nova Group · 1 640 из 1 702 · 62 строки не распознаны<br>
+<span class="t">06:04:12</span> <span class="k">open</span> письмо от 02.09 · вложение «остатки сентябрь.xlsx»<br>
+<span class="t">06:04:20</span> <span class="ok">ok</span> ИП Ускенбаев · 812 позиций<br>
+<span class="t">06:05:58</span> <span class="no">error</span> price.xls · cp1251 вместо utf-8 → повтор с перекодировкой<br>
+<span class="t">06:06:03</span> <span class="k">merge</span> сведение по артикулу · выбор минимальной цены<br>
+<span class="t">06:06:31</span> <span class="k">diff</span> 1 204 цены изменились с прошлого запуска
+      </div>
+      <div class="bar"><span>Строк прочитано <b>18 942</b></span><span>Сведено <b>14 771</b></span><span>Дубли схлопнуты <b>4 171</b></span></div>
+    </div>
+    <div class="pane">
+      <h2>Что изменилось в цене</h2>
+      <table>
+        <tr><th>Артикул</th><th>Поставщик</th><th style="text-align:right">Было</th><th style="text-align:right">Стало</th></tr>
+        <tr><td>7014595003</td><td>Автотрейд Юг</td><td class="n">78 400</td><td class="n u">84 500</td></tr>
+        <tr><td>622308509</td><td>Vertex Trading</td><td class="n">33 900</td><td class="n d">31 200</td></tr>
+        <tr><td>68506</td><td>Nova Group</td><td class="n">21 300</td><td class="n d">19 900</td></tr>
+        <tr><td>04E115561H</td><td>ИП Ускенбаев</td><td class="n">1 180</td><td class="n u">1 310</td></tr>
+        <tr><td>1K0615301AA</td><td>Автотрейд Юг</td><td class="n">6 740</td><td class="n d">6 190</td></tr>
+        <tr><td>WHT005437</td><td>Самал-Логистика</td><td class="n">240</td><td class="n u">265</td></tr>
+      </table>
+      <div class="bar"><span>Никто не переносит цифры руками</span></div>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

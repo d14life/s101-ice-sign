@@ -1,0 +1,78 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12 · Структура юрлиц — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#f0ece3}
+.stage{background:#f0ece3;color:#111;font-family:"Futura","Century Gothic","Segoe UI",sans-serif;
+  display:grid;grid-template-columns:300px 1fr;grid-template-rows:1fr;gap:0}
+.side{background:#111;color:#f0ece3;padding:38px 30px;display:flex;flex-direction:column;gap:0}
+.side h1{margin:0;font-size:40px;line-height:.95;letter-spacing:-1.5px;font-weight:700;text-transform:uppercase}
+.side p{margin:16px 0 0;font-size:13px;line-height:1.6;color:#b9b2a4}
+.shapes{margin-top:auto;display:flex;flex-direction:column;gap:0}
+.sq{width:100%;height:64px;background:#d92b2b}
+.ci{width:128px;height:128px;border-radius:50%;background:#f0c419;margin-top:-1px}
+.tr{width:0;height:0;border-left:120px solid transparent;border-right:0 solid transparent;border-bottom:96px solid #2b5fd9;align-self:flex-end}
+.main{padding:38px 42px;display:grid;grid-template-rows:auto 1fr auto;gap:26px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:4px solid #111}
+.kpis>div{padding:20px 22px;border-right:4px solid #111}
+.kpis>div:last-child{border-right:0}
+.kpis b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.kpis i{font-style:normal;font-size:32px;font-weight:700;letter-spacing:-1.2px;display:block}
+.kpis .r{background:#d92b2b;color:#f0ece3}
+.kpis .r i{font-size:26px;letter-spacing:-.8px}
+.kpis .y{background:#f0c419}
+.tree{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.org{border:4px solid #111;padding:0;display:flex;flex-direction:column}
+.org .cap{padding:14px 18px;border-bottom:4px solid #111;font-size:17px;font-weight:700;letter-spacing:-.4px}
+.org .cap.a{background:#2b5fd9;color:#f0ece3}
+.org .cap.b{background:#d92b2b;color:#f0ece3}
+.org .cap.c{background:#f0c419}
+.org ul{margin:0;padding:16px 16px 12px;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:12.5px}
+.org li{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.org li em{font-style:normal;margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.org li:before{content:"";width:9px;height:9px;background:#111;flex-shrink:0;align-self:center}
+.org li span{white-space:nowrap}
+.org .bar{height:16px;margin:auto 16px 16px;background:#e2ddd2}
+.org .bar span{display:block;height:100%;background:#111}
+.note{border-top:4px solid #111;padding-top:16px;font-size:13px;line-height:1.6;display:flex;gap:34px}
+.note b{font-weight:700}
+</style></head><body>
+<a class="back" href="../screens.html">← 30 экранов</a>
+<div class="stage">
+  <div class="side">
+    <h1>Структура<br>группы</h1>
+    <p>Три юрлица, мультивалюта, 47 контрагентов. Свёртка настраивается отдельно для каждой организации, но сальдо сводится в одну позицию.</p>
+    <div class="shapes"><i class="sq"></i><i class="ci"></i><i class="tr"></i></div>
+  </div>
+  <div class="main">
+    <div class="kpis">
+      <div><b>Контрагентов</b><i>47</i></div>
+      <div class="y"><b>Требуют внимания</b><i>41</i></div>
+      <div class="r"><b>Чистая позиция</b><i>−431 359 821,98 ₸</i></div>
+    </div>
+    <div class="tree">
+      <div class="org">
+        <div class="cap a">ТОО «Тумар Курылыс»</div>
+        <ul><li>Контрагентов<em>28</em></li><li>Должны нам<em>31 204 118 ₸</em></li><li>Должны мы<em>402 118 004 ₸</em></li></ul>
+        <div class="bar"><span style="width:86%"></span></div>
+      </div>
+      <div class="org">
+        <div class="cap b">ТОО «Тумар-Строй Павлодар»</div>
+        <ul><li>Контрагентов<em>13</em></li><li>Должны нам<em>14 093 607 ₸</em></li><li>Должны мы<em>61 419 543 ₸</em></li></ul>
+        <div class="bar"><span style="width:52%"></span></div>
+      </div>
+      <div class="org">
+        <div class="cap c">ТОО «Самал-Логистика»</div>
+        <ul><li>Контрагентов<em>6</em></li><li>Должны нам<em>3 080 000 ₸</em></li><li>Должны мы<em>16 200 000 ₸</em></li></ul>
+        <div class="bar"><span style="width:31%"></span></div>
+      </div>
+    </div>
+    <div class="note">
+      <span><b>Счета учёта</b><br>1210 · 3310 · 3510 · 1710</span>
+      <span><b>Правило свёртки</b><br>долг минус аванс, одна цифра вместо двух счетов</span>
+      <span><b>Источник</b><br>остатки 1С на выбранную дату</span>
+    </div>
+  </div>
+</div>
+<script src="_stage.js"></script></body></html>

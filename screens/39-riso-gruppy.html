@@ -1,0 +1,125 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>39 · Группы и оплата — Solutions 101</title>
+<link rel="stylesheet" href="_stage.css">
+<style>
+:root{--void:#e4dfcd;--paper:#f4f0e2;--blue:#2440c9;--pink:#ff4f8b;--ink:#1b2340;--dim:#6b7392}
+.stage{background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;padding:24px 40px 0;
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:0;position:relative;overflow:hidden}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:radial-gradient(#9a927a 0.6px,transparent 0.7px),radial-gradient(#9a927a 0.5px,transparent 0.6px);
+  background-size:3px 3px,5px 5px;background-position:0 0,2px 1px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:12px;position:relative;z-index:2}
+h1{margin:0;font-size:40px;font-weight:800;letter-spacing:-2px;line-height:.95;color:var(--blue);position:relative}
+h1::before{content:"Группы и оплата";position:absolute;left:3px;top:2.5px;color:var(--pink);z-index:-1;
+  mix-blend-mode:multiply;opacity:.9}
+.sub{font-size:12px;color:var(--dim);margin-top:10px;max-width:400px;line-height:1.5}
+.tot{text-align:right}
+.tot b{display:block;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.tot i{font-style:normal;display:block;font-size:28px;font-weight:800;letter-spacing:-1.8px;line-height:1.05;color:var(--blue)}
+.tot i.p{color:var(--pink)}
+.tot u{text-decoration:none;font-size:11px;color:var(--dim);display:block;margin-top:3px}
+.tot>div{margin-bottom:6px}
+.strip{display:flex;gap:0;border:2.5px solid var(--blue);border-radius:12px;overflow:hidden;position:relative;z-index:2}
+.strip div{flex:1;padding:7px 14px;border-right:2.5px solid var(--blue)}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.strip i{font-style:normal;font-size:18px;font-weight:800;letter-spacing:-1px;display:block;margin-top:3px;line-height:1}
+.strip i.p{color:var(--pink)}
+.strip i.b{color:var(--blue)}
+.mid{display:grid;grid-template-columns:1fr 318px;gap:26px;padding-top:12px;min-height:0;overflow:hidden;position:relative;z-index:2}
+.lab{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:11px}
+.grp{border:2.5px solid var(--blue);border-radius:12px;padding:8px 13px;margin-bottom:7px;
+  display:grid;grid-template-columns:1fr 150px 112px;gap:14px;align-items:center;background:#fbf8ee}
+.grp h2{margin:0;font-size:14.5px;font-weight:800;letter-spacing:-.3px}
+.grp .m{font-size:10.5px;color:var(--dim);margin-top:2px}
+.dots{display:flex;gap:3.5px}
+.dots span{width:13px;height:13px;border-radius:50%;background:var(--blue)}
+.dots span.miss{background:transparent;box-shadow:inset 0 0 0 2px #b9bfd6}
+.dots span.late{background:var(--pink)}
+.att{font-size:10px;color:var(--dim);margin-top:5px;line-height:1.3}
+.pay{text-align:right}
+.pay b{display:block;font-size:17px;font-weight:800;letter-spacing:-.6px;color:var(--blue);white-space:nowrap}
+.pay.debt b{color:var(--pink)}
+.pay u{text-decoration:none;font-size:9.5px;color:var(--dim);display:block;line-height:1.3}
+.debt{border:2.5px solid var(--pink);border-radius:12px;padding:13px 15px;background:#fdeff4}
+.debt h3{margin:0 0 10px;font-size:14px;font-weight:800;color:var(--pink);letter-spacing:-.2px}
+.drow{display:flex;justify-content:space-between;align-items:baseline;padding:6.5px 0;border-bottom:1.5px dotted #f0a8c2;font-size:12px}
+.drow:last-child{border:0}
+.drow i{font-style:normal;display:block;font-size:10px;color:var(--dim)}
+.drow b{font-weight:800;white-space:nowrap;padding-left:10px}
+.note{margin-top:13px;border:2.5px solid var(--blue);border-radius:12px;padding:12px 14px;font-size:11.5px;
+  line-height:1.55;color:#2b3560;background:#eef1fb}
+.note b{color:var(--blue);display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.foot{display:flex;gap:26px;align-items:baseline;font-size:11px;color:var(--dim);padding:11px 0 16px;position:relative;z-index:2}
+.foot b{color:var(--pink);font-weight:800}
+</style></head><body data-screen="39">
+<a class="back" href="../otrasli.html">← Двадцать экранов</a>
+<div class="stage">
+  <div class="grain"></div>
+  <div class="top">
+    <div>
+      <h1>Группы и оплата</h1>
+      <div class="sub">Учебный центр «Абзац» · сентябрь 2026 · посещаемость отмечает преподаватель на планшете, задолженность считается сама</div>
+    </div>
+    <div class="tot">
+      <div><b>Учеников</b><i>247</i><u>в 14 группах</u></div>
+      <div><b>Задолженность</b><i class="p">184 500 ₽</i><u>у 19 человек</u></div>
+    </div>
+  </div>
+  <div class="strip">
+    <div><b>Оплачено за месяц</b><i class="b">1 842 000 ₽</i></div>
+    <div><b>Посещаемость</b><i>87 %</i></div>
+    <div><b>Отработано занятий</b><i>218</i></div>
+    <div><b>Пропусков по болезни</b><i>41</i></div>
+    <div><b>Ушли в сентябре</b><i class="p">6</i></div>
+  </div>
+  <div class="mid">
+    <div>
+      <div class="lab">Группы · неделя 2–8 сентября</div>
+      <div class="grp">
+        <div><h2>Английский B1 · взрослые</h2><div class="m">Пн, Чт 19:00 · Ковалевская И.А. · 12 человек</div></div>
+        <div><div class="dots"><span></span><span></span><span></span><span class="miss"></span><span></span><span></span><span></span><span></span><span class="late"></span><span></span><span></span><span></span></div><div class="att">10 пришли · 1 опоздал · 1 пропуск</div></div>
+        <div class="pay"><b>144 000 ₽</b><u>оплачено 12 из 12</u></div>
+      </div>
+      <div class="grp">
+        <div><h2>Математика · ОГЭ, 9 класс</h2><div class="m">Вт, Сб 16:00 · Пасечник Р.В. · 10 человек</div></div>
+        <div><div class="dots"><span></span><span></span><span class="miss"></span><span></span><span></span><span class="miss"></span><span></span><span></span><span></span><span></span></div><div class="att">8 пришли · 2 пропуска</div></div>
+        <div class="pay debt"><b>−28 000 ₽</b><u>не платили двое</u></div>
+      </div>
+      <div class="grp">
+        <div><h2>Программирование · дети 10–12</h2><div class="m">Ср, Пт 17:30 · Асланова М.К. · 14 человек</div></div>
+        <div><div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="late"></span><span></span><span></span><span></span><span></span><span class="miss"></span><span></span></div><div class="att">12 пришли · 1 опоздал · 1 пропуск</div></div>
+        <div class="pay"><b>182 000 ₽</b><u>оплачено 14 из 14</u></div>
+      </div>
+      <div class="grp">
+        <div><h2>Китайский · с нуля</h2><div class="m">Пн, Ср 18:00 · Шэн Л. · 8 человек</div></div>
+        <div><div class="dots"><span></span><span></span><span class="miss"></span><span></span><span class="miss"></span><span></span><span></span><span class="miss"></span></div><div class="att">5 пришли · 3 пропуска</div></div>
+        <div class="pay debt"><b>−42 000 ₽</b><u>не платили трое</u></div>
+      </div>
+      <div class="grp">
+        <div><h2>Подготовка к школе</h2><div class="m">Вт, Чт 10:00 · Резниченко О.П. · 11 человек</div></div>
+        <div><div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="miss"></span></div><div class="att">10 пришли · 1 пропуск</div></div>
+        <div class="pay"><b>121 000 ₽</b><u>оплачено 11 из 11</u></div>
+      </div>
+    </div>
+    <div>
+      <div class="lab">Задолженность</div>
+      <div class="debt">
+        <h3>Кто не заплатил</h3>
+        <div class="drow"><span>Мирошниченко Т.А.<i>Китайский · 2 месяца</i></span><b>24 000 ₽</b></div>
+        <div class="drow"><span>Юсупова Д.Р.<i>Математика ОГЭ · 1 месяц</i></span><b>14 000 ₽</b></div>
+        <div class="drow"><span>Гладышев К.С.<i>Математика ОГЭ · 1 месяц</i></span><b>14 000 ₽</b></div>
+        <div class="drow"><span>Байтасов Е.Н.<i>Китайский · 1 месяц</i></span><b>12 000 ₽</b></div>
+        <div class="drow"><span>Ещё 15 человек<i>от 6 000 до 18 000 ₽</i></span><b>120 500 ₽</b></div>
+      </div>
+      <div class="note"><b>Что делает система</b>Напоминание об оплате уходит за три дня до занятия, а не после. Ученик с долгом больше месяца подсвечивается в журнале преподавателя — до того, как сядет в класс.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>Solutions&nbsp;101</span>
+    <span>Журнал, абонемент и касса — одна запись на ученика</span>
+    <b>Китайский теряет группу: три пропуска и три должника из восьми</b>
+  </div>
+</div>
+<script src="_ui.js"></script><script src="_stage.js"></script></body></html>
